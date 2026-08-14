@@ -5,14 +5,14 @@ import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Evolvith — Enterprise Operating System for Business Transformation',
-  description: 'Manufacture pre-built, commercial-grade operating systems that replace legacy SaaS sprawl with integrated, autonomous enterprise architecture.',
+  description: 'Manufacture pre-built, commercial-grade operating systems that replace legacy SaaS sprawl with integrated, codified enterprise architecture.',
   metadataBase: new URL('https://evolvith.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Evolvith Enterprise Operating System',
-    description: 'Autonomous Business Transformation Systems for global enterprises.',
+    description: 'Codified Business Transformation Systems for global enterprises.',
     url: 'https://evolvith.com',
     siteName: 'Evolvith',
     locale: 'en_US',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Evolvith Enterprise Operating System',
-    description: 'Autonomous Business Transformation Systems built for multi-decade scale.',
+    description: 'Codified Business Transformation Systems built for multi-decade scale.',
     images: ['https://evolvith.com/og-image.png'],
   },
   robots: {

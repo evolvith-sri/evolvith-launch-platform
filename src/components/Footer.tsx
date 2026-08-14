@@ -14,7 +14,7 @@ export function Footer() {
             </span>
           </Link>
           <p className="text-sm text-gray-400 leading-relaxed">
-            The Enterprise Operating System governing autonomous business transformation. Architectural precision built for multi-decade scale.
+            The Enterprise Operating System governing business transformation. Architectural precision built for multi-decade scale.
           </p>
         </div>
 

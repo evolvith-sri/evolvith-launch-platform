@@ -16,7 +16,7 @@ export default function AboutPage() {
           Architecting the Future of Enterprise Performance
         </h1>
         <p className="text-gray-300 text-lg leading-relaxed">
-          Evolvith is the permanent Enterprise Operating System (EEOS) company. We manufacture autonomous Business Transformation Systems designed to elevate organizational performance, eliminate operational friction, and scale for decades.
+          Evolvith is the permanent Enterprise Operating System (EEOS) company. We manufacture Codified Enterprise Operating Systems designed to elevate organizational performance, eliminate operational friction, and scale for decades.
         </p>
       </div>
 
