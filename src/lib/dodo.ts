@@ -44,10 +44,20 @@ export interface DodoWebhookPayload {
 
 export interface WebhookProcessingResult {
   success: boolean;
-  status: 'PROCESSED' | 'DUPLICATE_IGNORED' | 'INVALID_SIGNATURE' | 'UNSUPPORTED_EVENT' | 'ERROR';
+  status:
+    | 'PROCESSED'
+    | 'DUPLICATE_IGNORED'
+    | 'INVALID_SIGNATURE'
+    | 'UNSUPPORTED_EVENT'
+    | 'TEST_EVENT_PROCESSED'
+    | 'UNMAPPED_PRODUCT_QUARANTINED'
+    | 'TIER_3_PURCHASE_BLOCKED'
+    | 'ERROR';
   eventId?: string;
   message: string;
   fulfillmentGenerated?: boolean;
+  systemCode?: string;
+  distributionPackage?: string;
 }
 
 /**
@@ -259,18 +269,64 @@ export function processDodoWebhookEvent(
       // Mark as processed
       PROCESSED_WEBHOOK_EVENTS.add(payload.event_id);
 
-      // Generate structured entitlement log (sanitized, non-sensitive)
-      const systemCode =
+      // Extract system/product identifier from various standard Dodo payload locations
+      const rawIdentifier =
         payload.data.metadata?.evolvith_system_code ||
+        payload.data.metadata?.product_id ||
+        payload.data.metadata?.system_code ||
         payload.data.product_code ||
-        'UNKNOWN_SYSTEM';
+        payload.data.product_id;
 
+      // Look up in authoritative register
+      const mapping = rawIdentifier ? getProductCommerceMapping(String(rawIdentifier)) : null;
+
+      // Check if this is a synthetic test event lacking product metadata
+      const isSyntheticTest =
+        !rawIdentifier ||
+        rawIdentifier === 'UNKNOWN_SYSTEM' ||
+        payload.event_id.startsWith('test_') ||
+        payload.event_id.startsWith('evt_test');
+
+      if (isSyntheticTest) {
+        return {
+          success: true,
+          status: 'TEST_EVENT_PROCESSED',
+          eventId: payload.event_id,
+          message: 'Dodo synthetic test event received and verified. Processed safely without creating customer entitlement.',
+          fulfillmentGenerated: false,
+        };
+      }
+
+      if (!mapping) {
+        return {
+          success: true,
+          status: 'UNMAPPED_PRODUCT_QUARANTINED',
+          eventId: payload.event_id,
+          message: `Unrecognized product identifier "${rawIdentifier}". Quarantined safely without creating customer entitlement.`,
+          fulfillmentGenerated: false,
+        };
+      }
+
+      // Safety check: Tier 3 organisms are strictly non-purchasable
+      if (mapping.tier === 3 || mapping.commerceAvailability === 'NOT_PURCHASABLE') {
+        return {
+          success: true,
+          status: 'TIER_3_PURCHASE_BLOCKED',
+          eventId: payload.event_id,
+          message: `Attempted fulfillment for Tier-3 organism ${mapping.systemCode} blocked. Non-purchasable architecture.`,
+          fulfillmentGenerated: false,
+        };
+      }
+
+      // Valid commercial product purchase (Tier 1, 2A, 2B)
       return {
         success: true,
         status: 'PROCESSED',
         eventId: payload.event_id,
-        message: `Payment confirmed for ${systemCode}. Fulfillment entitlement created.`,
+        message: `Payment confirmed for ${mapping.systemCode}. Fulfillment entitlement created for ${mapping.distributionPackage || mapping.systemCode}.`,
         fulfillmentGenerated: true,
+        systemCode: mapping.systemCode,
+        distributionPackage: mapping.distributionPackage,
       };
     }
 
