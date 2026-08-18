@@ -94,8 +94,8 @@ export async function createDodoCheckoutSession(
     try {
       const baseUrl =
         environment === 'live_mode'
-          ? 'https://api.dodopayments.com/v1'
-          : 'https://test.dodopayments.com/v1';
+          ? 'https://live.dodopayments.com'
+          : 'https://test.dodopayments.com';
 
       const payload = {
         product_id: mapping.dodoProductId || mapping.systemCode,
