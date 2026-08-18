@@ -147,37 +147,82 @@ export async function createDodoCheckoutSession(
 
 /**
  * Cryptographically verifies incoming Dodo Payments Webhook signatures.
- * Adheres to standard HMAC-SHA256 signature verification.
+ * Supports Standard Webhooks / Svix specifications (v1,<base64/hex>) and HMAC-SHA256.
  */
 export function verifyDodoWebhookSignature(
   rawBody: string,
   signatureHeader: string | null,
-  timestampHeader?: string | null
+  timestampHeader?: string | null,
+  webhookIdHeader?: string | null
 ): boolean {
   const webhookSecret = process.env.DODO_PAYMENTS_WEBHOOK_SECRET;
 
   // In production, signature header and webhook secret are strictly required
   if (!webhookSecret || !signatureHeader) {
-    // If webhook secret is not configured in local test mode, return false
     return false;
   }
 
   try {
-    // Standard HMAC-SHA256 computation
-    const expectedSignature = crypto
-      .createHmac('sha256', webhookSecret)
-      .update(rawBody, 'utf8')
-      .digest('hex');
+    const signatures = signatureHeader.split(' ');
+    
+    // Candidate secrets: raw string buffer or base64 decoded if prefixed with whsec_
+    const secretCandidates: Buffer[] = [];
+    if (webhookSecret.startsWith('whsec_')) {
+      try {
+        secretCandidates.push(Buffer.from(webhookSecret.replace('whsec_', ''), 'base64'));
+      } catch {
+        // ignore base64 decode errors
+      }
+    }
+    secretCandidates.push(Buffer.from(webhookSecret, 'utf8'));
 
-    // Constant-time comparison to prevent timing attacks
-    const signatureBuffer = Buffer.from(signatureHeader);
-    const expectedBuffer = Buffer.from(expectedSignature);
+    for (const sigItem of signatures) {
+      const sigValue = sigItem.startsWith('v1,') ? sigItem.slice(3) : sigItem;
 
-    if (signatureBuffer.length !== expectedBuffer.length) {
-      return false;
+      for (const secretBuf of secretCandidates) {
+        // Strategy 1: Standard Webhooks format (webhookId.timestamp.rawBody)
+        if (webhookIdHeader && timestampHeader) {
+          const toSign = `${webhookIdHeader}.${timestampHeader}.${rawBody}`;
+          const b64 = crypto.createHmac('sha256', secretBuf).update(toSign, 'utf8').digest('base64');
+          const hex = crypto.createHmac('sha256', secretBuf).update(toSign, 'utf8').digest('hex');
+          if (safeConstantTimeEqual(sigValue, b64) || safeConstantTimeEqual(sigValue, hex)) {
+            return true;
+          }
+        }
+
+        // Strategy 2: Timestamped payload (timestamp.rawBody)
+        if (timestampHeader) {
+          const toSign = `${timestampHeader}.${rawBody}`;
+          const b64 = crypto.createHmac('sha256', secretBuf).update(toSign, 'utf8').digest('base64');
+          const hex = crypto.createHmac('sha256', secretBuf).update(toSign, 'utf8').digest('hex');
+          if (safeConstantTimeEqual(sigValue, b64) || safeConstantTimeEqual(sigValue, hex)) {
+            return true;
+          }
+        }
+
+        // Strategy 3: Direct raw body
+        const b64Direct = crypto.createHmac('sha256', secretBuf).update(rawBody, 'utf8').digest('base64');
+        const hexDirect = crypto.createHmac('sha256', secretBuf).update(rawBody, 'utf8').digest('hex');
+        if (safeConstantTimeEqual(sigValue, hexDirect) || safeConstantTimeEqual(sigValue, b64Direct)) {
+          return true;
+        }
+      }
     }
 
-    return crypto.timingSafeEqual(signatureBuffer, expectedBuffer);
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+function safeConstantTimeEqual(a: string, b: string): boolean {
+  try {
+    const bufA = Buffer.from(a);
+    const bufB = Buffer.from(b);
+    if (bufA.length !== bufB.length) {
+      return false;
+    }
+    return crypto.timingSafeEqual(bufA, bufB);
   } catch {
     return false;
   }

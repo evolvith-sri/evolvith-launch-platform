@@ -4,16 +4,21 @@ import { verifyDodoWebhookSignature, processDodoWebhookEvent, DodoWebhookPayload
 export async function POST(req: NextRequest) {
   try {
     const rawBody = await req.text();
+    const webhookId =
+      req.headers.get('webhook-id') ||
+      req.headers.get('x-dodo-webhook-id') ||
+      req.headers.get('msg-id');
     const signature =
       req.headers.get('webhook-signature') ||
       req.headers.get('x-dodo-signature') ||
       req.headers.get('dodo-signature');
     const timestamp =
       req.headers.get('webhook-timestamp') ||
-      req.headers.get('x-dodo-timestamp');
+      req.headers.get('x-dodo-timestamp') ||
+      req.headers.get('dodo-timestamp');
 
     // Strict Webhook Authentication Guard: Fail closed if secret is unconfigured or signature is missing/invalid
-    const isValid = verifyDodoWebhookSignature(rawBody, signature, timestamp);
+    const isValid = verifyDodoWebhookSignature(rawBody, signature, timestamp, webhookId);
     if (!isValid) {
       return NextResponse.json(
         { error: 'Unauthorized: Missing or invalid webhook signature.' },
