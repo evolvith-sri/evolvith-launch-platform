@@ -98,13 +98,17 @@ export async function createDodoCheckoutSession(
           : 'https://test.dodopayments.com';
 
       const payload = {
-        product_id: mapping.dodoProductId || mapping.systemCode,
-        amount: mapping.governedPrice * 100, // in cents
-        currency: mapping.currency,
-        customer_email: req.customerEmail,
-        customer_name: req.customerName,
+        product_cart: [
+          {
+            product_id: mapping.dodoProductId || mapping.systemCode,
+            quantity: 1,
+          },
+        ],
+        customer: {
+          email: req.customerEmail,
+          name: req.customerName,
+        },
         return_url: successUrl,
-        cancel_url: cancelUrl,
         metadata: {
           evolvith_system_code: mapping.systemCode,
           tier: String(mapping.tier),
