@@ -4,18 +4,21 @@ import { verifyDodoWebhookSignature, processDodoWebhookEvent, DodoWebhookPayload
 export async function POST(req: NextRequest) {
   try {
     const rawBody = await req.text();
-    const signature = req.headers.get('webhook-signature') || req.headers.get('x-dodo-signature');
-    const timestamp = req.headers.get('webhook-timestamp') || req.headers.get('x-dodo-timestamp');
+    const signature =
+      req.headers.get('webhook-signature') ||
+      req.headers.get('x-dodo-signature') ||
+      req.headers.get('dodo-signature');
+    const timestamp =
+      req.headers.get('webhook-timestamp') ||
+      req.headers.get('x-dodo-timestamp');
 
-    // Verify webhook signature in production/live environments
-    if (process.env.DODO_PAYMENTS_WEBHOOK_SECRET) {
-      const isValid = verifyDodoWebhookSignature(rawBody, signature, timestamp);
-      if (!isValid) {
-        return NextResponse.json(
-          { error: 'Invalid webhook signature verification.' },
-          { status: 401 }
-        );
-      }
+    // Strict Webhook Authentication Guard: Fail closed if secret is unconfigured or signature is missing/invalid
+    const isValid = verifyDodoWebhookSignature(rawBody, signature, timestamp);
+    if (!isValid) {
+      return NextResponse.json(
+        { error: 'Unauthorized: Missing or invalid webhook signature.' },
+        { status: 401 }
+      );
     }
 
     let payload: DodoWebhookPayload;
@@ -28,7 +31,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Process event with idempotency protection
+    // Process authenticated event with idempotency protection
     const result = processDodoWebhookEvent(payload);
 
     return NextResponse.json(
