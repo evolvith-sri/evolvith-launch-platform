@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { TerminalRunbookSnippet } from '@/components/TerminalRunbookSnippet';
 
 interface DeploymentStep {
   hours: string;
@@ -16,28 +17,28 @@ const DEPLOYMENT_STEPS: DeploymentStep[] = [
     phase: 'Phase A',
     title: 'Repository Provisioning & Genome Injection',
     deliverables: ['Modular config set binding', 'Master Genome inheritance setup', 'AST schema registry load'],
-    status: 'COMPLETE IN 12H',
+    status: 'TARGET: 12H',
   },
   {
     hours: '12-24 HR',
     phase: 'Phase B',
     title: 'Data Telemetry & Webhook Integration',
     deliverables: ['REST API bridge config', 'CRM / ERP webhook hooks', 'Vector telemetry pipeline test'],
-    status: 'COMPLETE IN 24H',
+    status: 'TARGET: 24H',
   },
   {
     hours: '24-36 HR',
     phase: 'Phase C',
     title: 'RACI Governance & SOP Customization',
     deliverables: ['Business unit RACI matrix', 'Executive dashboard rules', 'SOP manual alignment'],
-    status: 'COMPLETE IN 36H',
+    status: 'TARGET: 36H',
   },
   {
     hours: '36-48 HR',
     phase: 'Phase D',
     title: 'QG4 Certification & Executive Briefing',
     deliverables: ['Quality Gate QG4 audit pass', 'Executive board pack release', 'Operational live activation'],
-    status: 'DEPLOYED AT 48H',
+    status: 'TARGET: DEPLOYED AT 48H',
   },
 ];
 
@@ -109,8 +110,16 @@ export function DeploymentProtocol() {
 
           <div className="shrink-0 text-right font-mono text-xs text-gray-400 border-l border-white/10 pl-6 hidden md:block">
             <span>RUNBOOK STATUS</span>
-            <p className="text-cyan-400 font-bold text-sm mt-0.5">100% AUTOMATED</p>
+            <p className="text-cyan-400 font-bold text-sm mt-0.5">STANDARDIZED SCRIPT</p>
           </div>
+        </div>
+
+        {/* Terminal Code Demonstration (UX-F06) */}
+        <div className="space-y-3 pt-2">
+          <span className="text-xs font-mono uppercase text-cyan-400 font-bold tracking-wider block">
+            48-Hour Rapid Installation Terminal Execution
+          </span>
+          <TerminalRunbookSnippet productId="wave1-ecosystem" />
         </div>
       </div>
     </section>

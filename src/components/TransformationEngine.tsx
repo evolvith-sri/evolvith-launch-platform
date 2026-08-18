@@ -13,7 +13,7 @@ const COMPARISON_ROWS: ComparisonRow[] = [
   {
     dimension: 'Delivery Vehicle',
     oldWay: 'High-cost management consulting engagements producing static recommendations and slide decks.',
-    evolvithWay: '$149-$349 Codified enterprise operating systems deployed as software.',
+    evolvithWay: 'From $99 focused operating systems to $349 enterprise systems deployed directly as executable software.',
     impact: '100% Executable Software',
   },
   {
@@ -25,20 +25,20 @@ const COMPARISON_ROWS: ComparisonRow[] = [
   {
     dimension: 'Commercial Licensing',
     oldWay: 'Spiraling monthly per-user seat fees and lock-in contracts.',
-    evolvithWay: 'One-time payment perpetual commercial license with unlimited seats.',
+    evolvithWay: 'One-time payment perpetual commercial license with unlimited seats ($99–$349).',
     impact: 'Predictable TCO',
   },
   {
     dimension: 'Quality Governance',
     oldWay: 'Manual paper policies ignored by operational teams.',
     evolvithWay: 'Automated Quality Gates QG0-QG6 auditing code and SOP compliance.',
-    impact: 'Zero Quality Defects',
+    impact: 'Defect Elimination Protocol',
   },
   {
     dimension: 'Speed to Value',
     oldWay: '6-12 month expensive consulting engagements.',
     evolvithWay: '48-Hour rapid deployment runbook protocol.',
-    impact: 'Sub-48h Time to Market',
+    impact: '48h Implementation Target',
   },
 ];
 

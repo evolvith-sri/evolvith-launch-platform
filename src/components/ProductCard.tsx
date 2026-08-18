@@ -1,76 +1,232 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
-import { Product } from '@/lib/products';
+import { Product, COMMERCE_CONFIG } from '@/lib/products';
+import { CheckoutModal } from './CheckoutModal';
 
 export function ProductCard({ product }: { product: Product }) {
+  const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
+
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+      case 'RELEASED':
+        return { label: 'QG4 Certified • Release Ready', color: 'emerald' };
+      case 'MANUFACTURING':
+        return { label: 'In Manufacturing Pipeline', color: 'cyan' };
+      case 'TIER_3_DEVELOPMENT':
+        return { label: 'In Development • Architecture Preview', color: 'purple' };
+      case 'PORTFOLIO_SPEC':
+      default:
+        return { label: 'Portfolio Specification', color: 'indigo' };
+    }
+  };
+
+  const getTierBadge = () => {
+    if (product.subTier === '1') {
+      return { label: 'Tier 1 • Focused OS', color: 'cyan' };
+    }
+    if (product.subTier === '2A') {
+      return { label: 'Tier 2A • Enterprise OS', color: 'indigo' };
+    }
+    if (product.subTier === '2B') {
+      return { label: 'Tier 2B • Strategic Entry ($99 Launch Edition)', color: 'emerald' };
+    }
+    if (product.tier === 3 || product.subTier === '3') {
+      return { label: 'Tier 3 • Synthesis Organism', color: 'purple' };
+    }
+    return { label: `Tier ${product.tier} OS`, color: 'cyan' };
+  };
+
+  const statusInfo = getStatusBadge(product.status);
+  const tierInfo = getTierBadge();
+  const isPurchasable = product.availability !== 'NOT_PURCHASABLE' && product.price !== null;
+
   return (
-    <div className="glass-panel p-8 rounded-3xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-500/40 relative group border border-white/10">
-      <div className="space-y-5">
-        {/* Header & Pricing */}
-        <div className="flex items-center justify-between">
-          <span className="px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono font-semibold">
-            {product.badge}
-          </span>
-          <div className="text-right">
-            <span className="text-2xl font-extrabold text-white font-mono">${product.price}</span>
-            <span className="text-[10px] text-gray-400 block font-mono">One-Time Perpetual</span>
+    <>
+      <div className="glass-panel p-7 sm:p-8 rounded-3xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/40 relative group border border-white/10 bg-surface/80">
+        <div className="space-y-5">
+          {/* Header & Pricing */}
+          <div className="flex items-start justify-between gap-4">
+            <div className="space-y-1">
+              <span
+                className={`px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider ${
+                  tierInfo.color === 'cyan'
+                    ? 'bg-cyan-500/10 border border-cyan-500/30 text-cyan-400'
+                    : tierInfo.color === 'emerald'
+                    ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400'
+                    : tierInfo.color === 'purple'
+                    ? 'bg-purple-500/10 border border-purple-500/30 text-purple-300'
+                    : 'bg-indigo-500/10 border border-indigo-500/30 text-indigo-300'
+                }`}
+              >
+                {tierInfo.label}
+              </span>
+              <div className="text-[11px] font-mono text-gray-400 flex items-center gap-1.5 pt-1">
+                <span
+                  className={`w-2 h-2 rounded-full ${
+                    statusInfo.color === 'emerald'
+                      ? 'bg-emerald-400 animate-pulse'
+                      : statusInfo.color === 'cyan'
+                      ? 'bg-cyan-400 animate-pulse'
+                      : statusInfo.color === 'purple'
+                      ? 'bg-purple-400 animate-pulse'
+                      : 'bg-indigo-400'
+                  }`}
+                />
+                <span>{statusInfo.label}</span>
+              </div>
+            </div>
+            <div className="text-right shrink-0">
+              {isPurchasable ? (
+                <>
+                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
+                    ${product.price}
+                  </span>
+                  <span className="text-[10px] text-gray-400 block font-mono">
+                    One-Time Perpetual
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="text-base sm:text-lg font-extrabold text-purple-300 font-mono">
+                    In Development
+                  </span>
+                  <span className="text-[9px] text-gray-400 block font-mono uppercase">
+                    Not Purchasable
+                  </span>
+                </>
+              )}
+            </div>
           </div>
-        </div>
 
-        {/* Product Identity */}
-        <div>
-          <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest block font-bold">
-            {product.id.toUpperCase()}
-          </span>
-          <h3 className="text-xl font-bold text-white font-heading leading-snug group-hover:text-cyan-300 transition-colors mt-0.5">
-            {product.title}
-          </h3>
-        </div>
+          {/* Product Identity */}
+          <div>
+            <span className="text-[11px] font-mono text-cyan-400 uppercase tracking-widest block font-bold">
+              {product.systemCode || product.id.toUpperCase()}
+            </span>
+            <h3 className="text-lg sm:text-xl font-bold text-white font-heading leading-snug group-hover:text-cyan-300 transition-colors mt-0.5">
+              {product.title}
+            </h3>
+          </div>
 
-        <p className="text-xs text-gray-400 font-medium font-mono">
-          {product.subtitle}
-        </p>
-
-        {/* Primary Business Problem Solved */}
-        <div className="border-t border-white/10 pt-4 space-y-2">
-          <span className="text-[10px] uppercase font-mono tracking-wider text-gray-500 block">Primary Operational Friction Solved</span>
-          <p className="text-xs text-gray-300 leading-relaxed font-normal">
-            {product.problemsSolved[0]}
+          <p className="text-xs text-gray-300 font-normal leading-relaxed">
+            {product.oneSentencePurpose || product.subtitle}
           </p>
+
+          {/* Architecture Inputs (for Tier 3) or Primary Operational Friction */}
+          {product.architectureInputs && product.architectureInputs.length > 0 ? (
+            <div className="border-t border-white/10 pt-4 space-y-1.5">
+              <span className="text-[10px] uppercase font-mono tracking-wider text-purple-300 block font-bold">
+                Ecosystem Architecture Inputs
+              </span>
+              <div className="flex flex-wrap gap-1 pt-1">
+                {product.architectureInputs.slice(0, 5).map((input, idx) => (
+                  <span
+                    key={idx}
+                    className="px-2 py-0.5 rounded bg-surface border border-white/10 text-[10px] font-mono text-gray-300"
+                  >
+                    {input}
+                  </span>
+                ))}
+                {product.architectureInputs.length > 5 && (
+                  <span className="px-2 py-0.5 text-[10px] font-mono text-gray-500">
+                    +{product.architectureInputs.length - 5} more
+                  </span>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="border-t border-white/10 pt-4 space-y-1.5">
+              <span className="text-[10px] uppercase font-mono tracking-wider text-gray-400 block font-bold">
+                Primary Operational Friction Solved
+              </span>
+              <p className="text-xs text-gray-300 leading-relaxed font-normal">
+                {product.operationalFriction || product.problemsSolved[0]}
+              </p>
+            </div>
+          )}
+
+          {/* Core Capability Module */}
+          {product.capabilities && product.capabilities[0] && (
+            <div className="bg-surface/60 p-3 rounded-xl border border-white/5 space-y-1">
+              <span className="text-[10px] uppercase font-mono tracking-wider text-gray-400 block font-bold">
+                Core Capability Engine
+              </span>
+              <p className="text-xs text-gray-200 leading-relaxed">
+                {product.capabilities[0]}
+              </p>
+            </div>
+          )}
+
+          {/* Modeled Target Governed Qualification */}
+          {product.modeledTarget ? (
+            <div className="bg-cyan-500/10 p-3.5 rounded-xl border border-cyan-500/20 text-xs font-mono">
+              <span className="text-[10px] uppercase text-cyan-400 font-bold block tracking-wider">
+                MODELED TARGET — NOT HISTORICAL PERFORMANCE
+              </span>
+              <span className="text-cyan-200 font-semibold block mt-0.5">
+                {product.modeledTarget.replace('MODELED TARGET — NOT HISTORICAL PERFORMANCE:', '').trim()}
+              </span>
+            </div>
+          ) : product.outcomes && product.outcomes[0] ? (
+            <div className="bg-cyan-500/10 p-3.5 rounded-xl border border-cyan-500/20 text-xs font-mono">
+              <span className="text-[10px] uppercase text-cyan-400 font-bold block tracking-wider">
+                MODELED TARGET — NOT HISTORICAL PERFORMANCE
+              </span>
+              <span className="text-cyan-200 font-semibold block mt-0.5">
+                {product.outcomes[0]}
+              </span>
+            </div>
+          ) : null}
+
+          {/* Designed For */}
+          <div className="space-y-1 bg-surface/40 p-3 rounded-xl border border-white/5 text-xs text-gray-400">
+            <span className="text-[10px] uppercase font-mono tracking-wider text-gray-400 block font-bold">
+              Designed For
+            </span>
+            <p className="text-gray-300 font-medium text-[11px] leading-snug">
+              {product.targetBuyer || (product.whoItIsFor && product.whoItIsFor[0])}
+            </p>
+          </div>
         </div>
 
-        {/* Key Modeled Target Outcome */}
-        {product.outcomes && product.outcomes[0] && (
-          <div className="bg-cyan-500/10 p-3 rounded-xl border border-cyan-500/20 text-xs text-cyan-300 font-mono font-medium">
-            <span className="text-[10px] uppercase text-cyan-400/80 block font-bold">MODELED TARGET — NOT HISTORICAL PERFORMANCE:</span>
-            <span>{product.outcomes[0]}</span>
-          </div>
-        )}
+        {/* Actions: Inspect & Commerce State */}
+        <div className="pt-6 space-y-2.5">
+          <Link
+            href={`/products/${product.id}`}
+            className="btn-primary block w-full py-3 text-center text-xs font-bold tracking-wider uppercase focus:outline-none focus:ring-2 focus:ring-cyan-400"
+          >
+            {isPurchasable
+              ? `Inspect System Blueprint ($${product.price})`
+              : 'Inspect Synthesis Architecture'}
+          </Link>
 
-        {/* Target Audience */}
-        <div className="space-y-1 bg-surface/50 p-3 rounded-xl border border-white/5 text-xs text-gray-400">
-          <span className="text-[10px] uppercase font-mono tracking-wider text-gray-500 block">Designed For</span>
-          <p className="text-gray-300 font-medium text-[11px] truncate">{product.whoItIsFor[0]}</p>
-        </div>
-
-        {/* Authentic Quality & Deployment Proof */}
-        <div className="flex items-center justify-between text-[11px] text-emerald-400 font-mono pt-1">
-          <div className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>QG4 Certified</span>
-          </div>
-          <span className="text-gray-400">48h Setup Protocol</span>
+          {isPurchasable ? (
+            <button
+              type="button"
+              onClick={() => setCheckoutModalOpen(true)}
+              className="w-full py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] font-mono text-cyan-300 hover:text-cyan-200 transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+              <span>{COMMERCE_CONFIG.preLaunchCtaText}</span>
+            </button>
+          ) : (
+            <div className="w-full py-2.5 px-3 rounded-xl bg-purple-500/10 border border-purple-500/20 text-[11px] font-mono text-purple-300 text-center flex items-center justify-center gap-2 cursor-default">
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+              <span>In Architectural Development • Checkout Disabled</span>
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="pt-6">
-        <Link
-          href={`/products/${product.id}`}
-          className="btn-primary block w-full py-3.5 text-center text-xs font-bold tracking-wider uppercase focus:outline-none focus:ring-2 focus:ring-cyan-400"
-        >
-          Inspect System Blueprint (${product.price})
-        </Link>
-      </div>
-    </div>
+      {isPurchasable && (
+        <CheckoutModal
+          isOpen={checkoutModalOpen}
+          onClose={() => setCheckoutModalOpen(false)}
+          product={product}
+        />
+      )}
+    </>
   );
 }
-

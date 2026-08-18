@@ -43,9 +43,12 @@ export function Navbar() {
           </Link>
           <Link
             href="/products"
-            className="hover:text-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded px-2 py-1 transition-colors"
+            className="hover:text-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded px-2 py-1 transition-colors flex items-center gap-1.5"
           >
-            Products
+            <span>Products</span>
+            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold">
+              $99+
+            </span>
           </Link>
           <Link
             href="/about"
@@ -65,9 +68,9 @@ export function Navbar() {
         <div className="flex items-center gap-4">
           <Link
             href="/products"
-            className="btn-primary hidden sm:inline-block px-5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="btn-primary hidden sm:inline-block px-5 py-2.5 text-xs font-bold uppercase tracking-wider font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400"
           >
-            Explore Wave 1
+            Explore Systems from $99
           </Link>
 
           <button
@@ -100,9 +103,10 @@ export function Navbar() {
           <Link
             href="/products"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-gray-300 hover:text-cyan-400 font-medium text-base py-2"
+            className="block text-gray-300 hover:text-cyan-400 font-medium text-base py-2 flex items-center justify-between"
           >
-            Products
+            <span>Products</span>
+            <span className="text-xs font-mono text-cyan-400 font-bold">From $99</span>
           </Link>
           <Link
             href="/about"
@@ -121,9 +125,9 @@ export function Navbar() {
           <Link
             href="/products"
             onClick={() => setMobileMenuOpen(false)}
-            className="btn-primary block text-center w-full py-3 text-sm font-semibold"
+            className="btn-primary block text-center w-full py-3 text-xs font-bold uppercase font-mono tracking-wider"
           >
-            Explore Wave 1
+            Explore Systems from $99
           </Link>
         </div>
       )}

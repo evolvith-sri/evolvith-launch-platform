@@ -1,0 +1,348 @@
+/**
+ * Evolvith Enterprise Operating System (EEOS)
+ * Centralized Commerce Architecture & Product Mapping Rail
+ *
+ * Commercial Operating Architecture & Portfolio Mapping
+ */
+
+export type CommerceStatus =
+  | 'PRE_LAUNCH'
+  | 'CONTROLLED_COMMERCE_VERIFICATION'
+  | 'LIVE';
+
+export interface CommerceConfig {
+  status: CommerceStatus;
+  providerName: string;
+  preLaunchMessage: string;
+  preLaunchCtaText: string;
+  liveCtaText: string;
+}
+
+export const COMMERCE_CONFIG: CommerceConfig = {
+  status: 'PRE_LAUNCH', // Governed State: Strictly PRE_LAUNCH until explicit launch authorization
+  providerName: 'Dodo Payments',
+  preLaunchMessage: 'Purchase availability is being activated.',
+  preLaunchCtaText: 'Checkout Activation in Progress',
+  liveCtaText: 'Purchase Commercial License',
+};
+
+export type CommerceAvailability =
+  | 'READY_FOR_COMMERCE'
+  | 'PENDING_DODO_ID'
+  | 'PRE_LAUNCH'
+  | 'NOT_PURCHASABLE';
+
+export interface ProductCommerceMapping {
+  systemCode: string;
+  productId: string;
+  title: string;
+  tier: 1 | 2 | 3;
+  subTier: '1' | '2A' | '2B' | '3';
+  governedPrice: number | null;
+  currency: string;
+  licenseType: string;
+  dodoProductId: string | null;
+  commerceAvailability: CommerceAvailability;
+  fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE' | 'ARCHITECTURE_BLUEPRINT_ONLY';
+  distributionPackage?: string;
+}
+
+/**
+ * Centralized Product-to-Commerce Mapping Table
+ * Total Defined Portfolio: 18 Systems
+ * - 16 Commercial Systems (7 Tier-1 + 6 Tier-2A + 3 Tier-2B)
+ * - 2 Tier-3 Synthesis Organisms in Development (Non-purchasable, no Dodo IDs)
+ */
+export const PRODUCT_COMMERCE_MAPPINGS: Record<string, ProductCommerceMapping> = {
+  // --- TIER 1: Focused Systems (7 Systems — $99 each) ---
+  'forecast-os-01': {
+    systemCode: 'FORECAST-OS-01',
+    productId: 'forecast-os-01',
+    title: 'FORECAST-OS-01 Revenue & Sales Forecasting OS',
+    tier: 1,
+    subTier: '1',
+    governedPrice: 99,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null, // Pending Dodo Dashboard creation
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'FORECAST-OS-01_v1.0.0.zip',
+  },
+  'close-os-01': {
+    systemCode: 'CLOSE-OS-01',
+    productId: 'close-os-01',
+    title: 'CLOSE-OS-01 Month-End Financial Close OS',
+    tier: 1,
+    subTier: '1',
+    governedPrice: 99,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'CLOSE-OS-01_v1.0.0.zip',
+  },
+  'retention-os-01': {
+    systemCode: 'RETENTION-OS-01',
+    productId: 'retention-os-01',
+    title: 'RETENTION-OS-01 Customer Retention & Churn Alert OS',
+    tier: 1,
+    subTier: '1',
+    governedPrice: 99,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'RETENTION-OS-01_v1.0.0.zip',
+  },
+  'inventory-os-01': {
+    systemCode: 'INVENTORY-OS-01',
+    productId: 'inventory-os-01',
+    title: 'INVENTORY-OS-01 Inventory Control & Stockout Defense OS',
+    tier: 1,
+    subTier: '1',
+    governedPrice: 99,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'INVENTORY-OS-01_v1.0.0.zip',
+  },
+  'workflow-os-01': {
+    systemCode: 'WORKFLOW-OS-01',
+    productId: 'workflow-os-01',
+    title: 'WORKFLOW-OS-01 Cross-Functional Task Execution OS',
+    tier: 1,
+    subTier: '1',
+    governedPrice: 99,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'WORKFLOW-OS-01_v1.0.0.zip',
+  },
+  'kpi-os-01': {
+    systemCode: 'KPI-OS-01',
+    productId: 'kpi-os-01',
+    title: 'KPI-OS-01 Executive KPI & Metrics Layer OS',
+    tier: 1,
+    subTier: '1',
+    governedPrice: 99,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'KPI-OS-01_v1.0.0.zip',
+  },
+  'policy-os-01': {
+    systemCode: 'POLICY-OS-01',
+    productId: 'policy-os-01',
+    title: 'POLICY-OS-01 Policy Enforcement & Compliance OS',
+    tier: 1,
+    subTier: '1',
+    governedPrice: 99,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'POLICY-OS-01_v1.0.0.zip',
+  },
+
+  // --- TIER 2A: Enterprise Systems (6 Systems — $149–$349) ---
+  'rev-os-01': {
+    systemCode: 'REV-OS-01',
+    productId: 'rev-os-01',
+    title: 'REV-OS-01 Autonomous Revenue Operations OS',
+    tier: 2,
+    subTier: '2A',
+    governedPrice: 249,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null, // Pending Dodo Dashboard creation
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'REV-OS-01_v1.0.0.zip',
+  },
+  'fin-os-01': {
+    systemCode: 'FIN-OS-01',
+    productId: 'fin-os-01',
+    title: 'FIN-OS-01 Enterprise Financial Intelligence OS',
+    tier: 2,
+    subTier: '2A',
+    governedPrice: 349,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'FIN-OS-01_v1.0.0.zip',
+  },
+  'cx-os-01': {
+    systemCode: 'CX-OS-01',
+    productId: 'cx-os-01',
+    title: 'CX-OS-01 Autonomous Customer Success OS',
+    tier: 2,
+    subTier: '2A',
+    governedPrice: 199,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'CX-OS-01_v1.0.0.zip',
+  },
+  'ops-os-02': {
+    systemCode: 'OPS-OS-02',
+    productId: 'ops-os-02',
+    title: 'OPS-OS-02 Global Supply Chain & Operations OS',
+    tier: 2,
+    subTier: '2A',
+    governedPrice: 299,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'OPS-OS-02_v1.0.0.zip',
+  },
+  'data-os-01': {
+    systemCode: 'DATA-OS-01',
+    productId: 'data-os-01',
+    title: 'DATA-OS-01 Enterprise Data & Analytics OS',
+    tier: 2,
+    subTier: '2A',
+    governedPrice: 179,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'DATA-OS-01_v1.0.0.zip',
+  },
+  'gov-os-01': {
+    systemCode: 'GOV-OS-01',
+    productId: 'gov-os-01',
+    title: 'GOV-OS-01 Enterprise Governance & Risk OS',
+    tier: 2,
+    subTier: '2A',
+    governedPrice: 149,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'GOV-OS-01_v1.0.0.zip',
+  },
+
+  // --- TIER 2B: Strategic Entry Systems (3 Systems — $99 Launch Edition) ---
+  'pipe-os-01': {
+    systemCode: 'PIPE-OS-01',
+    productId: 'pipe-os-01',
+    title: 'PIPE-OS-01 Lead & Pipeline Execution OS',
+    tier: 2,
+    subTier: '2B',
+    governedPrice: 99,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'PIPE-OS-01_v1.0.0.zip',
+  },
+  'cash-os-01': {
+    systemCode: 'CASH-OS-01',
+    productId: 'cash-os-01',
+    title: 'CASH-OS-01 Cash Collection & Receivables OS',
+    tier: 2,
+    subTier: '2B',
+    governedPrice: 99,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'CASH-OS-01_v1.0.0.zip',
+  },
+  'onboard-os-01': {
+    systemCode: 'ONBOARD-OS-01',
+    productId: 'onboard-os-01',
+    title: 'ONBOARD-OS-01 Customer Onboarding & Activation OS',
+    tier: 2,
+    subTier: '2B',
+    governedPrice: 99,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: null,
+    commerceAvailability: 'PENDING_DODO_ID',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'ONBOARD-OS-01_v1.0.0.zip',
+  },
+
+  // --- TIER 3: Synthesis Organisms (4 Systems in Development — Non-Purchasable) ---
+  'command-os-01': {
+    systemCode: 'COMMAND-OS-01',
+    productId: 'command-os-01',
+    title: 'COMMAND-OS-01 Enterprise Command & Decision Organism',
+    tier: 3,
+    subTier: '3',
+    governedPrice: null, // Non-purchasable / Controlled
+    currency: 'USD',
+    licenseType: 'Architecture Blueprint in Development',
+    dodoProductId: null,
+    commerceAvailability: 'NOT_PURCHASABLE',
+    fulfillmentType: 'ARCHITECTURE_BLUEPRINT_ONLY',
+  },
+  'synthesis-os-01': {
+    systemCode: 'SYNTHESIS-OS-01',
+    productId: 'synthesis-os-01',
+    title: 'SYNTHESIS-OS-01 Enterprise Operating Synthesis Organism',
+    tier: 3,
+    subTier: '3',
+    governedPrice: null, // Non-purchasable / Controlled
+    currency: 'USD',
+    licenseType: 'Architecture Blueprint in Development',
+    dodoProductId: null,
+    commerceAvailability: 'NOT_PURCHASABLE',
+    fulfillmentType: 'ARCHITECTURE_BLUEPRINT_ONLY',
+  },
+  'strategy-os-01': {
+    systemCode: 'STRATEGY-OS-01',
+    productId: 'strategy-os-01',
+    title: 'STRATEGY-OS-01 Enterprise Strategic Alignment Organism',
+    tier: 3,
+    subTier: '3',
+    governedPrice: null, // Non-purchasable / Controlled
+    currency: 'USD',
+    licenseType: 'Architecture Blueprint in Development',
+    dodoProductId: null,
+    commerceAvailability: 'NOT_PURCHASABLE',
+    fulfillmentType: 'ARCHITECTURE_BLUEPRINT_ONLY',
+  },
+  'intelligence-os-01': {
+    systemCode: 'INTELLIGENCE-OS-01',
+    productId: 'intelligence-os-01',
+    title: 'INTELLIGENCE-OS-01 Enterprise Operating Intelligence Organism',
+    tier: 3,
+    subTier: '3',
+    governedPrice: null, // Non-purchasable / Controlled
+    currency: 'USD',
+    licenseType: 'Architecture Blueprint in Development',
+    dodoProductId: null,
+    commerceAvailability: 'NOT_PURCHASABLE',
+    fulfillmentType: 'ARCHITECTURE_BLUEPRINT_ONLY',
+  },
+};
+
+/**
+ * Helper to get verified commerce mapping for a product code or ID
+ */
+export function getProductCommerceMapping(productIdOrCode: string): ProductCommerceMapping | null {
+  const normalizedKey = productIdOrCode.toLowerCase().replace(/_/g, '-');
+  return PRODUCT_COMMERCE_MAPPINGS[normalizedKey] || null;
+}

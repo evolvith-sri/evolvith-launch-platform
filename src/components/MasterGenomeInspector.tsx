@@ -164,7 +164,7 @@ export function MasterGenomeInspector() {
                 {activeLayer.deliverableSpec}
               </p>
               <div className="pt-2 text-[11px] text-gray-400">
-                Guarantees zero monolithic tech debt and seamless multi-decade extensibility.
+                Architected to prevent monolithic tech debt and enable multi-decade extensibility.
               </div>
             </div>
           </div>

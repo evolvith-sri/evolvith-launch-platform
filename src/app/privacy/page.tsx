@@ -17,9 +17,9 @@ export default function PrivacyPage() {
           Evolvith operates under strict privacy-first principles. We collect only minimal telemetry essential for product delivery, license verification, and security compliance. We never sell customer data to third parties.
         </p>
 
-        <h3 className="text-lg font-bold text-white">2. Information Collection</h3>
+        <h3 className="text-lg font-bold text-white">2. Information Collection & Payments</h3>
         <p>
-          When purchasing commercial operating systems, transaction data is processed securely through our commerce partner Lemon Squeezy. We do not store financial credit card details on Evolvith servers.
+          When commercial purchasing is active, payment processing is handled by authorized third-party payment processors. Evolvith does not store or process sensitive payment card credentials on its servers.
         </p>
 
         <h3 className="text-lg font-bold text-white">3. Telemetry & Analytics</h3>
