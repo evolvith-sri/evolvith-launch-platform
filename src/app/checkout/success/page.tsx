@@ -20,16 +20,22 @@ export default function CheckoutSuccessPage({ searchParams }: SuccessPageProps) 
   const productId = searchParams.product || 'rev-os-01';
   const mapping = getProductCommerceMapping(productId) || getProductCommerceMapping('rev-os-01')!;
   const isTestMode = searchParams.test_mode === 'true';
-  const sessionId = searchParams.session_id || 'direct_session';
+  const hasSessionOrToken = Boolean(
+    searchParams.token || (searchParams.session_id && searchParams.session_id.trim() !== '')
+  );
 
-  // Generate a cryptographically signed download token for this session
-  let downloadUrl = `/api/download?product=${mapping.productId}`;
-  try {
-    const token = generateSignedDownloadToken(mapping.productId, sessionId);
-    downloadUrl = `/api/download?product=${mapping.productId}&token=${token}&session_id=${sessionId}`;
-  } catch (err) {
-    // Fallback URL with session ID
-    downloadUrl = `/api/download?product=${mapping.productId}&session_id=${sessionId}`;
+  let downloadUrl = '';
+  let canDownload = false;
+
+  if (hasSessionOrToken) {
+    const sessionId = searchParams.session_id || 'direct_session';
+    try {
+      const token = searchParams.token || generateSignedDownloadToken(mapping.productId, sessionId);
+      downloadUrl = `/api/download?product=${mapping.productId}&token=${token}&session_id=${sessionId}`;
+      canDownload = true;
+    } catch (err) {
+      canDownload = false;
+    }
   }
 
   return (
@@ -72,26 +78,48 @@ export default function CheckoutSuccessPage({ searchParams }: SuccessPageProps) 
         </div>
 
         {/* Primary Digital Delivery Download Banner */}
-        <div className="bg-emerald-500/10 border border-emerald-500/30 p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-5">
-          <div className="space-y-1 text-center sm:text-left">
-            <span className="text-[10px] font-mono uppercase text-emerald-400 font-bold tracking-wider block">
-              Instant Package Fulfillment
-            </span>
-            <h3 className="text-lg font-bold text-white font-heading">
-              Ready for Download: {mapping.distributionPackage}
-            </h3>
-            <p className="text-xs text-gray-300">
-              Complete unencrypted runtime package, CLI installer, AST schemas, and deployment documentation.
-            </p>
+        {canDownload ? (
+          <div className="bg-emerald-500/10 border border-emerald-500/30 p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-5">
+            <div className="space-y-1 text-center sm:text-left">
+              <span className="text-[10px] font-mono uppercase text-emerald-400 font-bold tracking-wider block">
+                Instant Package Fulfillment
+              </span>
+              <h3 className="text-lg font-bold text-white font-heading">
+                Ready for Download: {mapping.distributionPackage}
+              </h3>
+              <p className="text-xs text-gray-300">
+                Complete unencrypted runtime package, CLI installer, AST schemas, and deployment documentation.
+              </p>
+            </div>
+            <a
+              href={downloadUrl}
+              download={mapping.distributionPackage}
+              className="btn-primary px-7 py-3.5 text-xs font-bold uppercase font-mono tracking-wider shrink-0 shadow-lg shadow-cyan-500/20 text-center w-full sm:w-auto"
+            >
+              Download Package (.zip)
+            </a>
           </div>
-          <a
-            href={downloadUrl}
-            download={mapping.distributionPackage}
-            className="btn-primary px-7 py-3.5 text-xs font-bold uppercase font-mono tracking-wider shrink-0 shadow-lg shadow-cyan-500/20 text-center w-full sm:w-auto"
-          >
-            Download Package (.zip)
-          </a>
-        </div>
+        ) : (
+          <div className="bg-amber-500/10 border border-amber-500/30 p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="space-y-1">
+              <span className="text-[10px] font-mono uppercase text-amber-400 font-bold tracking-wider block">
+                Verification Required
+              </span>
+              <h3 className="text-base font-bold text-white font-heading">
+                No Active Purchase Session Detected
+              </h3>
+              <p className="text-xs text-gray-300">
+                Direct navigation without an active Dodo checkout session is not authorized for package download. Please initiate checkout from the commercial catalog.
+              </p>
+            </div>
+            <Link
+              href={`/products/${mapping.productId}`}
+              className="btn-primary px-6 py-2.5 text-xs font-bold uppercase font-mono shrink-0"
+            >
+              View System Blueprint
+            </Link>
+          </div>
+        )}
 
         {/* 4-Step Governed Fulfillment Path */}
         <div className="space-y-4">

@@ -42,6 +42,41 @@ export interface DodoWebhookPayload {
   };
 }
 
+export interface VerifiedEntitlement {
+  entitlementId: string;
+  eventId: string;
+  sessionId?: string;
+  paymentId?: string;
+  systemCode: string;
+  productId: string;
+  customerEmail?: string;
+  governedPrice: number;
+  distributionPackage: string;
+  createdAt: number;
+}
+
+// In-memory store of verified commercial entitlements produced strictly by verified payment webhooks
+const VERIFIED_COMMERCIAL_ENTITLEMENTS = new Map<string, VerifiedEntitlement>();
+
+export function registerVerifiedEntitlement(entitlement: VerifiedEntitlement): void {
+  VERIFIED_COMMERCIAL_ENTITLEMENTS.set(entitlement.entitlementId, entitlement);
+  if (entitlement.sessionId) {
+    VERIFIED_COMMERCIAL_ENTITLEMENTS.set(entitlement.sessionId, entitlement);
+  }
+  if (entitlement.paymentId) {
+    VERIFIED_COMMERCIAL_ENTITLEMENTS.set(entitlement.paymentId, entitlement);
+  }
+}
+
+export function getVerifiedEntitlement(key: string): VerifiedEntitlement | null {
+  if (!key) return null;
+  return VERIFIED_COMMERCIAL_ENTITLEMENTS.get(key) || null;
+}
+
+export function clearVerifiedEntitlements(): void {
+  VERIFIED_COMMERCIAL_ENTITLEMENTS.clear();
+}
+
 export interface WebhookProcessingResult {
   success: boolean;
   status:
@@ -58,6 +93,7 @@ export interface WebhookProcessingResult {
   fulfillmentGenerated?: boolean;
   systemCode?: string;
   distributionPackage?: string;
+  entitlementId?: string;
 }
 
 /**
@@ -323,6 +359,22 @@ export function processDodoWebhookEvent(
       }
 
       // Valid commercial product purchase (Tier 1, 2A, 2B)
+      const entitlementId = `ent_${payload.event_id.replace(/^evt_/, '')}`;
+      const entitlement: VerifiedEntitlement = {
+        entitlementId,
+        eventId: payload.event_id,
+        sessionId: payload.data.metadata?.session_id || payload.data.payment_id,
+        paymentId: payload.data.payment_id,
+        systemCode: mapping.systemCode,
+        productId: mapping.productId,
+        customerEmail: payload.data.customer_email,
+        governedPrice: mapping.governedPrice || 0,
+        distributionPackage: mapping.distributionPackage || `${mapping.systemCode}_v1.0.0.zip`,
+        createdAt: Date.now(),
+      };
+
+      registerVerifiedEntitlement(entitlement);
+
       return {
         success: true,
         status: 'PROCESSED',
@@ -331,6 +383,7 @@ export function processDodoWebhookEvent(
         fulfillmentGenerated: true,
         systemCode: mapping.systemCode,
         distributionPackage: mapping.distributionPackage,
+        entitlementId,
       };
     }
 
