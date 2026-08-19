@@ -12,7 +12,7 @@ export interface CommerceConfig {
 }
 
 export const COMMERCE_CONFIG: CommerceConfig = {
-  status: 'PRE_LAUNCH', // Governed State: Strictly PRE_LAUNCH until explicit launch authorization
+  status: 'LIVE', // Governed State: LIVE under Governance Order PR-0002O
   providerName: 'Dodo Payments',
   preLaunchMessage: 'Purchase availability is being activated.',
   preLaunchCtaText: 'Checkout Activation in Progress',
