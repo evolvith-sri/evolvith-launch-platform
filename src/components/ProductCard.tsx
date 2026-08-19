@@ -209,7 +209,7 @@ export function ProductCard({ product }: { product: Product }) {
               className="w-full py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] font-mono text-cyan-300 hover:text-cyan-200 transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-cyan-500"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              <span>{COMMERCE_CONFIG.preLaunchCtaText}</span>
+              <span>{COMMERCE_CONFIG.status === 'LIVE' ? COMMERCE_CONFIG.liveCtaText : COMMERCE_CONFIG.preLaunchCtaText}</span>
             </button>
           ) : (
             <div className="w-full py-2.5 px-3 rounded-xl bg-purple-500/10 border border-purple-500/20 text-[11px] font-mono text-purple-300 text-center flex items-center justify-center gap-2 cursor-default">

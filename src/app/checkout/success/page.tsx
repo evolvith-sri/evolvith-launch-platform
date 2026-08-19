@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getProductCommerceMapping } from '@/lib/commerce';
+import { generateSignedDownloadToken } from '@/lib/delivery';
 
 export const metadata = {
   title: 'Order Confirmed — Evolvith Commerce',
@@ -19,6 +20,17 @@ export default function CheckoutSuccessPage({ searchParams }: SuccessPageProps) 
   const productId = searchParams.product || 'rev-os-01';
   const mapping = getProductCommerceMapping(productId) || getProductCommerceMapping('rev-os-01')!;
   const isTestMode = searchParams.test_mode === 'true';
+  const sessionId = searchParams.session_id || 'direct_session';
+
+  // Generate a cryptographically signed download token for this session
+  let downloadUrl = `/api/download?product=${mapping.productId}`;
+  try {
+    const token = generateSignedDownloadToken(mapping.productId, sessionId);
+    downloadUrl = `/api/download?product=${mapping.productId}&token=${token}&session_id=${sessionId}`;
+  } catch (err) {
+    // Fallback URL with session ID
+    downloadUrl = `/api/download?product=${mapping.productId}&session_id=${sessionId}`;
+  }
 
   return (
     <div className="max-w-4xl mx-auto px-6 pt-32 pb-24 space-y-10">
@@ -41,7 +53,7 @@ export default function CheckoutSuccessPage({ searchParams }: SuccessPageProps) 
       </div>
 
       {/* Order & Entitlement Summary Card */}
-      <div className="glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 space-y-6">
+      <div className="glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-white/10 gap-4">
           <div>
             <span className="text-[10px] font-mono uppercase text-cyan-400 font-bold tracking-wider block">
@@ -57,6 +69,28 @@ export default function CheckoutSuccessPage({ searchParams }: SuccessPageProps) 
               One-Time Perpetual License
             </span>
           </div>
+        </div>
+
+        {/* Primary Digital Delivery Download Banner */}
+        <div className="bg-emerald-500/10 border border-emerald-500/30 p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-5">
+          <div className="space-y-1 text-center sm:text-left">
+            <span className="text-[10px] font-mono uppercase text-emerald-400 font-bold tracking-wider block">
+              Instant Package Fulfillment
+            </span>
+            <h3 className="text-lg font-bold text-white font-heading">
+              Ready for Download: {mapping.distributionPackage}
+            </h3>
+            <p className="text-xs text-gray-300">
+              Complete unencrypted runtime package, CLI installer, AST schemas, and deployment documentation.
+            </p>
+          </div>
+          <a
+            href={downloadUrl}
+            download={mapping.distributionPackage}
+            className="btn-primary px-7 py-3.5 text-xs font-bold uppercase font-mono tracking-wider shrink-0 shadow-lg shadow-cyan-500/20 text-center w-full sm:w-auto"
+          >
+            Download Package (.zip)
+          </a>
         </div>
 
         {/* 4-Step Governed Fulfillment Path */}
@@ -102,7 +136,7 @@ export default function CheckoutSuccessPage({ searchParams }: SuccessPageProps) 
                 <span>Engineering Support Channel</span>
               </div>
               <p className="text-xs text-gray-300 leading-relaxed">
-                Direct architect access for configuration telemetry, webhook bindings, and deployment verification.
+                Direct architect access at <a href="mailto:support@evolvith.com" className="text-cyan-400 underline">support@evolvith.com</a> for configuration telemetry, webhook bindings, and deployment verification.
               </p>
             </div>
           </div>
@@ -118,9 +152,9 @@ export default function CheckoutSuccessPage({ searchParams }: SuccessPageProps) 
           </Link>
           <Link
             href="/"
-            className="btn-primary px-6 py-3 text-xs font-bold uppercase font-mono tracking-wider w-full sm:w-auto text-center"
+            className="glass-panel px-6 py-3 text-xs font-bold uppercase font-mono tracking-wider w-full sm:w-auto text-center text-gray-300 hover:text-white"
           >
-            Go to Platform Overview
+            Platform Overview
           </Link>
         </div>
       </div>

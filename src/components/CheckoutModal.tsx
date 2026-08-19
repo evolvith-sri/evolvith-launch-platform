@@ -85,18 +85,18 @@ export function CheckoutModal({ isOpen, onClose, product }: CheckoutModalProps) 
             {/* Header */}
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[10px] font-mono font-bold uppercase tracking-wider">
-                  {COMMERCE_CONFIG.preLaunchCtaText}
+                <span className="px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[10px] font-mono font-bold uppercase tracking-wider">
+                  {COMMERCE_CONFIG.status === 'LIVE' ? 'LIVE COMMERCIAL CHECKOUT' : COMMERCE_CONFIG.preLaunchCtaText}
                 </span>
                 <span className="text-[10px] font-mono text-gray-400">
                   {product.tier === 1 ? 'Tier 1 Focused OS' : 'Tier 2 Enterprise OS'}
                 </span>
               </div>
               <h3 id="modal-title" className="text-2xl font-bold font-heading text-white">
-                Reserve License — {product.systemCode || product.id.toUpperCase()}
+                Purchase Commercial License — {product.systemCode || product.id.toUpperCase()}
               </h3>
               <p className="text-xs text-gray-300 leading-relaxed">
-                {COMMERCE_CONFIG.preLaunchMessage} Register your commercial license interest to receive priority deployment notification and secure your <span className="text-cyan-400 font-bold">${product.price}</span> perpetual license.
+                Enter your executive billing details to proceed to secure Dodo Payments checkout and activate your <span className="text-cyan-400 font-bold">${product.price} USD</span> perpetual license with immediate package fulfillment.
               </p>
             </div>
 
@@ -171,11 +171,11 @@ export function CheckoutModal({ isOpen, onClose, product }: CheckoutModalProps) 
                 className="btn-primary w-full py-3.5 text-xs font-bold uppercase tracking-wider mt-4 disabled:opacity-50"
               >
                 {loading
-                  ? 'Initiating Verification...'
-                  : `Register Commercial License Interest ($${product.price})`}
+                  ? 'Initiating Secure Checkout...'
+                  : `Instant Checkout ($${product.price} USD)`}
               </button>
               <p className="text-[10px] text-gray-400 text-center font-mono">
-                No payment collected today • Priority release notification guaranteed
+                Secure 256-bit encrypted checkout via Dodo Payments • Instant license delivery
               </p>
             </form>
           </>

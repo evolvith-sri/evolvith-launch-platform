@@ -40,7 +40,7 @@ export default function CheckoutCancelPage({ searchParams }: CancelPageProps) {
             href={`/products/${mapping.productId}`}
             className="btn-primary px-6 py-3 text-xs font-bold uppercase font-mono tracking-wider w-full sm:w-auto"
           >
-            Return to {mapping.systemCode} ($99)
+            Return to {mapping.systemCode} (${mapping.governedPrice} USD)
           </Link>
         )}
         <Link
