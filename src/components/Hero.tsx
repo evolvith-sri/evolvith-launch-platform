@@ -15,16 +15,16 @@ interface SystemNode {
 }
 
 const SYSTEM_NODES: SystemNode[] = [
-  { id: 'forecast-os-01', name: 'Revenue & Sales Forecasting', code: 'FORECAST-OS-01', tier: 'Tier 1', category: 'Revenue Ops', price: '$99', status: 'SPEC', outcome: '90% Forecast Variance Precision' },
-  { id: 'pipe-os-01', name: 'Lead & Pipeline Execution', code: 'PIPE-OS-01', tier: 'Tier 2', category: 'Revenue Ops', price: '$99', status: 'READY', outcome: '35% Less Deal Slippage' },
-  { id: 'cash-os-01', name: 'Cash Collection & Receivables', code: 'CASH-OS-01', tier: 'Tier 2', category: 'Financial Ops', price: '$99', status: 'READY', outcome: '40% Faster Cash Recovery' },
-  { id: 'onboard-os-01', name: 'Customer Onboarding OS', code: 'ONBOARD-OS-01', tier: 'Tier 2', category: 'Customer Success', price: '$99', status: 'READY', outcome: '50% Faster Time-To-Value' },
-  { id: 'rev-os-01', name: 'Autonomous Revenue Ops', code: 'REV-OS-01', tier: 'Tier 2', category: 'Revenue Systems', price: '$249', status: 'READY', outcome: '+38% Deal Velocity' },
-  { id: 'fin-os-01', name: 'Financial Intelligence OS', code: 'FIN-OS-01', tier: 'Tier 2', category: 'Financial Ops', price: '$349', status: 'READY', outcome: '24h Month-End Close' },
+  { id: 'forecast-os-01', name: 'Revenue & Sales Forecasting OS', code: 'FORECAST-OS-01', tier: 'Tier 1', category: 'Revenue Ops', price: '$99', status: 'READY', outcome: '90% Forecast Variance Precision' },
+  { id: 'close-os-01', name: 'Month-End Financial Close OS', code: 'CLOSE-OS-01', tier: 'Tier 1', category: 'Financial Ops', price: '$99', status: 'READY', outcome: '24-Hour Accelerated Reconciliations' },
+  { id: 'pipe-os-01', name: 'Lead & Pipeline Execution OS', code: 'PIPE-OS-01', tier: 'Tier 2B', category: 'Revenue Ops', price: '$99', status: 'READY', outcome: '35% Less Deal Slippage' },
+  { id: 'cash-os-01', name: 'Cash Collection & Receivables OS', code: 'CASH-OS-01', tier: 'Tier 2B', category: 'Financial Ops', price: '$99', status: 'READY', outcome: '40% Faster Cash Recovery' },
+  { id: 'rev-os-01', name: 'Autonomous Revenue Operations OS', code: 'REV-OS-01', tier: 'Tier 2A', category: 'Revenue Systems', price: '$249', status: 'READY', outcome: '+38% Deal Velocity' },
+  { id: 'fin-os-01', name: 'Financial Intelligence OS', code: 'FIN-OS-01', tier: 'Tier 2A', category: 'Financial Ops', price: '$349', status: 'READY', outcome: 'Strategic CFO Decision Modeling' },
 ];
 
 export function Hero() {
-  const [activeNode, setActiveNode] = useState<string>('pipe-os-01');
+  const [activeNode, setActiveNode] = useState<string>('forecast-os-01');
   const selectedNode = SYSTEM_NODES.find((n) => n.id === activeNode) || SYSTEM_NODES[0];
 
   return (
@@ -38,11 +38,11 @@ export function Hero() {
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-surface/80 border border-cyan-500/30 text-cyan-400 text-xs font-mono backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            <span className="text-gray-300">EEOS v1.0.0 ACTIVE</span>
+            <span className="text-gray-300">CODIFIED AI OPERATING SYSTEMS</span>
             <span className="text-gray-600">•</span>
-            <span className="text-cyan-400 font-semibold">COMMERCE ARCHITECTURE READY</span>
+            <span className="text-cyan-400 font-semibold">PRODUCTION READY</span>
             <span className="text-gray-600">•</span>
-            <span className="text-gray-400">TIER-1 & TIER-2 OPERATING SYSTEMS</span>
+            <span className="text-gray-400">FROM $99 ONE-TIME PERPETUAL</span>
           </div>
 
           {/* Headline */}
@@ -59,11 +59,15 @@ export function Hero() {
             We manufacture codified enterprise operating systems that replace fragmented SaaS sprawl, spreadsheet entropy, and consulting dependency with quality-certified architecture.
           </p>
 
-          {/* Commercial Bridge */}
-          <div className="pt-1">
+          {/* Commercial Bridge & Featured Entry OS */}
+          <div className="pt-1 flex flex-wrap items-center justify-center gap-3">
             <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 px-4 py-1.5 rounded-full text-xs font-mono text-cyan-300">
-              <span className="text-white font-bold">Commercial Entry:</span>
-              <span>Explore focused operating systems from <strong>$99</strong> one-time perpetual license.</span>
+              <span className="text-white font-bold">Featured Entry:</span>
+              <span><strong>FORECAST-OS-01</strong> ($99) • Revenue & Sales Forecasting</span>
+            </div>
+            <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/30 px-4 py-1.5 rounded-full text-xs font-mono text-indigo-300">
+              <span className="text-white font-bold">Secondary Entry:</span>
+              <span><strong>CLOSE-OS-01</strong> ($99) & <strong>PIPE-OS-01</strong> ($99)</span>
             </div>
           </div>
 

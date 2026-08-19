@@ -14,6 +14,7 @@ interface SuccessPageProps {
     product?: string;
     tier?: string;
     session_id?: string;
+    token?: string;
     test_mode?: string;
   };
 }
