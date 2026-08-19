@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { getProductCommerceMapping } from '@/lib/commerce';
 import { generateSignedDownloadToken } from '@/lib/delivery';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Order Confirmed — Evolvith Commerce',
   description: 'Commercial license order confirmation and digital product package fulfillment.',
