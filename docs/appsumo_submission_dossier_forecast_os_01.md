@@ -83,9 +83,9 @@
   
   `Buy it once, obtain a perpetual commercial license for your organization, and eliminate operational forecasting friction.`
 - **Founder Profile**:
-  - **Founder Name**: `[FOUNDER NAME]` *(To be confirmed by operator)*
+  - **Founder Name**: `Srinath Sankar`
   - **Founder Role**: `Founder & Chief Architect, Evolvith`
-  - **Founder LinkedIn**: `[FOUNDER LINKEDIN URL]` *(To be confirmed by operator)*
+  - **Company LinkedIn**: `https://www.linkedin.com/company/evolvith`
 
 ---
 
@@ -108,16 +108,16 @@
 
 ---
 
-## 6. MEDIA ASSETS CHECKLIST
+## 6. MEDIA ASSETS INVENTORY
 
-| Asset | Specifications | Status |
-| :--- | :--- | :---: |
-| **Evolvith Icon** | Square 512x512 PNG/SVG | Ready (`/public` assets) |
-| **Hero Cover Image** | 1200x630 PNG (FORECAST-OS-01 Cover) | Pending Portal Upload |
-| **Screenshot 1** | CLI Automated Installer (`python install.py`) | Pending Portal Upload |
-| **Screenshot 2** | Typed AST Schema Contract & Revenue Variance Engine | Pending Portal Upload |
-| **Screenshot 3** | Deterministic Weighted Pipeline & ARR Cohort Projections Output | Pending Portal Upload |
-| **Screenshot 4** | 48-Hour Architecture Deployment Runbook & Integration Specs | Pending Portal Upload |
+| Asset | Local File Path | Resolution / Format | Status |
+| :--- | :--- | :--- | :---: |
+| **Evolvith Icon** | `app_v1/public/favicon.ico` | Square 512x512 PNG/ICO | **PRESENT** |
+| **Hero Cover Image** | `app_v1/public/appsumo/forecast_os_01_hero.png` | 1200x630 PNG | **PRESENT** |
+| **Screenshot 1: CLI Installer** | `app_v1/public/appsumo/screenshot_1_cli_installer.png` | 1280x800 PNG | **PRESENT** |
+| **Screenshot 2: AST Schema** | `app_v1/public/appsumo/screenshot_2_ast_schema.png` | 1280x800 PNG | **PRESENT** |
+| **Screenshot 3: Output** | `app_v1/public/appsumo/screenshot_3_variance_projection.png` | 1280x800 PNG | **PRESENT** |
+| **Screenshot 4: Runbook** | `app_v1/public/appsumo/screenshot_4_deployment_runbook.png` | 1280x800 PNG | **PRESENT** |
 
 ---
 
@@ -126,7 +126,7 @@
 - **Stripe Verified ARR**: `[EMPTY — No public claim made]`
 - **G2 Listing URL**: `[EMPTY — No public claim made]`
 - **Capterra Listing URL**: `[EMPTY — No public claim made]`
-- **Company LinkedIn**: `[EMPTY or Official URL if confirmed by Founder]`
+- **Company LinkedIn**: `https://www.linkedin.com/company/evolvith`
 
 ---
 
