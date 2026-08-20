@@ -5,7 +5,7 @@ import { createDodoCheckoutSession } from '@/lib/dodo';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { productId, customerEmail, customerName } = body;
+    const { productId, customerEmail, customerName, attribution } = body;
 
     if (!productId || typeof productId !== 'string') {
       return NextResponse.json(
@@ -55,6 +55,7 @@ export async function POST(req: NextRequest) {
       productId,
       customerEmail: customerEmail || 'customer@evolvith.com',
       customerName: customerName || 'Enterprise Customer',
+      attribution,
     });
 
     if (!sessionResult.success) {

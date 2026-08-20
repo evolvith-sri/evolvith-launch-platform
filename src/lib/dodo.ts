@@ -16,6 +16,12 @@ export interface DodoCheckoutRequest {
   customerEmail: string;
   customerName?: string;
   returnUrl?: string;
+  attribution?: {
+    source?: string;
+    medium?: string;
+    campaign?: string;
+    ref?: string;
+  };
 }
 
 export interface DodoCheckoutResponse {
@@ -149,6 +155,10 @@ export async function createDodoCheckoutSession(
           evolvith_system_code: mapping.systemCode,
           tier: String(mapping.tier),
           license_type: mapping.licenseType,
+          ...(req.attribution?.source ? { utm_source: req.attribution.source } : {}),
+          ...(req.attribution?.medium ? { utm_medium: req.attribution.medium } : {}),
+          ...(req.attribution?.campaign ? { utm_campaign: req.attribution.campaign } : {}),
+          ...(req.attribution?.ref ? { referral_id: req.attribution.ref } : {}),
         },
       };
 

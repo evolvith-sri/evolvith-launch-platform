@@ -33,6 +33,21 @@ export function CheckoutModal({ isOpen, onClose, product }: CheckoutModalProps) 
     if (isLiveOrVerification) {
       setLoading(true);
       try {
+        let attribution: any = undefined;
+        if (typeof window !== 'undefined') {
+          const urlParams = new URLSearchParams(window.location.search);
+          const source = urlParams.get('utm_source') || urlParams.get('ref');
+          const medium = urlParams.get('utm_medium');
+          const campaign = urlParams.get('utm_campaign');
+          if (source || medium || campaign) {
+            attribution = {
+              source: source || undefined,
+              medium: medium || undefined,
+              campaign: campaign || undefined,
+            };
+          }
+        }
+
         const response = await fetch('/api/checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -40,6 +55,7 @@ export function CheckoutModal({ isOpen, onClose, product }: CheckoutModalProps) 
             productId: product.id,
             customerEmail: formData.email,
             customerName: formData.name,
+            attribution,
           }),
         });
 
