@@ -64,7 +64,7 @@ export const PRODUCT_COMMERCE_MAPPINGS: Record<string, ProductCommerceMapping> =
     governedPrice: 99,
     currency: 'USD',
     licenseType: 'One-Time Perpetual Commercial License',
-    dodoProductId: 'pdt_0NlfQRW10E7zb3F6EWoLp', // Pending Dodo Dashboard creation
+    dodoProductId: 'pdt_0NlfQRW10E7zb3F6EWoLp',
     commerceAvailability: 'READY_FOR_COMMERCE',
     fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
     distributionPackage: 'FORECAST-OS-01_v1.0.0.zip',
@@ -164,7 +164,7 @@ export const PRODUCT_COMMERCE_MAPPINGS: Record<string, ProductCommerceMapping> =
     governedPrice: 249,
     currency: 'USD',
     licenseType: 'One-Time Perpetual Commercial License',
-    dodoProductId: 'pdt_0NlfQZb1hdgcxA40cSEKo', // Pending Dodo Dashboard creation
+    dodoProductId: 'pdt_0NlfQZb1hdgcxA40cSEKo',
     commerceAvailability: 'READY_FOR_COMMERCE',
     fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
     distributionPackage: 'REV-OS-01_v1.0.0.zip',
