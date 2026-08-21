@@ -70,6 +70,7 @@ export function Footer() {
           </h4>
           <ul className="space-y-2 text-xs font-mono text-gray-400">
             <li><Link href="/about" className="hover:text-cyan-400 transition-colors">About Evolvith</Link></li>
+            <li><Link href="/redeem" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">Redeem AppSumo Code</Link></li>
             <li><Link href="/contact" className="hover:text-cyan-400 transition-colors">Executive Briefing</Link></li>
             <li><Link href="/privacy" className="hover:text-cyan-400 transition-colors">Privacy Policy</Link></li>
             <li><Link href="/terms" className="hover:text-cyan-400 transition-colors">Terms of Service</Link></li>

@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // 3. Authenticate download via signed token or valid checkout session
+    // 3. Authenticate download via signed token or valid checkout session / AppSumo entitlement
     let isAuthorized = false;
 
     if (tokenParam) {
@@ -54,11 +54,18 @@ export async function GET(request: NextRequest) {
     } else if (sessionParam && (sessionParam.startsWith('cks_') || sessionParam.startsWith('test_session_'))) {
       // Valid session parameter returned from Dodo Checkout redirect
       isAuthorized = true;
+    } else if (sessionParam && sessionParam.startsWith('ent_appsumo_')) {
+      // Valid AppSumo persistent entitlement verification
+      const { getEntitlementById } = await import('@/lib/appsumo-db');
+      const ent = await getEntitlementById(sessionParam);
+      if (ent && ent.product_id.toLowerCase() === normId) {
+        isAuthorized = true;
+      }
     }
 
     if (!isAuthorized) {
       return NextResponse.json(
-        { error: 'Unauthorized: A verified commercial purchase token or session is required to download this package.' },
+        { error: 'Unauthorized: A verified commercial purchase token or AppSumo entitlement is required to download this package.' },
         { status: 401 }
       );
     }

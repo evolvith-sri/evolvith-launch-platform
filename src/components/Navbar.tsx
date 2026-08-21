@@ -57,6 +57,12 @@ export function Navbar() {
             About
           </Link>
           <Link
+            href="/redeem"
+            className="hover:text-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded px-2 py-1 transition-colors"
+          >
+            Redeem
+          </Link>
+          <Link
             href="/contact"
             className="hover:text-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded px-2 py-1 transition-colors"
           >
@@ -114,6 +120,13 @@ export function Navbar() {
             className="block text-gray-300 hover:text-cyan-400 font-medium text-base py-2"
           >
             About
+          </Link>
+          <Link
+            href="/redeem"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-cyan-400 font-medium text-base py-2"
+          >
+            Redeem Code
           </Link>
           <Link
             href="/contact"
