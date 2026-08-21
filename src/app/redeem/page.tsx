@@ -32,6 +32,7 @@ interface EntitlementResponse {
 export default function RedeemPage() {
   const [code, setCode] = useState('');
   const [email, setEmail] = useState('');
+  const [selectedProduct, setSelectedProduct] = useState<'forecast-os-01' | 'audit-os-01'>('audit-os-01');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successData, setSuccessData] = useState<{
@@ -65,7 +66,7 @@ export default function RedeemPage() {
         body: JSON.stringify({
           code: trimmedCode,
           email: trimmedEmail,
-          product: 'forecast-os-01',
+          product: 'auto',
         }),
       });
 
@@ -100,7 +101,7 @@ export default function RedeemPage() {
           Redeem Your License
         </h1>
         <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-          Activate your perpetual commercial license for <strong className="text-white">FORECAST-OS-01</strong> and instantly receive your unencrypted digital product distribution package.
+          Activate your perpetual commercial license for <strong className="text-white">FORECAST-OS-01</strong> or <strong className="text-white">AUDIT-OS-01</strong> and instantly receive your unencrypted digital product package.
         </p>
       </div>
 
@@ -335,21 +336,33 @@ export default function RedeemPage() {
 
             <div className="p-5 rounded-2xl bg-black/60 border border-white/10 font-mono text-xs text-gray-300 space-y-3">
               <p className="text-gray-400"># 1. Unzip the distribution package:</p>
-              <p className="text-cyan-300 pl-3">unzip {successData.entitlement.distributionPackage} -d ./forecast-os-01</p>
+              <p className="text-cyan-300 pl-3">unzip {successData.entitlement.distributionPackage} -d ./{successData.entitlement.product.toLowerCase()}</p>
               <p className="text-gray-400"># 2. Run automated CLI installer and environment diagnostics:</p>
-              <p className="text-cyan-300 pl-3">cd forecast-os-01 &amp;&amp; python install.py</p>
-              <p className="text-gray-400"># 3. Verify revenue forecasting schema bindings and run pipeline:</p>
-              <p className="text-cyan-300 pl-3">python run_forecast.py --input sample_pipeline.csv</p>
+              <p className="text-cyan-300 pl-3">cd {successData.entitlement.product.toLowerCase()} &amp;&amp; python install.py</p>
+              <p className="text-gray-400"># 3. Launch local command line interface or workstation:</p>
+              <p className="text-cyan-300 pl-3">
+                {successData.entitlement.product.toLowerCase().includes('audit')
+                  ? 'python src/audit_cli.py --help'
+                  : 'python run_forecast.py --input sample_pipeline.csv'}
+              </p>
             </div>
           </div>
 
           <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
             <Link
-              href="/products/forecast-os-01"
+              href={successData.entitlement.product.toLowerCase().includes('audit') ? '/products/audit-os-01' : '/products/forecast-os-01'}
               className="text-xs font-mono text-cyan-400 hover:underline"
             >
-              ← View FORECAST-OS-01 Master Blueprint
+              ← View {successData.entitlement.product} Master Blueprint
             </Link>
+            {successData.entitlement.product.toLowerCase().includes('audit') && (
+              <Link
+                href="/workstations/audit-os-01"
+                className="btn-primary px-4 py-2 text-xs font-mono font-bold"
+              >
+                ⚡ Open AUDIT-OS-01 Workstation
+              </Link>
+            )}
             <Link
               href="/"
               className="glass-panel px-6 py-2.5 text-xs font-bold uppercase font-mono tracking-wider text-gray-300 hover:text-white"

@@ -275,6 +275,15 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                       : `Register License Intent ($${product.price})`}
                   </button>
 
+                  {product.id === 'audit-os-01' && (
+                    <Link
+                      href="/workstations/audit-os-01"
+                      className="w-full py-3 px-3 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-xs font-mono font-bold text-cyan-300 text-center flex items-center justify-center gap-2 transition-colors"
+                    >
+                      <span>⚡ Launch Live Workstation</span>
+                    </Link>
+                  )}
+
                   <p className="text-[10px] text-gray-400 text-center font-mono flex items-center justify-center gap-1.5 pt-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
                     <span>{COMMERCE_CONFIG.preLaunchMessage}</span>

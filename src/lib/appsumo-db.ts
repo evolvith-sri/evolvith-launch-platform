@@ -420,7 +420,6 @@ export async function redeemCodeAtomic(
 
       const row = selectResult.rows[0];
       const status = row[1]?.value || row.status;
-      const prodId = row[2]?.value || row.product_id;
       const redeemedAt = row[4]?.value || row.redeemed_at;
 
       if (status === 'redeemed' || (updateResult && updateResult.rows_affected === 0)) {
@@ -431,10 +430,14 @@ export async function redeemCodeAtomic(
         };
       }
 
-      if (prodId !== normProductId) {
+      const prodId = String(row[2]?.value || row.product_id).toLowerCase().trim();
+      const actualSystemCode = prodId.toUpperCase();
+      const targetSystemCode = normProductId ? normProductId.toUpperCase() : actualSystemCode;
+
+      if (normProductId && normProductId !== 'auto' && prodId !== normProductId) {
         return {
           success: false,
-          error: `This code is valid for ${String(prodId).toUpperCase()}, not ${systemCode}.`,
+          error: `This code is valid for ${actualSystemCode}, not ${targetSystemCode}.`,
         };
       }
 
@@ -444,7 +447,7 @@ export async function redeemCodeAtomic(
           sql: `INSERT INTO appsumo_entitlements (
             entitlement_id, code, product_id, system_code, customer_email, license_type, source, created_at
           ) VALUES (?, ?, ?, ?, ?, ?, 'APPSUMO', ?)`,
-          args: [entitlementId, normCode, normProductId, systemCode, normEmail, licenseType, now],
+          args: [entitlementId, normCode, prodId, actualSystemCode, normEmail, licenseType, now],
         },
       ]);
 
@@ -495,11 +498,15 @@ export async function redeemCodeAtomic(
       };
     }
 
-    if (existing.product_id !== normProductId) {
+    const prodId = existing.product_id.toLowerCase().trim();
+    const actualSystemCode = prodId.toUpperCase();
+    const targetSystemCode = normProductId ? normProductId.toUpperCase() : actualSystemCode;
+
+    if (normProductId && normProductId !== 'auto' && prodId !== normProductId) {
       db.exec('ROLLBACK;');
       return {
         success: false,
-        error: `This code is valid for ${existing.product_id.toUpperCase()}, not ${systemCode}.`,
+        error: `This code is valid for ${actualSystemCode}, not ${targetSystemCode}.`,
       };
     }
 

@@ -13,7 +13,7 @@ const COMPARISON_ROWS: ComparisonRow[] = [
   {
     dimension: 'Delivery Vehicle',
     oldWay: 'High-cost management consulting engagements producing static recommendations and slide decks.',
-    evolvithWay: 'From $99 focused operating systems to $349 enterprise systems deployed directly as executable software.',
+    evolvithWay: 'From $49 focused operating systems to $349 enterprise systems deployed directly as executable software.',
     impact: '100% Executable Software',
   },
   {
@@ -25,7 +25,7 @@ const COMPARISON_ROWS: ComparisonRow[] = [
   {
     dimension: 'Commercial Licensing',
     oldWay: 'Spiraling monthly per-user seat fees and lock-in contracts.',
-    evolvithWay: 'One-time payment perpetual commercial license with unlimited seats ($99–$349).',
+    evolvithWay: 'One-time payment perpetual commercial license with unlimited seats ($49–$349).',
     impact: 'Predictable TCO',
   },
   {

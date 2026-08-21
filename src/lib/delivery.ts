@@ -131,6 +131,8 @@ export function resolvePackageFilePath(productId: string): {
     path.join(process.cwd(), 'packages'),
     path.join(process.cwd(), '..', 'releases'),
     path.join(process.cwd(), 'releases'),
+    path.join(process.cwd(), '..', 'dist_packages'),
+    path.join(process.cwd(), 'dist_packages'),
   ];
 
   for (const dir of candidateDirs) {

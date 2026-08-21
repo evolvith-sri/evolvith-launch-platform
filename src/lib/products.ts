@@ -64,6 +64,79 @@ export interface Product {
  */
 export const TIER_1_PRODUCTS: Product[] = [
   {
+    id: "audit-os-01",
+    systemCode: "AUDIT-OS-01",
+    tier: 1,
+    subTier: "1",
+    wave: 1,
+    title: "AUDIT-OS-01 Visual API Contract & Webhook QA Workstation",
+    subtitle: "Capture live webhooks, detect silent schema drift with visual AST diffs, and replay test payloads to localhost with zero subscriptions.",
+    category: "Developer Tools",
+    price: 49,
+    badge: "Developer OS",
+    status: "RELEASED",
+    availability: "COMMERCIAL",
+    oneSentencePurpose: "Intercepts live third-party webhooks, detects silent schema drift via visual AST diffs, and replays test payloads to localhost without recurring cloud fees.",
+    operationalFriction: "Third-party APIs mutating webhook schemas without warning, breaking production automations, and requiring hours of manual log digging.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Sub-90s Root Cause Diagnosis of Upstream Schema Mutations & 100% Type-Safe Contract Validation.",
+    description: "Local-first visual workstation engineered to capture live webhooks, detect schema drift with AST diffs, generate TypeScript/Zod/Pydantic models, and replay test events to localhost.",
+    executiveSummary: "AUDIT-OS-01 provides full-stack developers and technical automation builders with a local-first QA laboratory. It eliminates silent webhook failures by mathematically comparing incoming payloads against baseline schemas, generating deterministic types, and replaying test events directly to localhost.",
+    targetBuyer: "Full-Stack Developers, SaaS Founders, Technical Agency Owners, Zapier/Make Automation Engineers.",
+    upgradePath: "Tier 2 Agency & Team Pro License ($99)",
+    problemsSolved: [
+      "Unannounced upstream API changes silently breaking webhook handlers and databases.",
+      "Hours wasted manually digging through server logs to find mutated JSON field names.",
+      "Expensive recurring monthly fees for cloud webhook inspection and mock servers."
+    ],
+    capabilities: [
+      "Public Ephemeral Webhook Trap & Stateless Edge Ingestion Relay.",
+      "Deterministic AST Schema Extraction & Visual Mutation Diff Engine.",
+      "Instant Code Generation (TypeScript Interfaces, Zod, and Python Pydantic v2).",
+      "Parameterized Localhost Payload Replayer with Non-Localhost Safety Guard.",
+      "Zero-Dependency Standalone Mock Server Exporter (Node.js & Python).",
+      "Offline HMAC Webhook Signature Verification Sandbox (Stripe, Shopify, GitHub, Meta)."
+    ],
+    deliverables: [
+      "AUDIT-OS-01 Workstation Engine & CLI Harness.",
+      "Deterministic AST Schema Inference & Diff Module.",
+      "Standalone Mock Server Generator & HMAC Sandbox.",
+      "Digital Package (.zip) with 48-Hour Rapid Installation Runbook."
+    ],
+    whatYouReceive: [
+      "Digital product package (.zip) with complete unencrypted Python & TypeScript engine.",
+      "Standardized AST JSON Blueprint Schema (blueprint.json).",
+      "API Contract & Webhook QA SOP Manual & RACI Matrix (SOP_MANUAL.md).",
+      "API & Webhook Integration Specification (API_SPEC.md).",
+      "One-Time Perpetual Commercial License Grant (LICENSE_EULA.md).",
+      "48-Hour Rapid Installation Runbook & Architecture Guide (docs/)."
+    ],
+    outcomes: [
+      "Sub-90s Root Cause Diagnosis of Upstream Webhook Schema Drift.",
+      "Zero Silent Production Breakages from Vendor API Mutations.",
+      "100% Type Safety with Instant TypeScript & Zod Code Generation."
+    ],
+    whoItIsFor: [
+      "Full-stack developers integrating Stripe, Shopify, or custom APIs.",
+      "Technical agencies maintaining webhook integrations for clients.",
+      "Zapier, Make, and n8n automation builders troubleshooting broken workflows."
+    ],
+    faqs: [
+      {
+        question: "How does AUDIT-OS-01 protect data privacy?",
+        answer: "All captured payloads, schema baselines, and test logs are stored 100% locally on your machine in SQLite. Evolvith cloud infrastructure never stores your payload data."
+      },
+      {
+        question: "Does AUDIT-OS-01 work offline?",
+        answer: "Core local inspection, SQLite storage, schema diffing, code generation, and localhost replay work completely offline. Ingesting public webhooks from external services requires internet connectivity."
+      },
+      {
+        question: "What is the difference between Tier 1 ($49) and Tier 2 ($99)?",
+        answer: "Tier 1 includes 5 active concurrent traps and unlimited local testing. Tier 2 ($99) includes 25 traps, OpenAPI 3.1 importer, client incident audit reports, and unlimited team seats."
+      }
+    ],
+    checkoutUrl: null
+  },
+  {
     id: "forecast-os-01",
     systemCode: "FORECAST-OS-01",
     tier: 1,

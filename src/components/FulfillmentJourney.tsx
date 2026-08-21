@@ -8,7 +8,7 @@ export function FulfillmentJourney() {
       number: '01',
       action: 'CHOOSE',
       title: 'Select Operating System',
-      description: 'Choose from focused operating systems ($99 one-time perpetual license) or comprehensive enterprise operating systems ($149–$349).',
+      description: 'Choose from focused operating systems ($49–$99 one-time perpetual license) or comprehensive enterprise operating systems ($149–$349).',
       badge: 'Transparent Pricing',
       details: ['Clear system blueprint inspection', 'Unlimited internal user seats', 'Zero recurring SaaS seat taxes'],
     },

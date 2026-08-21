@@ -47,7 +47,16 @@ export function Navbar() {
           >
             <span>Products</span>
             <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold">
-              $99+
+              $49+
+            </span>
+          </Link>
+          <Link
+            href="/workstations/audit-os-01"
+            className="hover:text-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded px-2 py-1 transition-colors flex items-center gap-1"
+          >
+            <span>Workstation</span>
+            <span className="text-[9px] font-mono px-1 py-0.2 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold">
+              LIVE
             </span>
           </Link>
           <Link
@@ -76,7 +85,7 @@ export function Navbar() {
             href="/products"
             className="btn-primary hidden sm:inline-block px-5 py-2.5 text-xs font-bold uppercase tracking-wider font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400"
           >
-            Explore Systems from $99
+            Explore Systems from $49
           </Link>
 
           <button
@@ -112,7 +121,15 @@ export function Navbar() {
             className="block text-gray-300 hover:text-cyan-400 font-medium text-base py-2 flex items-center justify-between"
           >
             <span>Products</span>
-            <span className="text-xs font-mono text-cyan-400 font-bold">From $99</span>
+            <span className="text-xs font-mono text-cyan-400 font-bold">From $49</span>
+          </Link>
+          <Link
+            href="/workstations/audit-os-01"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-gray-300 hover:text-cyan-400 font-medium text-base py-2 flex items-center justify-between"
+          >
+            <span>Workstation</span>
+            <span className="text-xs font-mono text-emerald-400 font-bold">LIVE</span>
           </Link>
           <Link
             href="/about"
@@ -140,7 +157,7 @@ export function Navbar() {
             onClick={() => setMobileMenuOpen(false)}
             className="btn-primary block text-center w-full py-3 text-xs font-bold uppercase font-mono tracking-wider"
           >
-            Explore Systems from $99
+            Explore Systems from $49
           </Link>
         </div>
       )}

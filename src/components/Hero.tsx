@@ -15,6 +15,7 @@ interface SystemNode {
 }
 
 const SYSTEM_NODES: SystemNode[] = [
+  { id: 'audit-os-01', name: 'Visual API Contract & Webhook QA Workstation', code: 'AUDIT-OS-01', tier: 'Tier 1', category: 'Developer Tools', price: '$49', status: 'READY', outcome: 'Sub-90s Root Cause Diagnosis' },
   { id: 'forecast-os-01', name: 'Revenue & Sales Forecasting OS', code: 'FORECAST-OS-01', tier: 'Tier 1', category: 'Revenue Ops', price: '$99', status: 'READY', outcome: '90% Forecast Variance Precision' },
   { id: 'close-os-01', name: 'Month-End Financial Close OS', code: 'CLOSE-OS-01', tier: 'Tier 1', category: 'Financial Ops', price: '$99', status: 'READY', outcome: '24-Hour Accelerated Reconciliations' },
   { id: 'pipe-os-01', name: 'Lead & Pipeline Execution OS', code: 'PIPE-OS-01', tier: 'Tier 2B', category: 'Revenue Ops', price: '$99', status: 'READY', outcome: '35% Less Deal Slippage' },
@@ -42,7 +43,7 @@ export function Hero() {
             <span className="text-gray-600">•</span>
             <span className="text-cyan-400 font-semibold">PRODUCTION READY</span>
             <span className="text-gray-600">•</span>
-            <span className="text-gray-400">FROM $99 ONE-TIME PERPETUAL</span>
+            <span className="text-gray-400">FROM $49 ONE-TIME PERPETUAL</span>
           </div>
 
           {/* Headline */}
@@ -63,7 +64,7 @@ export function Hero() {
           <div className="pt-1 flex flex-wrap items-center justify-center gap-3">
             <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 px-4 py-1.5 rounded-full text-xs font-mono text-cyan-300">
               <span className="text-white font-bold">Featured Entry:</span>
-              <span><strong>FORECAST-OS-01</strong> ($99) • Revenue & Sales Forecasting</span>
+              <span><strong>AUDIT-OS-01</strong> ($49 Developer) & <strong>FORECAST-OS-01</strong> ($99)</span>
             </div>
             <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/30 px-4 py-1.5 rounded-full text-xs font-mono text-indigo-300">
               <span className="text-white font-bold">Secondary Entry:</span>
@@ -159,7 +160,7 @@ export function Hero() {
         {/* Executive Proof Metrics Bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto text-left">
           <div className="glass-panel p-5 rounded-2xl border border-white/10 hover:border-cyan-500/30 transition-all">
-            <p className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">From $99</p>
+            <p className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">From $49</p>
             <p className="text-[11px] text-gray-400 mt-1 uppercase tracking-wider font-mono">Tier-1 Focused Systems</p>
           </div>
           <div className="glass-panel p-5 rounded-2xl border border-white/10 hover:border-cyan-500/30 transition-all">

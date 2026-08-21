@@ -31,6 +31,7 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
 
   const filteredProducts = currentProducts.filter((p) => {
     if (activeCategory === 'all') return true;
+    if (activeCategory === 'developer') return p.category.toLowerCase().includes('developer') || p.category.toLowerCase().includes('tool') || p.category.toLowerCase().includes('qa');
     if (activeCategory === 'revenue') return p.category.toLowerCase().includes('revenue');
     if (activeCategory === 'financial') return p.category.toLowerCase().includes('financial') || p.category.toLowerCase().includes('finance');
     if (activeCategory === 'customer') return p.category.toLowerCase().includes('customer');
@@ -51,7 +52,7 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
           Codified Enterprise Operating Systems
         </h2>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-          From purpose-built focused systems at <strong className="text-cyan-400">$99</strong> to full-depth enterprise systems and future synthesis organisms.
+          From purpose-built focused systems at <strong className="text-cyan-400">$49–$99</strong> to full-depth enterprise systems and future synthesis organisms.
         </p>
       </div>
 
@@ -75,7 +76,7 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
               activeTier === 'tier1' ? 'bg-black/20 text-black' : 'bg-cyan-500/20 text-cyan-300'
             }`}
           >
-            7 Systems · $99
+            8 Systems · From $49
           </span>
         </button>
 
@@ -157,11 +158,11 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
               Practical, Purpose-Built Systems for Specific Operating Bottlenecks
             </h3>
             <p className="text-xs text-gray-300 leading-relaxed">
-              Engineered with intentional architectural focus to solve specific, high-friction operational failure modes. $99 one-time perpetual license with unlimited internal seats.
+              Engineered with intentional architectural focus to solve specific, high-friction operational failure modes. One-time perpetual license ($49–$99) with unlimited internal seats.
             </p>
           </div>
           <div className="shrink-0 font-mono text-xs bg-cyan-500/10 border border-cyan-500/30 px-3.5 py-2 rounded-xl text-cyan-300">
-            7 Focused Systems ($99)
+            8 Focused Systems ($49–$99)
           </div>
         </div>
       )}
@@ -237,6 +238,16 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
         </button>
         {activeTier !== 'tier3' ? (
           <>
+            <button
+              onClick={() => setActiveCategory('developer')}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold transition-all ${
+                activeCategory === 'developer'
+                  ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/20'
+                  : 'glass-panel text-gray-300 hover:text-white hover:border-cyan-500/30'
+              }`}
+            >
+              Developer Tools
+            </button>
             <button
               onClick={() => setActiveCategory('revenue')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold transition-all ${

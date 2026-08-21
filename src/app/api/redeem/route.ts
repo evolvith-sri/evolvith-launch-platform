@@ -72,17 +72,10 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const mapping = getProductCommerceMapping(productId);
-  if (!mapping) {
-    recordFailedAttempt(ip);
-    return NextResponse.json(
-      { error: 'Unknown product redemption target.' },
-      { status: 404 }
-    );
-  }
+  const requestedProduct = typeof body.product === 'string' && body.product.trim() ? body.product.trim().toLowerCase() : 'auto';
 
   // 3. Execute atomic database transaction
-  const result = await redeemCodeAtomic(rawCode, rawEmail, productId);
+  const result = await redeemCodeAtomic(rawCode, rawEmail, requestedProduct);
 
   if (!result.success || !result.entitlement) {
     recordFailedAttempt(ip);
@@ -96,6 +89,16 @@ export async function POST(req: NextRequest) {
   }
 
   const entitlement = result.entitlement;
+  const targetProductId = entitlement.product_id || (requestedProduct !== 'auto' ? requestedProduct : 'forecast-os-01');
+  const mapping = getProductCommerceMapping(targetProductId);
+
+  if (!mapping) {
+    recordFailedAttempt(ip);
+    return NextResponse.json(
+      { error: `Unknown product mapping for ${targetProductId}.` },
+      { status: 404 }
+    );
+  }
 
   // 4. Register entitlement with unified commercial cache
   registerVerifiedEntitlement({
@@ -105,7 +108,7 @@ export async function POST(req: NextRequest) {
     systemCode: mapping.systemCode,
     productId: mapping.productId,
     customerEmail: entitlement.customer_email,
-    governedPrice: mapping.governedPrice || 99,
+    governedPrice: mapping.governedPrice || 49,
     distributionPackage: mapping.distributionPackage || `${mapping.systemCode}_v1.0.0.zip`,
     createdAt: entitlement.created_at,
   });

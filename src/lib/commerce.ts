@@ -54,7 +54,21 @@ export interface ProductCommerceMapping {
  * - 2 Tier-3 Synthesis Organisms in Development (Non-purchasable, no Dodo IDs)
  */
 export const PRODUCT_COMMERCE_MAPPINGS: Record<string, ProductCommerceMapping> = {
-  // --- TIER 1: Focused Systems (7 Systems — $99 each) ---
+  // --- TIER 1: Developer & Focused Systems ---
+  'audit-os-01': {
+    systemCode: 'AUDIT-OS-01',
+    productId: 'audit-os-01',
+    title: 'AUDIT-OS-01 Visual API Contract & Webhook QA Workstation',
+    tier: 1,
+    subTier: '1',
+    governedPrice: 49,
+    currency: 'USD',
+    licenseType: 'One-Time Perpetual Commercial License',
+    dodoProductId: 'pdt_live_audit_os_01',
+    commerceAvailability: 'READY_FOR_COMMERCE',
+    fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
+    distributionPackage: 'AUDIT-OS-01_v1.0.0.zip',
+  },
   'forecast-os-01': {
     systemCode: 'FORECAST-OS-01',
     productId: 'forecast-os-01',

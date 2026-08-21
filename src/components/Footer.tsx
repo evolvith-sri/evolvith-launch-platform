@@ -20,9 +20,10 @@ export function Footer() {
 
         <div>
           <h4 className="font-semibold text-white mb-4 text-xs tracking-wider uppercase font-mono">
-            Tier 1 Focused ($99)
+            Tier 1 Focused (From $49)
           </h4>
           <ul className="space-y-2 text-xs font-mono text-gray-400">
+            <li><Link href="/products/audit-os-01" className="hover:text-cyan-400 transition-colors text-emerald-400 font-bold">AUDIT-OS-01 ($49 Developer)</Link></li>
             <li><Link href="/products/forecast-os-01" className="hover:text-cyan-400 transition-colors">FORECAST-OS-01 ($99)</Link></li>
             <li><Link href="/products/close-os-01" className="hover:text-cyan-400 transition-colors">CLOSE-OS-01 ($99)</Link></li>
             <li><Link href="/products/retention-os-01" className="hover:text-cyan-400 transition-colors">RETENTION-OS-01 ($99)</Link></li>
@@ -70,6 +71,7 @@ export function Footer() {
           </h4>
           <ul className="space-y-2 text-xs font-mono text-gray-400">
             <li><Link href="/about" className="hover:text-cyan-400 transition-colors">About Evolvith</Link></li>
+            <li><Link href="/workstations/audit-os-01" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium flex items-center gap-1"><span>AUDIT-OS-01 Workstation</span><span className="text-[9px] px-1 py-0.2 bg-emerald-500/20 text-emerald-400 rounded">LIVE</span></Link></li>
             <li><Link href="/redeem" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">Redeem AppSumo Code</Link></li>
             <li><Link href="/contact" className="hover:text-cyan-400 transition-colors">Executive Briefing</Link></li>
             <li><Link href="/privacy" className="hover:text-cyan-400 transition-colors">Privacy Policy</Link></li>

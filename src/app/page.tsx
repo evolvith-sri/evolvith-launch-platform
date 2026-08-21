@@ -49,11 +49,11 @@ export default function HomePage() {
               Ready to Eliminate Operational Friction?
             </h2>
             <p className="text-gray-300 text-base max-w-2xl mx-auto leading-relaxed">
-              Select a targeted <strong className="text-cyan-400">$99</strong> focused operating system or full-stack enterprise architecture to deploy standardized governance within 48 hours.
+              Select a targeted <strong className="text-cyan-400">$49–$99</strong> focused operating system or full-stack enterprise architecture to deploy standardized governance within 48 hours.
             </p>
             <div className="pt-2">
               <Link href="/products" className="btn-primary inline-block px-8 py-4 text-sm font-bold uppercase font-mono tracking-wider">
-                Explore All Operating Systems from $99
+                Explore All Operating Systems from $49
               </Link>
             </div>
           </div>
