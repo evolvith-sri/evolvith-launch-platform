@@ -456,8 +456,8 @@ export async function redeemCodeAtomic(
         entitlement: {
           entitlement_id: entitlementId,
           code: normCode,
-          product_id: normProductId,
-          system_code: systemCode,
+          product_id: prodId,
+          system_code: actualSystemCode,
           customer_email: normEmail,
           license_type: licenseType,
           source: 'APPSUMO',
@@ -538,8 +538,8 @@ export async function redeemCodeAtomic(
     insertEntStmt.run(
       entitlementId,
       normCode,
-      normProductId,
-      systemCode,
+      prodId,
+      actualSystemCode,
       normEmail,
       licenseType,
       now
@@ -552,8 +552,8 @@ export async function redeemCodeAtomic(
       entitlement: {
         entitlement_id: entitlementId,
         code: normCode,
-        product_id: normProductId,
-        system_code: systemCode,
+        product_id: prodId,
+        system_code: actualSystemCode,
         customer_email: normEmail,
         license_type: licenseType,
         source: 'APPSUMO',

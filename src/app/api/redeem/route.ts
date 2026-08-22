@@ -89,7 +89,9 @@ export async function POST(req: NextRequest) {
   }
 
   const entitlement = result.entitlement;
-  const targetProductId = entitlement.product_id || (requestedProduct !== 'auto' ? requestedProduct : 'forecast-os-01');
+  const targetProductId = (entitlement.product_id && entitlement.product_id !== 'auto')
+    ? entitlement.product_id
+    : (requestedProduct !== 'auto' ? requestedProduct : 'forecast-os-01');
   const mapping = getProductCommerceMapping(targetProductId);
 
   if (!mapping) {
