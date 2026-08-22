@@ -64,7 +64,7 @@ export const PRODUCT_COMMERCE_MAPPINGS: Record<string, ProductCommerceMapping> =
     governedPrice: 49,
     currency: 'USD',
     licenseType: 'One-Time Perpetual Commercial License',
-    dodoProductId: 'pdt_live_audit_os_01',
+    dodoProductId: 'pdt_0NlvVT3FguXygOXRQOV2j',
     commerceAvailability: 'READY_FOR_COMMERCE',
     fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE',
     distributionPackage: 'AUDIT-OS-01_v1.0.0.zip',
