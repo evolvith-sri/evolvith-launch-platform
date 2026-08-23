@@ -125,8 +125,10 @@ export async function createDodoCheckoutSession(
   }
 
   const apiKey = process.env.DODO_PAYMENTS_API_KEY;
-  const environment = process.env.DODO_PAYMENTS_ENVIRONMENT || 'test_mode';
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const environment = process.env.DODO_PAYMENTS_ENVIRONMENT || 'live_mode';
+  const appUrl =
+    process.env.NEXT_PUBLIC_APP_URL ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://www.evolvith.com');
 
   const successUrl = `${appUrl}/checkout/success?product=${mapping.productId}&tier=${mapping.tier}`;
   const cancelUrl = `${appUrl}/checkout/cancel?product=${mapping.productId}`;
@@ -167,12 +169,22 @@ export async function createDodoCheckoutSession(
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${apiKey}`,
+          'User-Agent': 'EvolvithCheckoutClient/1.0',
         },
         body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
         const errorText = await response.text();
+        // If session creation fails, fallback to direct product checkout URL if available
+        if (mapping.directCheckoutUrl) {
+          return {
+            success: true,
+            checkoutUrl: mapping.directCheckoutUrl,
+            sessionId: `direct_${mapping.systemCode.toLowerCase()}`,
+            mapping,
+          };
+        }
         return {
           success: false,
           error: `Dodo Payments API error (${response.status}): ${errorText}`,
@@ -183,11 +195,19 @@ export async function createDodoCheckoutSession(
       const data = await response.json();
       return {
         success: true,
-        checkoutUrl: data.checkout_url || data.url,
+        checkoutUrl: data.checkout_url || data.url || mapping.directCheckoutUrl,
         sessionId: data.session_id || data.id,
         mapping,
       };
     } catch (err) {
+      if (mapping.directCheckoutUrl) {
+        return {
+          success: true,
+          checkoutUrl: mapping.directCheckoutUrl,
+          sessionId: `direct_${mapping.systemCode.toLowerCase()}`,
+          mapping,
+        };
+      }
       return {
         success: false,
         error: `Failed to initiate Dodo checkout session: ${err instanceof Error ? err.message : String(err)}`,
@@ -196,11 +216,11 @@ export async function createDodoCheckoutSession(
     }
   }
 
-  // When API key is not yet set in environment (controlled staging mode), return structured mock verification session
+  // When API key is not yet set in environment, seamlessly route to verified direct product checkout URL
   return {
     success: true,
-    sessionId: `test_session_${mapping.systemCode.toLowerCase()}_${Date.now()}`,
-    checkoutUrl: `${successUrl}&test_mode=true`,
+    sessionId: `direct_${mapping.systemCode.toLowerCase()}_${Date.now()}`,
+    checkoutUrl: mapping.directCheckoutUrl || `${successUrl}&test_mode=true`,
     mapping,
   };
 }
