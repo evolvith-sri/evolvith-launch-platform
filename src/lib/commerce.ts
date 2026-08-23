@@ -18,6 +18,10 @@ export interface CommerceConfig {
   liveCtaText: string;
 }
 
+export const DODO_STOREFRONT_URL =
+  process.env.NEXT_PUBLIC_DODO_STORE_URL ||
+  'https://store.dodopayments.com/bus_0NlZ2nVWhB98mYwC5vi7F';
+
 export const COMMERCE_CONFIG: CommerceConfig = {
   status: 'LIVE', // Governed State: LIVE under Governance Order PR-0002O
   providerName: 'Dodo Payments',
@@ -42,6 +46,7 @@ export interface ProductCommerceMapping {
   currency: string;
   licenseType: string;
   dodoProductId: string | null;
+  directCheckoutUrl?: string | null;
   commerceAvailability: CommerceAvailability;
   fulfillmentType: 'DIGITAL_RUNTIME_PACKAGE' | 'ARCHITECTURE_BLUEPRINT_ONLY';
   distributionPackage?: string;
@@ -358,5 +363,32 @@ export const PRODUCT_COMMERCE_MAPPINGS: Record<string, ProductCommerceMapping> =
  */
 export function getProductCommerceMapping(productIdOrCode: string): ProductCommerceMapping | null {
   const normalizedKey = productIdOrCode.toLowerCase().replace(/_/g, '-');
-  return PRODUCT_COMMERCE_MAPPINGS[normalizedKey] || null;
+  const mapping = PRODUCT_COMMERCE_MAPPINGS[normalizedKey];
+  if (!mapping) return null;
+  
+  if (mapping.dodoProductId && !mapping.directCheckoutUrl) {
+    return {
+      ...mapping,
+      directCheckoutUrl: `https://checkout.dodopayments.com/buy/${mapping.dodoProductId}`,
+    };
+  }
+  return mapping;
+}
+
+/**
+ * Returns direct Dodo buy link for a product ID or system code.
+ */
+export function getDodoDirectCheckoutUrl(productIdOrCode: string): string | null {
+  const mapping = getProductCommerceMapping(productIdOrCode);
+  if (!mapping || !mapping.dodoProductId || mapping.commerceAvailability === 'NOT_PURCHASABLE') {
+    return null;
+  }
+  return `https://checkout.dodopayments.com/buy/${mapping.dodoProductId}`;
+}
+
+/**
+ * Returns the official Evolvith Dodo storefront URL.
+ */
+export function getDodoStorefrontUrl(): string {
+  return DODO_STOREFRONT_URL;
 }

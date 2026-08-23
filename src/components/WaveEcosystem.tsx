@@ -45,9 +45,18 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
     <section id="wave-catalog" className="max-w-7xl mx-auto px-6 space-y-12" aria-labelledby="catalog-heading">
       {/* Section Header */}
       <div className="text-center space-y-4 max-w-3xl mx-auto">
-        <span className="px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono uppercase tracking-wider">
-          Commercial Operating System Architecture
-        </span>
+        <div className="flex items-center justify-center gap-2">
+          <span className="px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono uppercase tracking-wider">
+            Commercial Operating System Architecture
+          </span>
+          <a
+            href="/store"
+            className="px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-wider hover:bg-emerald-500/20 transition-colors flex items-center gap-1"
+          >
+            <span>Store View</span>
+            <span>→</span>
+          </a>
+        </div>
         <h2 id="catalog-heading" className="text-3xl sm:text-5xl font-extrabold font-heading text-white">
           Codified Enterprise Operating Systems
         </h2>

@@ -1,3 +1,7 @@
+import { getProductCommerceMapping, DODO_STOREFRONT_URL } from './commerce';
+
+export { DODO_STOREFRONT_URL };
+
 export type CommerceStatus =
   | 'PRE_LAUNCH'
   | 'CONTROLLED_COMMERCE_VERIFICATION'
@@ -1485,15 +1489,38 @@ export const TIER_3_PRODUCTS: Product[] = [
   }
 ];
 
+function attachCommerceUrls(products: Product[]): Product[] {
+  return products.map((p) => {
+    const mapping = getProductCommerceMapping(p.id);
+    if (mapping && mapping.directCheckoutUrl && mapping.commerceAvailability !== 'NOT_PURCHASABLE') {
+      return {
+        ...p,
+        checkoutUrl: mapping.directCheckoutUrl,
+      };
+    }
+    return p;
+  });
+}
+
 // Combined Tier 2 Collection (6 Tier 2A + 3 Tier 2B = 9 Systems)
-export const TIER_2_PRODUCTS: Product[] = [...TIER_2A_PRODUCTS, ...TIER_2B_PRODUCTS];
+export const TIER_2_PRODUCTS: Product[] = attachCommerceUrls([...TIER_2A_PRODUCTS, ...TIER_2B_PRODUCTS]);
 
 // 16 Purchasable Commercial Systems
-export const COMMERCIAL_PRODUCTS: Product[] = [...TIER_1_PRODUCTS, ...TIER_2_PRODUCTS];
+export const COMMERCIAL_PRODUCTS: Product[] = attachCommerceUrls([...TIER_1_PRODUCTS, ...TIER_2_PRODUCTS]);
 
-// Total 18 Defined Systems (16 Commercial + 2 Tier-3 Development Organisms)
+// Total Defined Systems (16 Commercial + 4 Tier-3 Development Organisms)
 export const ALL_PRODUCTS: Product[] = [...COMMERCIAL_PRODUCTS, ...TIER_3_PRODUCTS];
 
 // Backwards compatibility aliases
-export const WAVE_1_PRODUCTS: Product[] = TIER_2A_PRODUCTS;
-export const WAVE_2_PRODUCTS: Product[] = [...TIER_1_PRODUCTS, ...TIER_2B_PRODUCTS];
+export const WAVE_1_PRODUCTS: Product[] = attachCommerceUrls(TIER_2A_PRODUCTS);
+export const WAVE_2_PRODUCTS: Product[] = attachCommerceUrls([...TIER_1_PRODUCTS, ...TIER_2B_PRODUCTS]);
+
+/**
+ * Find product by ID or system code
+ */
+export function getProductById(idOrCode: string): Product | undefined {
+  const norm = idOrCode.toLowerCase().replace(/_/g, '-');
+  return ALL_PRODUCTS.find(
+    (p) => p.id.toLowerCase() === norm || p.systemCode.toLowerCase() === norm
+  );
+}

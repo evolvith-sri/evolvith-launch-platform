@@ -67,20 +67,24 @@ export function Footer() {
 
         <div>
           <h4 className="font-semibold text-white mb-4 text-xs tracking-wider uppercase font-mono">
-            Company & Governance
+            Platform & Support
           </h4>
           <ul className="space-y-2 text-xs font-mono text-gray-400">
+            <li><Link href="/products" className="hover:text-cyan-400 transition-colors">Products Catalog (18 OS)</Link></li>
+            <li><Link href="/store" className="text-emerald-400 hover:text-emerald-300 font-bold transition-colors">Commercial Store ($49+)</Link></li>
+            <li><Link href="/docs" className="hover:text-cyan-400 transition-colors">Documentation & Runbooks</Link></li>
+            <li><Link href="/support" className="hover:text-cyan-400 transition-colors">Customer & License Support</Link></li>
             <li><Link href="/about" className="hover:text-cyan-400 transition-colors">About Evolvith</Link></li>
             <li><Link href="/workstations/audit-os-01" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium flex items-center gap-1"><span>AUDIT-OS-01 Workstation</span><span className="text-[9px] px-1 py-0.2 bg-emerald-500/20 text-emerald-400 rounded">LIVE</span></Link></li>
             <li><Link href="/redeem" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">Redeem AppSumo Code</Link></li>
-            <li><Link href="/contact" className="hover:text-cyan-400 transition-colors">Executive Briefing</Link></li>
+            <li><a href="https://store.dodopayments.com/bus_0NlZ2nVWhB98mYwC5vi7F" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1"><span>Dodo Payments Storefront</span><span className="text-[9px] text-gray-500">↗</span></a></li>
             <li><Link href="/privacy" className="hover:text-cyan-400 transition-colors">Privacy Policy</Link></li>
             <li><Link href="/terms" className="hover:text-cyan-400 transition-colors">Terms of Service</Link></li>
           </ul>
           <div className="mt-4 pt-4 border-t border-white/5">
             <div className="flex items-center gap-2 text-[11px] font-mono text-emerald-400">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Commerce Layer Ready (Pre-Launch)</span>
+              <span>Dodo Commerce Active (Live)</span>
             </div>
           </div>
         </div>

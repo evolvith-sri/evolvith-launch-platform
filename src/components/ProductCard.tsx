@@ -192,30 +192,42 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
 
         {/* Actions: Inspect & Commerce State */}
-        <div className="pt-6 space-y-2.5">
-          <Link
-            href={`/products/${product.id}`}
-            className="btn-primary block w-full py-3 text-center text-xs font-bold tracking-wider uppercase focus:outline-none focus:ring-2 focus:ring-cyan-400"
-          >
-            {isPurchasable
-              ? `Inspect System Blueprint ($${product.price})`
-              : 'Inspect Synthesis Architecture'}
-          </Link>
-
+        <div className="pt-6 space-y-2">
           {isPurchasable ? (
-            <button
-              type="button"
-              onClick={() => setCheckoutModalOpen(true)}
-              className="w-full py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] font-mono text-cyan-300 hover:text-cyan-200 transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              <span>{COMMERCE_CONFIG.status === 'LIVE' ? COMMERCE_CONFIG.liveCtaText : COMMERCE_CONFIG.preLaunchCtaText}</span>
-            </button>
-          ) : (
-            <div className="w-full py-2.5 px-3 rounded-xl bg-purple-500/10 border border-purple-500/20 text-[11px] font-mono text-purple-300 text-center flex items-center justify-center gap-2 cursor-default">
-              <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-              <span>In Architectural Development • Checkout Disabled</span>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={() => setCheckoutModalOpen(true)}
+                className="btn-primary w-full py-2.5 text-center text-xs font-bold tracking-wider uppercase font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              >
+                Instant Buy
+              </button>
+              <Link
+                href={`/products/${product.id}`}
+                className="w-full py-2.5 px-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-gray-300 hover:text-white text-center transition-colors flex items-center justify-center gap-1"
+              >
+                <span>Blueprint</span>
+                <span>→</span>
+              </Link>
             </div>
+          ) : (
+            <Link
+              href={`/products/${product.id}`}
+              className="block w-full py-2.5 px-3 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-xs font-mono text-purple-300 text-center font-bold tracking-wider transition-colors"
+            >
+              Inspect Synthesis Architecture →
+            </Link>
+          )}
+
+          {isPurchasable && product.checkoutUrl && (
+            <a
+              href={product.checkoutUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-center text-[10px] font-mono text-gray-500 hover:text-cyan-400 transition-colors pt-0.5"
+            >
+              Direct Dodo Checkout ↗
+            </a>
           )}
         </div>
       </div>

@@ -74,19 +74,19 @@ export function Hero() {
 
           {/* Dual Action CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <Link
+              href="/store"
+              className="btn-primary px-8 py-4 text-base w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-cyan-400 flex items-center justify-center gap-2 font-mono uppercase text-xs tracking-wider"
+            >
+              <span>Commercial Store ($49+)</span>
+              <span className="font-mono text-xs opacity-75">→</span>
+            </Link>
             <a
               href="#wave-catalog"
-              className="btn-primary px-8 py-4 text-base w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-cyan-400 flex items-center justify-center gap-2"
-            >
-              <span>Explore Operating Systems</span>
-              <span className="font-mono text-xs opacity-75">↓</span>
-            </a>
-            <a
-              href="#genome-inspector"
               className="px-8 py-4 text-base font-semibold text-gray-200 hover:text-white glass-panel rounded-lg w-full sm:w-auto transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500 flex items-center justify-center gap-2"
             >
-              <span>Inspect Master Genome</span>
-              <span className="text-cyan-400 font-mono">→</span>
+              <span>Explore Architecture Catalog</span>
+              <span className="text-cyan-400 font-mono">↓</span>
             </a>
           </div>
         </div>

@@ -51,9 +51,12 @@ export default function HomePage() {
             <p className="text-gray-300 text-base max-w-2xl mx-auto leading-relaxed">
               Select a targeted <strong className="text-cyan-400">$49–$99</strong> focused operating system or full-stack enterprise architecture to deploy standardized governance within 48 hours.
             </p>
-            <div className="pt-2">
-              <Link href="/products" className="btn-primary inline-block px-8 py-4 text-sm font-bold uppercase font-mono tracking-wider">
-                Explore All Operating Systems from $49
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/store" className="btn-primary inline-block px-8 py-4 text-sm font-bold uppercase font-mono tracking-wider w-full sm:w-auto">
+                Commercial Store ($49+) →
+              </Link>
+              <Link href="/products" className="glass-panel px-8 py-4 text-sm font-bold font-mono tracking-wider text-gray-200 hover:text-white rounded-lg w-full sm:w-auto">
+                Browse Architecture Catalog
               </Link>
             </div>
           </div>

@@ -67,14 +67,41 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
   const tierInfo = getTierBadge();
   const isPurchasable = product.availability !== 'NOT_PURCHASABLE' && product.price !== null;
 
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: product.title,
+    applicationCategory: product.category,
+    operatingSystem: 'Cross-Platform, Local-First, Cloud Edge',
+    description: product.description,
+    offers: isPurchasable
+      ? {
+          '@type': 'Offer',
+          price: product.price,
+          priceCurrency: 'USD',
+          availability: 'https://schema.org/InStock',
+          url: `https://www.evolvith.com/products/${product.id}`,
+        }
+      : undefined,
+  };
+
   return (
     <div className="pt-32 pb-24 space-y-14">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+
       {/* 5-Question Immediate Answer Hero Architecture */}
       <section className="max-w-7xl mx-auto px-6 space-y-8">
         {/* Breadcrumb Navigation */}
         <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
           <Link href="/products" className="text-gray-400 hover:text-cyan-400 transition-colors">
-            ← Back to Products Catalog
+            ← Catalog
+          </Link>
+          <span className="text-gray-600">/</span>
+          <Link href="/store" className="text-emerald-400 hover:text-emerald-300 transition-colors">
+            Commercial Store
           </Link>
           <span className="text-gray-600">•</span>
           <span
@@ -262,32 +289,50 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             </div>
 
             {/* Purchase CTA State Machine */}
-            <div className="space-y-2 pt-2">
+            <div className="space-y-2.5 pt-2">
               {isPurchasable ? (
                 <>
                   <button
                     type="button"
                     onClick={() => setCheckoutModalOpen(true)}
-                    className="btn-primary block w-full py-4 text-center text-xs font-bold tracking-wider uppercase focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    className="btn-primary block w-full py-4 text-center text-xs font-bold tracking-wider uppercase font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400 shadow-lg shadow-cyan-500/20"
                   >
-                    {COMMERCE_CONFIG.status === 'LIVE'
-                      ? `Purchase Commercial License ($${product.price})`
-                      : `Register License Intent ($${product.price})`}
+                    Instant Checkout — ${product.price} USD
                   </button>
+
+                  {product.checkoutUrl && (
+                    <a
+                      href={product.checkoutUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] font-mono font-bold text-gray-300 hover:text-white text-center transition-colors flex items-center justify-center gap-1.5"
+                    >
+                      <span>Buy via Dodo Payments Storefront</span>
+                      <span className="text-cyan-400">↗</span>
+                    </a>
+                  )}
 
                   {product.id === 'audit-os-01' && (
                     <Link
                       href="/workstations/audit-os-01"
-                      className="w-full py-3 px-3 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-xs font-mono font-bold text-cyan-300 text-center flex items-center justify-center gap-2 transition-colors"
+                      className="w-full py-2.5 px-3 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-xs font-mono font-bold text-cyan-300 text-center flex items-center justify-center gap-2 transition-colors"
                     >
                       <span>⚡ Launch Live Workstation</span>
                     </Link>
                   )}
 
-                  <p className="text-[10px] text-gray-400 text-center font-mono flex items-center justify-center gap-1.5 pt-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                    <span>{COMMERCE_CONFIG.preLaunchMessage}</span>
-                  </p>
+                  <div className="pt-2 border-t border-white/10 space-y-2">
+                    <p className="text-[10px] text-gray-400 text-center font-mono flex items-center justify-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>Instant Package Delivery via Dodo Payments Checkout</span>
+                    </p>
+                    <div className="bg-surface/60 p-2.5 rounded-xl border border-white/5 text-[10px] font-mono text-gray-400 text-center space-y-1">
+                      <span>Redeeming an AppSumo Deal Code?</span>
+                      <Link href="/redeem" className="block text-cyan-400 hover:underline font-bold">
+                        Redeem code at /redeem →
+                      </Link>
+                    </div>
+                  </div>
                 </>
               ) : (
                 <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20 text-center space-y-1">
