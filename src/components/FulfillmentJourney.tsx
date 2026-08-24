@@ -16,7 +16,7 @@ export function FulfillmentJourney() {
       number: '02',
       action: 'RECEIVE',
       title: 'Digital Product Package',
-      description: 'Receive your complete digital software release archive (.zip) containing unencrypted Python runtime, AST schemas, and SOP playbooks directly.',
+      description: 'Receive your complete digital software release archive (.zip) containing full inspectable local Python runtime, AST schemas, and SOP playbooks directly.',
       badge: 'Digital Release (.zip)',
       details: ['Digital product package (.zip)', 'Commercial license grant', 'Product & installation documentation'],
       notice: COMMERCE_CONFIG.preLaunchMessage,

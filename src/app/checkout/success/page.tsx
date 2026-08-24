@@ -92,7 +92,7 @@ export default function CheckoutSuccessPage({ searchParams }: SuccessPageProps) 
                 Ready for Download: {mapping.distributionPackage}
               </h3>
               <p className="text-xs text-gray-300">
-                Complete unencrypted runtime package, CLI installer, AST schemas, and deployment documentation.
+                Complete local runtime package with inspectable source, CLI installer, AST schemas, and deployment documentation.
               </p>
             </div>
             <a
@@ -138,7 +138,7 @@ export default function CheckoutSuccessPage({ searchParams }: SuccessPageProps) 
                 <span>Digital Product Package</span>
               </div>
               <p className="text-xs text-gray-300 leading-relaxed">
-                Distribution archive <strong className="text-white font-mono">{mapping.distributionPackage}</strong> containing full unencrypted Python runtime engine and AST schemas.
+                Distribution archive <strong className="text-white font-mono">{mapping.distributionPackage}</strong> containing full local runtime package with inspectable source and AST schemas.
               </p>
             </div>
 

@@ -59,7 +59,7 @@ export default function SupportPage() {
             AppSumo Code Redemption
           </h3>
           <p className="text-xs text-gray-300 leading-relaxed">
-            Redeem lifetime deal codes, validate entitlement records, and download unencrypted distribution zip packages.
+            Redeem lifetime deal codes, validate entitlement records, and download inspectable distribution zip packages.
           </p>
           <div className="pt-2">
             <Link href="/redeem" className="text-xs font-mono text-emerald-400 hover:text-emerald-300 font-bold">

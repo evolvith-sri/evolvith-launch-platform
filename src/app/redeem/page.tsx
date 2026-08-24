@@ -102,7 +102,7 @@ export default function RedeemPage() {
           Redeem Your License
         </h1>
         <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-          Activate your perpetual commercial license for <strong className="text-white">FORECAST-OS-01</strong> or <strong className="text-white">AUDIT-OS-01</strong> and instantly receive your unencrypted digital product package.
+          Activate your perpetual commercial license for <strong className="text-white">FORECAST-OS-01</strong> or <strong className="text-white">AUDIT-OS-01</strong> and instantly receive your inspectable digital product package.
         </p>
       </div>
 
@@ -138,7 +138,7 @@ export default function RedeemPage() {
               </div>
               <div className="flex items-center gap-3">
                 <Layers className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Complete unencrypted Python runtime + AST</span>
+                <span>Full inspectable Python runtime + AST</span>
               </div>
               <div className="flex items-center gap-3">
                 <Clock className="w-4 h-4 text-cyan-400 shrink-0" />
@@ -289,7 +289,7 @@ export default function RedeemPage() {
                 Ready for Download: {successData.entitlement.distributionPackage}
               </h3>
               <p className="text-xs text-gray-300">
-                Complete unencrypted Python runtime engine, CLI installer, AST schemas, and deployment documentation.
+                Complete local runtime package with inspectable source, CLI installer, AST schemas, and deployment documentation.
               </p>
             </div>
             <a

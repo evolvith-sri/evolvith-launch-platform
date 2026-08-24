@@ -67,7 +67,7 @@ export default function StorePage() {
             </h1>
             <p className="text-gray-300 text-sm sm:text-base max-w-2xl leading-relaxed">
               Acquire perpetual commercial licenses for production-grade AI-native operating systems.
-              All purchases include unencrypted runtime packages, AST schemas, CLI harnesses, and 48-hour deployment runbooks.
+              All purchases include full local runtime packages with inspectable source, AST schemas, CLI harnesses, and 48-hour deployment runbooks.
             </p>
           </div>
 

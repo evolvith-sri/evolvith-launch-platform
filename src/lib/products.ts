@@ -107,7 +107,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Digital Package (.zip) with 48-Hour Rapid Installation Runbook."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) with complete unencrypted Python & TypeScript engine.",
+      "Digital product package (.zip) with complete inspectable local Python & TypeScript engine.",
       "Standardized AST JSON Blueprint Schema (blueprint.json).",
       "API Contract & Webhook QA SOP Manual & RACI Matrix (SOP_MANUAL.md).",
       "API & Webhook Integration Specification (API_SPEC.md).",
@@ -177,7 +177,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Standard Distribution Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) with complete unencrypted Python engine & CLI.",
+      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
       "Standardized AST JSON Blueprint Schema (blueprint.json).",
       "Revenue Forecasting SOP Manual & RACI Matrix (SOP_MANUAL.md).",
       "API & Webhook Integration Specification (API_SPEC.md).",
@@ -247,7 +247,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Standard Distribution Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) with complete unencrypted Python engine & CLI.",
+      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
       "Standardized AST JSON Blueprint Schema (blueprint.json).",
       "Month-End Close SOP Manual & RACI Matrix (SOP_MANUAL.md).",
       "API & Webhook Integration Specification (API_SPEC.md).",
@@ -317,7 +317,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Standard Distribution Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) with complete unencrypted Python engine & CLI.",
+      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
       "Standardized AST JSON Blueprint Schema (blueprint.json).",
       "Customer Retention SOP Manual & RACI Matrix (SOP_MANUAL.md).",
       "API & Webhook Integration Specification (API_SPEC.md).",
@@ -387,7 +387,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Standard Distribution Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) with complete unencrypted Python engine & CLI.",
+      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
       "Standardized AST JSON Blueprint Schema (blueprint.json).",
       "Inventory Control SOP Manual & RACI Matrix (SOP_MANUAL.md).",
       "API & Webhook Integration Specification (API_SPEC.md).",
@@ -457,7 +457,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Standard Distribution Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) with complete unencrypted Python engine & CLI.",
+      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
       "Standardized AST JSON Blueprint Schema (blueprint.json).",
       "Cross-Functional Workflow SOP Manual & RACI Matrix (SOP_MANUAL.md).",
       "API & Webhook Integration Specification (API_SPEC.md).",
@@ -527,7 +527,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Standard Distribution Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) with complete unencrypted Python engine & CLI.",
+      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
       "Standardized AST JSON Blueprint Schema (blueprint.json).",
       "Enterprise Metrics Dictionary SOP Manual & RACI Matrix (SOP_MANUAL.md).",
       "API & Webhook Integration Specification (API_SPEC.md).",
@@ -597,7 +597,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Standard Distribution Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) with complete unencrypted Python engine & CLI.",
+      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
       "Standardized AST JSON Blueprint Schema (blueprint.json).",
       "Master Policy Enforcement SOP Manual & RACI Matrix (SOP_MANUAL.md).",
       "API & Webhook Integration Specification (API_SPEC.md).",
@@ -675,7 +675,7 @@ export const TIER_2A_PRODUCTS: Product[] = [
       "100% Quality Gate QG4 Certified Deployment Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) containing full unencrypted Python runtime engine.",
+      "Digital product package (.zip) containing full inspectable local Python runtime engine.",
       "Master Pipeline Governance SOP Manual & RACI Execution Matrix.",
       "Automated Executive Telemetry Pipeline & Dashboard Configs.",
       "API Specification, CLI tools, and 48-hour rapid deployment runbook.",
@@ -743,7 +743,7 @@ export const TIER_2A_PRODUCTS: Product[] = [
       "Quality Gate QG4 Certified Deployment Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) containing full unencrypted Python financial brain.",
+      "Digital product package (.zip) containing full inspectable local Python financial brain.",
       "Consolidated Cash Flow & Variance Forecasting Playbooks.",
       "Board-Ready Financial Telemetry Dashboards.",
       "48-Hour Rapid Installation Runbook & CLI Diagnostics.",
@@ -806,7 +806,7 @@ export const TIER_2A_PRODUCTS: Product[] = [
       "Quality Gate QG4 Certified Deployment Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) containing full unencrypted Python CS engine.",
+      "Digital product package (.zip) containing full inspectable local Python CS engine.",
       "Customer Onboarding Framework & RACI Execution Playbooks.",
       "Executive Churn Mitigation Telemetry Dashboard.",
       "48-Hour Rapid Installation Runbook & Webhook Bridges.",
@@ -864,7 +864,7 @@ export const TIER_2A_PRODUCTS: Product[] = [
       "Quality Gate QG4 Certified Deployment Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) containing full unencrypted Python operations engine.",
+      "Digital product package (.zip) containing full inspectable local Python operations engine.",
       "Standardized Execution Playbooks & RACI Governance Templates.",
       "Live Operational Bottleneck Telemetry Dashboard.",
       "48-Hour Rapid Installation Runbook & Webhook Integrations.",
@@ -922,7 +922,7 @@ export const TIER_2A_PRODUCTS: Product[] = [
       "Quality Gate QG4 Certified Deployment Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) containing full unencrypted Python data layer.",
+      "Digital product package (.zip) containing full inspectable local Python data layer.",
       "Enterprise Metric Definitions Specification (YAML/JSON schemas).",
       "Data Quality Audit Telemetry Engine & Schemas.",
       "48-Hour Rapid Installation Runbook & Warehouse Connectors.",
@@ -979,7 +979,7 @@ export const TIER_2A_PRODUCTS: Product[] = [
       "Quality Gate QG4 Certified Deployment Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) containing full unencrypted Python governance brain.",
+      "Digital product package (.zip) containing full inspectable local Python governance brain.",
       "Enterprise Policy Enforcement Code Modules & EDR Schemas.",
       "Executive Decision & Risk Telemetry Dashboard.",
       "48-Hour Rapid Installation Runbook & Audit Harness.",
@@ -1044,7 +1044,7 @@ export const TIER_2B_PRODUCTS: Product[] = [
       "Quality Gate QG4 Certified Distribution Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) with complete unencrypted Python engine & CLI.",
+      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
       "Standardized AST JSON Blueprint Schema (blueprint.json).",
       "Master Pipeline Governance SOP Manual & RACI Matrix (SOP_MANUAL.md).",
       "API & Webhook Integration Specification (API_SPEC.md).",
@@ -1064,7 +1064,7 @@ export const TIER_2B_PRODUCTS: Product[] = [
     faqs: [
       {
         question: "What is included in the PIPE-OS-01 digital product package?",
-        answer: "The package includes the full unencrypted Python execution engine, command-line diagnostic tool, AST blueprint schema, master SOP manual, RACI matrix, API specification, and a perpetual commercial license."
+        answer: "The package includes the full inspectable local Python execution engine, command-line diagnostic tool, AST blueprint schema, master SOP manual, RACI matrix, API specification, and a perpetual commercial license."
       },
       {
         question: "How does PIPE-OS-01 relate to REV-OS-01?",
@@ -1114,7 +1114,7 @@ export const TIER_2B_PRODUCTS: Product[] = [
       "Quality Gate QG4 Certified Distribution Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) with complete unencrypted Python engine & CLI.",
+      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
       "Standardized AST JSON Blueprint Schema (blueprint.json).",
       "Master A/R Collections SOP Manual & RACI Matrix (SOP_MANUAL.md).",
       "API & Webhook Integration Specification (API_SPEC.md).",
@@ -1184,7 +1184,7 @@ export const TIER_2B_PRODUCTS: Product[] = [
       "Quality Gate QG4 Certified Distribution Package."
     ],
     whatYouReceive: [
-      "Digital product package (.zip) with complete unencrypted Python engine & CLI.",
+      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
       "Standardized AST JSON Blueprint Schema (blueprint.json).",
       "Client Onboarding SOP Manual & RACI Matrix (SOP_MANUAL.md).",
       "API & Webhook Integration Specification (API_SPEC.md).",
@@ -1220,7 +1220,7 @@ export const TIER_2B_PRODUCTS: Product[] = [
 ];
 
 /**
- * TIER 3: Synthesis Organisms (2 Initial Definitions — In Development)
+ * TIER 3: Synthesis Organisms (4 Architectural Definitions — In Development Preview)
  * Cross-system architectures designed to synthesize multiple Evolvith operating systems into higher-level organizational intelligence.
  * Strictly non-purchasable with checkout disabled and no Dodo IDs created.
  */

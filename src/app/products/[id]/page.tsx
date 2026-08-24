@@ -503,7 +503,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                   What You Receive in the Commercial Package
                 </h3>
                 <p className="text-xs text-gray-400 font-mono">
-                  Complete unencrypted software payload delivered upon license purchase
+                  Full local runtime package with inspectable source delivered upon license purchase
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -208,7 +208,7 @@ export default function DocsPage() {
             <p className="text-xs text-gray-400 leading-relaxed">
               All modeled efficiency and velocity statistics referenced across Evolvith specifications carry the required canonical notice:
               <strong className="text-white font-mono block mt-1">MODELED TARGET — NOT HISTORICAL PERFORMANCE</strong>
-              Perpetual licenses grant perpetual deployment rights for internal enterprise operations, with unencrypted runtime code and zero vendor telemetry dependencies.
+              Perpetual licenses grant perpetual deployment rights for internal enterprise operations, with inspectable local runtime code and zero vendor telemetry dependencies.
             </p>
           </section>
         </div>

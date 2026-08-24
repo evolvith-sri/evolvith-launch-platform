@@ -275,7 +275,7 @@ export function PackageFileTree({ productId }: PackageFileTreeProps) {
                 Fulfillment Standard
               </span>
               <p className="text-[11px] text-gray-400">
-                ✓ Full unencrypted source delivered in release archive.<br />
+                ✓ Full local runtime package with inspectable source delivered in release archive.<br />
                 ✓ Compatible with internal Python 3.9+ environments.<br />
                 ✓ Verified under Quality Gate QG4 manufacturing scan.
               </p>
