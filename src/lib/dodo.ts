@@ -341,11 +341,14 @@ export function processDodoWebhookEvent(
 
       // Extract system/product identifier from various standard Dodo payload locations
       const rawIdentifier =
-        payload.data.metadata?.evolvith_system_code ||
-        payload.data.metadata?.product_id ||
-        payload.data.metadata?.system_code ||
-        payload.data.product_code ||
-        payload.data.product_id;
+        payload.data?.metadata?.evolvith_system_code ||
+        payload.data?.metadata?.product_id ||
+        payload.data?.metadata?.system_code ||
+        payload.data?.product_id ||
+        payload.data?.product_code ||
+        (payload.data as any)?.product_cart?.[0]?.product_id ||
+        (payload.data as any)?.product_cart?.[0]?.product_code ||
+        (payload.data as any)?.items?.[0]?.product_id;
 
       // Look up in authoritative register
       const mapping = rawIdentifier ? getProductCommerceMapping(String(rawIdentifier)) : null;
@@ -389,15 +392,25 @@ export function processDodoWebhookEvent(
       }
 
       // Valid commercial product purchase (Tier 1, 2A, 2B)
+      const customerEmail =
+        payload.data?.customer_email ||
+        (payload.data as any)?.customer?.email ||
+        (payload.data as any)?.email;
+
+      const paymentId =
+        payload.data?.payment_id ||
+        (payload.data as any)?.id ||
+        payload.event_id;
+
       const entitlementId = `ent_${payload.event_id.replace(/^evt_/, '')}`;
       const entitlement: VerifiedEntitlement = {
         entitlementId,
         eventId: payload.event_id,
-        sessionId: payload.data.metadata?.session_id || payload.data.payment_id,
-        paymentId: payload.data.payment_id,
+        sessionId: payload.data?.metadata?.session_id || paymentId,
+        paymentId,
         systemCode: mapping.systemCode,
         productId: mapping.productId,
-        customerEmail: payload.data.customer_email,
+        customerEmail,
         governedPrice: mapping.governedPrice || 0,
         distributionPackage: mapping.distributionPackage || `${mapping.systemCode}_v1.0.0.zip`,
         createdAt: Date.now(),

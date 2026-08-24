@@ -1,21 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyDodoWebhookSignature, processDodoWebhookEvent, DodoWebhookPayload } from '@/lib/dodo';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     const rawBody = await req.text();
     const webhookId =
       req.headers.get('webhook-id') ||
       req.headers.get('x-dodo-webhook-id') ||
-      req.headers.get('msg-id');
+      req.headers.get('msg-id') ||
+      req.headers.get('svix-id');
     const signature =
       req.headers.get('webhook-signature') ||
       req.headers.get('x-dodo-signature') ||
-      req.headers.get('dodo-signature');
+      req.headers.get('dodo-signature') ||
+      req.headers.get('svix-signature');
     const timestamp =
       req.headers.get('webhook-timestamp') ||
       req.headers.get('x-dodo-timestamp') ||
-      req.headers.get('dodo-timestamp');
+      req.headers.get('dodo-timestamp') ||
+      req.headers.get('svix-timestamp');
 
     // Strict Webhook Authentication Guard: Fail closed if secret is unconfigured or signature is missing/invalid
     const isValid = verifyDodoWebhookSignature(rawBody, signature, timestamp, webhookId);
