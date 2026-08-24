@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { logCommercialIntent } from '@/lib/telemetry';
 
 interface WebhookTrap {
   trapId: string;
@@ -59,8 +60,14 @@ export default function AuditOsWorkstationPage() {
   // Mock server state
   const [mockScript, setMockScript] = useState<string>('');
 
-  // Initial fetch of traps
+  // Initial fetch of traps & telemetry
   useEffect(() => {
+    logCommercialIntent({
+      eventType: 'LAUNCH_WORKSTATION',
+      productId: 'audit-os-01',
+      systemCode: 'AUDIT-OS-01',
+    });
+
     fetch('/api/audit/traps')
       .then((res) => res.json())
       .then((data) => {

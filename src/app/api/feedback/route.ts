@@ -6,8 +6,11 @@ export interface CustomerFeedbackEntry {
   id: string;
   productId: string;
   primaryProblemSolved: string;
+  priorToolContext?: string;
   onboardingClarityRating: number; // 1 to 5
-  nextDesiredSystem: string;
+  missingCapability?: string;
+  nextDesiredSystem?: string;
+  highTicketNeed?: string;
   additionalNotes?: string;
   createdAt: number;
 }
@@ -19,14 +22,17 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const productId = String(body.productId || 'UNKNOWN');
-    const primaryProblemSolved = String(body.primaryProblemSolved || '').trim();
+    const primaryProblemSolved = String(body.primaryProblemSolved || body.primaryProblem || '').trim();
+    const priorToolContext = body.priorToolContext ? String(body.priorToolContext).trim() : undefined;
     const onboardingClarityRating = Math.min(5, Math.max(1, Number(body.onboardingClarityRating) || 5));
+    const missingCapability = body.missingCapability ? String(body.missingCapability).trim() : undefined;
     const nextDesiredSystem = String(body.nextDesiredSystem || '').trim();
+    const highTicketNeed = body.highTicketNeed ? String(body.highTicketNeed).trim() : undefined;
     const additionalNotes = body.additionalNotes ? String(body.additionalNotes).trim().slice(0, 1000) : undefined;
 
-    if (!primaryProblemSolved && !nextDesiredSystem) {
+    if (!primaryProblemSolved && !nextDesiredSystem && !missingCapability) {
       return NextResponse.json(
-        { error: 'Please provide feedback on your primary problem or requested next system.' },
+        { error: 'Please provide feedback on your primary problem, desired capabilities, or requested next system.' },
         { status: 400 }
       );
     }
@@ -35,8 +41,11 @@ export async function POST(req: NextRequest) {
       id: `fb_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
       productId,
       primaryProblemSolved,
+      priorToolContext,
       onboardingClarityRating,
+      missingCapability,
       nextDesiredSystem,
+      highTicketNeed,
       additionalNotes,
       createdAt: Date.now(),
     };

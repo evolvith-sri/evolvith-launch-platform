@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ALL_PRODUCTS, COMMERCE_CONFIG } from '@/lib/products';
 import { CheckoutModal } from '@/components/CheckoutModal';
 import { PackageFileTree } from '@/components/PackageFileTree';
 import { TerminalRunbookSnippet } from '@/components/TerminalRunbookSnippet';
+import { logCommercialIntent } from '@/lib/telemetry';
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const product = ALL_PRODUCTS.find(
@@ -24,6 +25,16 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
     | 'faq'
   >('blueprint');
   const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (product) {
+      logCommercialIntent({
+        eventType: 'VIEW_PRODUCT_PAGE',
+        productId: product.id,
+        systemCode: product.systemCode,
+      });
+    }
+  }, [product]);
 
   if (!product) {
     notFound();

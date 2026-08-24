@@ -155,23 +155,43 @@ export default function CheckoutSuccessPage({ searchParams }: SuccessPageProps) 
             <div className="bg-surface/80 p-5 rounded-2xl border border-white/5 space-y-2">
               <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
                 <span>03</span>
-                <span>48-Hour Rapid Runbook</span>
+                <span>48-Hour Rapid Runbook & Activation</span>
               </div>
               <p className="text-xs text-gray-300 leading-relaxed">
-                Execute automated CLI diagnostics and schema bindings via <code className="text-cyan-300 font-mono text-[11px]">python install.py</code>.
+                Execute automated CLI diagnostics and schema bindings via <code className="text-cyan-300 font-mono text-[11px]">python install.py</code> or launch the local UI to generate TypeScript / Pydantic models in &lt; 60 seconds.
               </p>
             </div>
 
             <div className="bg-surface/80 p-5 rounded-2xl border border-white/5 space-y-2">
               <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
                 <span>04</span>
-                <span>Engineering Support Channel</span>
+                <span>Engineering Support & Roadmap</span>
               </div>
               <p className="text-xs text-gray-300 leading-relaxed">
                 Direct architect access at <a href="mailto:support@evolvith.com" className="text-cyan-400 underline">support@evolvith.com</a> for configuration telemetry, webhook bindings, and deployment verification.
               </p>
             </div>
           </div>
+
+          {/* Instant Activation Callout */}
+          {mapping.productId === 'audit-os-01' && (
+            <div className="bg-cyan-500/10 border border-cyan-500/30 p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="space-y-1 text-center sm:text-left">
+                <span className="text-[10px] font-mono uppercase text-cyan-400 font-bold tracking-wider block">
+                  Interactive Activation Workstation
+                </span>
+                <p className="text-xs text-white font-medium">
+                  Test your webhook schemas immediately in the cloud workstation before running locally:
+                </p>
+              </div>
+              <Link
+                href="/workstations/audit-os-01"
+                className="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-[#0B0F19] text-xs font-mono font-bold uppercase tracking-wider shrink-0 transition-colors"
+              >
+                Launch Workstation →
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Actions */}

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { CustomerFeedbackForm } from '@/components/CustomerFeedbackForm';
 import {
   KeyRound,
   Mail,
@@ -369,6 +370,14 @@ export default function RedeemPage() {
             >
               Return to Platform Overview
             </Link>
+          </div>
+
+          {/* Customer Feedback & Research Loop */}
+          <div className="pt-6">
+            <CustomerFeedbackForm
+              productId={successData.entitlement.product.toLowerCase()}
+              systemTitle={successData.entitlement.title}
+            />
           </div>
         </div>
       )}

@@ -9,9 +9,10 @@ interface CustomerFeedbackFormProps {
 
 export function CustomerFeedbackForm({ productId, systemTitle }: CustomerFeedbackFormProps) {
   const [primaryProblem, setPrimaryProblem] = useState('');
+  const [priorTool, setPriorTool] = useState('');
   const [clarityRating, setClarityRating] = useState<number>(5);
+  const [missingCapability, setMissingCapability] = useState('');
   const [nextDesiredSystem, setNextDesiredSystem] = useState('');
-  const [additionalNotes, setAdditionalNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -28,9 +29,10 @@ export function CustomerFeedbackForm({ productId, systemTitle }: CustomerFeedbac
         body: JSON.stringify({
           productId,
           primaryProblemSolved: primaryProblem,
+          priorToolContext: priorTool,
           onboardingClarityRating: clarityRating,
+          missingCapability,
           nextDesiredSystem,
-          additionalNotes,
         }),
       });
 
@@ -54,10 +56,10 @@ export function CustomerFeedbackForm({ productId, systemTitle }: CustomerFeedbac
           ✓
         </div>
         <h3 className="text-base font-bold font-heading text-white">
-          Feedback Submitted to Product Architecture Team
+          Feedback Submitted Directly to Product Leadership
         </h3>
-        <p className="text-xs text-gray-300 max-w-lg mx-auto">
-          Thank you for providing operational insights. Your feedback directly determines which operating systems and automation harnesses enter manufacturing next.
+        <p className="text-xs text-gray-300 max-w-lg mx-auto leading-relaxed">
+          Thank you for providing real operational insights. Your feedback directly determines which automation workflows, CLI harnesses, and operating systems enter manufacturing next.
         </p>
       </div>
     );
@@ -67,13 +69,13 @@ export function CustomerFeedbackForm({ productId, systemTitle }: CustomerFeedbac
     <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-cyan-500/30 bg-surface/80 space-y-6">
       <div className="space-y-1">
         <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[10px] font-mono uppercase tracking-wider">
-          <span>Customer Feedback & Roadmap Intelligence</span>
+          <span>Customer Insights & Direct Engineering Feedback</span>
         </div>
         <h3 className="text-lg font-bold font-heading text-white">
           Help Us Tailor Your Operating System Deployment
         </h3>
         <p className="text-xs text-gray-400">
-          Takes 45 seconds. Your responses go directly to our engineering leadership.
+          Takes ~60 seconds. Your answers go directly to the architects building Evolvith systems.
         </p>
       </div>
 
@@ -86,13 +88,13 @@ export function CustomerFeedbackForm({ productId, systemTitle }: CustomerFeedbac
 
         <div className="space-y-1.5">
           <label htmlFor="primaryProblem" className="block text-xs font-mono font-bold text-gray-300">
-            1. What primary operational bottleneck did you purchase {systemTitle || productId} to solve? *
+            1. What operational problem were you trying to solve with {systemTitle || productId}? *
           </label>
           <input
             id="primaryProblem"
             type="text"
             required
-            placeholder="e.g. Silent third-party webhook schema mutations breaking our production DB"
+            placeholder="e.g. Upstream third-party webhook schema mutations breaking our production API"
             value={primaryProblem}
             onChange={(e) => setPrimaryProblem(e.target.value)}
             className="w-full bg-[#0B0F19] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 font-mono placeholder:text-gray-600"
@@ -100,8 +102,22 @@ export function CustomerFeedbackForm({ productId, systemTitle }: CustomerFeedbac
         </div>
 
         <div className="space-y-1.5">
+          <label htmlFor="priorTool" className="block text-xs font-mono font-bold text-gray-300">
+            2. What tool or method were you using previously?
+          </label>
+          <input
+            id="priorTool"
+            type="text"
+            placeholder="e.g. Postman team seats, Hookdeck subscription, manual server log digging, spreadsheets"
+            value={priorTool}
+            onChange={(e) => setPriorTool(e.target.value)}
+            className="w-full bg-[#0B0F19] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 font-mono placeholder:text-gray-600"
+          />
+        </div>
+
+        <div className="space-y-1.5">
           <label className="block text-xs font-mono font-bold text-gray-300">
-            2. How clear was the 48-Hour Rapid Setup Protocol & Documentation?
+            3. How clear was the 48-Hour Rapid Setup Protocol & Documentation?
           </label>
           <div className="grid grid-cols-5 gap-2">
             {[1, 2, 3, 4, 5].map((num) => (
@@ -122,13 +138,27 @@ export function CustomerFeedbackForm({ productId, systemTitle }: CustomerFeedbac
         </div>
 
         <div className="space-y-1.5">
+          <label htmlFor="missingCapability" className="block text-xs font-mono font-bold text-gray-300">
+            4. What single feature or capability would make this 10x more useful for you?
+          </label>
+          <input
+            id="missingCapability"
+            type="text"
+            placeholder="e.g. Native GitHub Actions CI/CD step for schema regression blocking"
+            value={missingCapability}
+            onChange={(e) => setMissingCapability(e.target.value)}
+            className="w-full bg-[#0B0F19] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 font-mono placeholder:text-gray-600"
+          />
+        </div>
+
+        <div className="space-y-1.5">
           <label htmlFor="nextDesiredSystem" className="block text-xs font-mono font-bold text-gray-300">
-            3. What operating system or automation tool should Evolvith manufacture next?
+            5. What related workflow or operating system should Evolvith manufacture next?
           </label>
           <input
             id="nextDesiredSystem"
             type="text"
-            placeholder="e.g. Multi-currency Stripe revenue reconciliation or Slack alert deduplicator"
+            placeholder="e.g. Multi-currency Stripe reconciliation or B2B lead enrichment workstation"
             value={nextDesiredSystem}
             onChange={(e) => setNextDesiredSystem(e.target.value)}
             className="w-full bg-[#0B0F19] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 font-mono placeholder:text-gray-600"

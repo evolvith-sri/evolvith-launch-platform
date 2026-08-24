@@ -6,7 +6,7 @@ export function SupportClientForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    topic: 'LICENSE_RECOVERY',
+    topic: 'DOWNLOAD',
     orderOrCode: '',
     message: '',
   });
@@ -38,7 +38,7 @@ export function SupportClientForm() {
         <button
           onClick={() => {
             setSubmitted(false);
-            setFormData({ name: '', email: '', topic: 'LICENSE_RECOVERY', orderOrCode: '', message: '' });
+            setFormData({ name: '', email: '', topic: 'DOWNLOAD', orderOrCode: '', message: '' });
           }}
           className="px-6 py-2.5 bg-surface hover:bg-white/10 text-xs font-mono text-gray-300 rounded-xl border border-white/10 transition-colors"
         >
@@ -94,11 +94,15 @@ export function SupportClientForm() {
               onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
               className="w-full bg-[#0B0F19] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500"
             >
-              <option value="LICENSE_RECOVERY">License & Download Package Recovery</option>
-              <option value="APPSUMO_REDEMPTION">AppSumo Code Verification Help</option>
-              <option value="DODO_BILLING">Dodo Payments Billing & Invoicing</option>
-              <option value="TECHNICAL_DEPLOYMENT">Technical Installation & CLI Assistance</option>
-              <option value="ENTERPRISE_CUSTOM">Custom Enterprise SLA / Procurement</option>
+              <option value="PAYMENT">Payment & Invoicing (Dodo Payments)</option>
+              <option value="REDEMPTION">AppSumo Deal Code Redemption</option>
+              <option value="DOWNLOAD">Package Download & Token Recovery</option>
+              <option value="INSTALLATION">Installation & CLI Runbook Setup</option>
+              <option value="WORKSTATION">Live Workstation Diagnostic Access</option>
+              <option value="DOCUMENTATION">Schema Specs & Technical Documentation</option>
+              <option value="BUG">Bug Report / Technical Anomaly</option>
+              <option value="FEATURE_REQUEST">Feature Request / Workflow Expansion</option>
+              <option value="OTHER">Enterprise Procurement & General Inquiries</option>
             </select>
           </div>
 

@@ -38,10 +38,28 @@ export async function POST(req: NextRequest) {
 
 export async function GET() {
   const metrics = Array.from(INTENT_METRICS.values());
+  const eventCounts: Record<string, number> = {};
+  for (const m of metrics) {
+    eventCounts[m.eventType] = (eventCounts[m.eventType] || 0) + m.count;
+  }
+
+  const funnel = {
+    landingVisits: eventCounts['VISIT_HOMEPAGE'] || 0,
+    storeViews: eventCounts['VIEW_STORE'] || 0,
+    productBlueprintViews: (eventCounts['VIEW_PRODUCT_PAGE'] || 0) + (eventCounts['VIEW_PRODUCT_BLUEPRINT'] || 0),
+    workstationLaunches: eventCounts['LAUNCH_WORKSTATION'] || 0,
+    checkoutClicks: (eventCounts['CLICK_CHECKOUT_CTA'] || 0) + (eventCounts['CLICK_INSTANT_BUY'] || 0),
+    checkoutInitiations: eventCounts['INITIATE_CHECKOUT'] || 0,
+    purchasesCompleted: eventCounts['PAYMENT_COMPLETED'] || 0,
+    packageDownloads: eventCounts['DOWNLOAD_PACKAGE'] || 0,
+    feedbackSubmitted: eventCounts['SUBMIT_FEEDBACK'] || 0,
+  };
+
   return NextResponse.json(
     {
       success: true,
       totalEventsLogged: metrics.reduce((acc, m) => acc + m.count, 0),
+      funnel,
       metrics,
     },
     { status: 200 }

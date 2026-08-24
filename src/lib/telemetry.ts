@@ -6,13 +6,20 @@
  */
 
 export type CommercialEventType =
+  | 'VISIT_HOMEPAGE'
   | 'VIEW_STORE'
+  | 'VIEW_PRODUCT_PAGE'
   | 'VIEW_PRODUCT_BLUEPRINT'
+  | 'LAUNCH_WORKSTATION'
+  | 'CLICK_CHECKOUT_CTA'
   | 'CLICK_INSTANT_BUY'
   | 'CLICK_DODO_DIRECT'
   | 'INITIATE_CHECKOUT'
+  | 'PAYMENT_COMPLETED'
+  | 'DOWNLOAD_PACKAGE'
+  | 'SUBMIT_FEEDBACK'
   | 'VIEW_DOCS'
-  | 'VIEW_WORKSTATION';
+  | 'VIEW_SUPPORT';
 
 export interface TelemetryEvent {
   eventType: CommercialEventType;
