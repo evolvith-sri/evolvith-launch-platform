@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
+import { COMMERCIAL_PRODUCTS_COUNT } from '@/lib/products';
 
 export function Navbar() {
   const scrollPosition = useScrollPosition();
@@ -19,22 +20,26 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Brand Emblem & Wordmark */}
-        <Link
-          href="/"
-          className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg p-1"
-          aria-label="Evolvith Digital Headquarters Homepage"
-        >
-          <div className="w-9 h-9 bg-gradient-to-br from-cyan-500 to-indigo-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg group-hover:scale-105 transition-transform">
+        {/* Brand Logo */}
+        <Link href="/" className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-lg p-1">
+          <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-indigo-600 rounded-xl flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300">
             E
           </div>
-          <span className="font-heading font-extrabold text-xl tracking-wider text-white">
-            EVOLVITH
-          </span>
+          <div className="flex flex-col">
+            <span className="font-heading font-extrabold text-xl tracking-wider text-white flex items-center gap-2">
+              EVOLVITH
+              <span className="text-[10px] px-1.5 py-0.2 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono font-medium">
+                EEOS
+              </span>
+            </span>
+            <span className="text-[9px] font-mono text-gray-400 tracking-tight">
+              Enterprise Operating Systems
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-gray-300">
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300" aria-label="Main Navigation">
           <Link
             href="/"
             className="hover:text-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded px-2 py-1 transition-colors"
@@ -47,7 +52,7 @@ export function Navbar() {
           >
             <span>Products</span>
             <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold">
-              18 OS
+              {COMMERCIAL_PRODUCTS_COUNT} OS
             </span>
           </Link>
           <Link
@@ -137,7 +142,7 @@ export function Navbar() {
             className="block text-gray-300 hover:text-cyan-400 font-medium text-base py-1.5 flex items-center justify-between"
           >
             <span>Products</span>
-            <span className="text-xs font-mono text-cyan-400 font-bold">18 OS</span>
+            <span className="text-xs font-mono text-cyan-400 font-bold">{COMMERCIAL_PRODUCTS_COUNT} OS</span>
           </Link>
           <Link
             href="/store"

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { COMMERCIAL_PRODUCTS_COUNT } from '@/lib/products';
 
 export function Footer() {
   return (
@@ -70,7 +71,7 @@ export function Footer() {
             Platform & Support
           </h4>
           <ul className="space-y-2 text-xs font-mono text-gray-400">
-            <li><Link href="/products" className="hover:text-cyan-400 transition-colors">Products Catalog (18 OS)</Link></li>
+            <li><Link href="/products" className="hover:text-cyan-400 transition-colors">Products Catalog ({COMMERCIAL_PRODUCTS_COUNT} OS)</Link></li>
             <li><Link href="/store" className="text-emerald-400 hover:text-emerald-300 font-bold transition-colors">Commercial Store ($49+)</Link></li>
             <li><Link href="/docs" className="hover:text-cyan-400 transition-colors">Documentation & Runbooks</Link></li>
             <li><Link href="/support" className="hover:text-cyan-400 transition-colors">Customer & License Support</Link></li>

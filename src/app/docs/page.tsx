@@ -25,7 +25,7 @@ export default function DocsPage() {
           Evolvith Operating System <span className="text-gradient">Runbooks & Docs</span>
         </h1>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-          Production-grade engineering manuals, rapid deployment runbooks, schema contracts, and integration guides for all 18 Evolvith Enterprise Operating Systems.
+          Production-grade engineering manuals, rapid deployment runbooks, schema contracts, and integration guides for all 17 active Evolvith Enterprise Operating Systems.
         </p>
       </section>
 

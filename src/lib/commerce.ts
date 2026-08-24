@@ -54,9 +54,12 @@ export interface ProductCommerceMapping {
 
 /**
  * Centralized Product-to-Commerce Mapping Table
- * Total Defined Portfolio: 18 Systems
- * - 16 Commercial Systems (7 Tier-1 + 6 Tier-2A + 3 Tier-2B)
- * - 2 Tier-3 Synthesis Organisms in Development (Non-purchasable, no Dodo IDs)
+ * Authoritative Commercial Portfolio: Exactly 17 Operating Systems
+ * - 8 Tier-1 Focused Systems ($49 AUDIT-OS-01 + 7 @ $99)
+ * - 6 Tier-2A Enterprise Systems ($149–$349)
+ * - 3 Tier-2B Strategic Entry Systems ($99 Launch Edition)
+ * - 4 Tier-3 Synthesis Organisms in Development (Strictly non-purchasable, no Dodo IDs)
+ * Total Portfolio Architecture: 21 Systems (17 Commercial + 4 Tier-3 Development Organisms)
  */
 export const PRODUCT_COMMERCE_MAPPINGS: Record<string, ProductCommerceMapping> = {
   // --- TIER 1: Developer & Focused Systems ---

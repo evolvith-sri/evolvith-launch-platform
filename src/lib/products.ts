@@ -1505,11 +1505,15 @@ function attachCommerceUrls(products: Product[]): Product[] {
 // Combined Tier 2 Collection (6 Tier 2A + 3 Tier 2B = 9 Systems)
 export const TIER_2_PRODUCTS: Product[] = attachCommerceUrls([...TIER_2A_PRODUCTS, ...TIER_2B_PRODUCTS]);
 
-// 16 Purchasable Commercial Systems
+// Authoritative Purchasable Commercial Systems: Exactly 17 Operating Systems (8 Tier 1 + 6 Tier 2A + 3 Tier 2B)
 export const COMMERCIAL_PRODUCTS: Product[] = attachCommerceUrls([...TIER_1_PRODUCTS, ...TIER_2_PRODUCTS]);
 
-// Total Defined Systems (16 Commercial + 4 Tier-3 Development Organisms)
+// Total Defined Systems: 17 Commercial + 4 Tier-3 Development Organisms = 21 Systems
 export const ALL_PRODUCTS: Product[] = [...COMMERCIAL_PRODUCTS, ...TIER_3_PRODUCTS];
+
+// Single Source of Truth Product Counts
+export const COMMERCIAL_PRODUCTS_COUNT: number = COMMERCIAL_PRODUCTS.length; // 17
+export const TOTAL_PORTFOLIO_COUNT: number = ALL_PRODUCTS.length; // 21
 
 // Backwards compatibility aliases
 export const WAVE_1_PRODUCTS: Product[] = attachCommerceUrls(TIER_2A_PRODUCTS);

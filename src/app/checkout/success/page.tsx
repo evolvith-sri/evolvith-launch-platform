@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getProductCommerceMapping } from '@/lib/commerce';
 import { generateSignedDownloadToken } from '@/lib/delivery';
+import { CustomerFeedbackForm } from '@/components/CustomerFeedbackForm';
 
 export const dynamic = 'force-dynamic';
 
@@ -189,6 +190,12 @@ export default function CheckoutSuccessPage({ searchParams }: SuccessPageProps) 
           </Link>
         </div>
       </div>
+
+      {/* Customer Feedback & Research Loop */}
+      <CustomerFeedbackForm
+        productId={mapping.productId}
+        systemTitle={mapping.title}
+      />
     </div>
   );
 }

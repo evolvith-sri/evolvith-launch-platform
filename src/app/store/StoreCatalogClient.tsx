@@ -65,11 +65,11 @@ export function StoreCatalogClient({
         {/* Tier Tabs */}
         <div className="flex flex-wrap items-center gap-2 border-b border-white/10 pb-4">
           {[
-            { id: 'ALL', label: 'All Portfolios (18)', badge: 'ALL' },
-            { id: '1', label: 'Tier 1: Focused OS', badge: '$49–$99' },
-            { id: '2A', label: 'Tier 2A: Enterprise OS', badge: '$149–$349' },
-            { id: '2B', label: 'Tier 2B: Strategic Entry', badge: '$99' },
-            { id: '3', label: 'Tier 3: Synthesis', badge: 'In Dev' },
+            { id: 'ALL', label: `All Systems (${allProducts.length})`, badge: `${allProducts.filter(p => p.availability === 'COMMERCIAL').length} Active` },
+            { id: '1', label: 'Tier 1: Focused OS', badge: '8 Systems · $49–$99' },
+            { id: '2A', label: 'Tier 2A: Enterprise OS', badge: '6 Systems · $149–$349' },
+            { id: '2B', label: 'Tier 2B: Strategic Entry', badge: '3 Systems · $99' },
+            { id: '3', label: 'Tier 3: Synthesis', badge: 'Architecture Preview' },
           ].map((tab) => (
             <button
               key={tab.id}
