@@ -20,7 +20,7 @@ export interface CommerceConfig {
 
 export const DODO_STOREFRONT_URL =
   process.env.NEXT_PUBLIC_DODO_STORE_URL ||
-  'https://store.dodopayments.com/bus_0NlZ2nVWhB98mYwC5vi7F';
+  'https://store.dodopayments.com/evolvith';
 
 export const COMMERCE_CONFIG: CommerceConfig = {
   status: 'LIVE', // Governed State: LIVE under Governance Order PR-0002O

@@ -78,7 +78,7 @@ export function Footer() {
             <li><Link href="/about" className="hover:text-cyan-400 transition-colors">About Evolvith</Link></li>
             <li><Link href="/workstations/audit-os-01" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium flex items-center gap-1"><span>AUDIT-OS-01 Workstation</span><span className="text-[9px] px-1 py-0.2 bg-emerald-500/20 text-emerald-400 rounded">LIVE</span></Link></li>
             <li><Link href="/redeem" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">Redeem AppSumo Code</Link></li>
-            <li><a href="https://store.dodopayments.com/bus_0NlZ2nVWhB98mYwC5vi7F" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1"><span>Dodo Payments Storefront</span><span className="text-[9px] text-gray-500">↗</span></a></li>
+            <li><a href="https://store.dodopayments.com/evolvith" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1"><span>Dodo Payments Storefront</span><span className="text-[9px] text-gray-500">↗</span></a></li>
             <li><Link href="/privacy" className="hover:text-cyan-400 transition-colors">Privacy Policy</Link></li>
             <li><Link href="/terms" className="hover:text-cyan-400 transition-colors">Terms of Service</Link></li>
           </ul>
