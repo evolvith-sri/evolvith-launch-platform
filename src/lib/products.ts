@@ -141,6 +141,340 @@ export const TIER_1_PRODUCTS: Product[] = [
     checkoutUrl: null
   },
   {
+    id: "pipe-os-01",
+    systemCode: "PIPE-OS-01",
+    tier: 1,
+    subTier: "1",
+    wave: 1,
+    title: "PIPE-OS-01 Local B2B Lead Waterfall & Prospect Enrichment Engine",
+    subtitle: "Clean, deduplicate, validate RFC 5322 syntax, verify DNS MX records, and waterfall-enrich prospect lists locally using your own API keys.",
+    category: "Lead Generation",
+    price: 49,
+    badge: "Sales Ops OS",
+    status: "RELEASED",
+    availability: "COMMERCIAL",
+    oneSentencePurpose: "Cleans, deduplicates, validates, and waterfall-enriches prospect lists locally using customer BYOK keys without recurring credit markups.",
+    operationalFriction: "Paying recurring monthly platform fees and inflated per-credit markups to cloud enrichment tools when SDRs already possess their own API keys; high email bounce rates.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 98%+ Validated Deliverability on Verified Output & 100% Elimination of SaaS Credit Markups.",
+    description: "Local-first prospect waterfall and enrichment workstation. Cleans CSV files, detects duplicates, validates RFC 5322 email syntax, verifies DNS MX mailservers, and routes records through a multi-provider waterfall cascade.",
+    executiveSummary: "PIPE-OS-01 empowers B2B founders, SDRs, cold email agencies, and freelancers to run multi-provider waterfall lead enrichment on their own machines using BYOK credentials, eliminating monthly SaaS credit markups.",
+    targetBuyer: "B2B Founders, SDR Leads, Cold Email Agencies, Lead Gen Freelancers.",
+    upgradePath: "REV-OS-01 Autonomous Revenue Operations OS ($249)",
+    problemsSolved: [
+      "Expensive recurring SaaS subscription fees with inflated per-lead credit markups.",
+      "High bounce rates destroying cold email domain reputation due to invalid syntax or missing MX records.",
+      "Fragmented manual lookups across multiple enrichment provider dashboards."
+    ],
+    capabilities: [
+      "Smart CSV Import & Auto-Column Mapping Engine.",
+      "Deterministic Multi-Key Lead Deduplication & Normalization.",
+      "RFC 5322 Email Syntax & Disposable Domain Detection.",
+      "DNS MX Mailserver Verification & Reachability Check.",
+      "BYOK Multi-Provider Waterfall Routing (Hunter, Apollo, Dropcontact, Anymail, Clearbit).",
+      "Strict Multi-Level Classification (Syntax vs MX vs Verified Provider Result).",
+      "Sanitized Enriched CSV Exporter."
+    ],
+    deliverables: [
+      "PIPE-OS-01 Workstation Engine & CLI Harness.",
+      "Multi-Provider Waterfall Routing Engine & Normalizer.",
+      "DNS MX Record Verifier & Disposable Domain Database.",
+      "Digital Package (.zip) with Quickstart Installation Runbook."
+    ],
+    whatYouReceive: [
+      "Digital product package (.zip) with inspectable local Python & TypeScript engine.",
+      "Standardized AST JSON Blueprint Schema (blueprint.json).",
+      "Lead Waterfall & List Enrichment SOP Manual (SOP_MANUAL.md).",
+      "API & Webhook Integration Specification (API_SPEC.md).",
+      "One-Time Perpetual Commercial License Grant (LICENSE_EULA.md).",
+      "48-Hour Rapid Installation Runbook (docs/)."
+    ],
+    outcomes: [
+      "Zero SaaS Platform Credit Markups via BYOK API Routing.",
+      "98%+ Cold Email Inbox Placement on Verified Prospect Lists.",
+      "100% Local-First Data Privacy (Leads never touch Evolvith servers)."
+    ],
+    whoItIsFor: [
+      "B2B Founders and SDRs executing cold outbound sequences.",
+      "Lead generation and cold email agencies managing client prospect lists.",
+      "Growth marketers seeking local, private prospect validation."
+    ],
+    faqs: [
+      {
+        question: "How does PIPE-OS-01 protect prospect data privacy?",
+        answer: "100% of data processing occurs on your local machine. Your lead CSVs and BYOK provider API keys are never transmitted to or stored on Evolvith servers."
+      },
+      {
+        question: "What enrichment providers are supported?",
+        answer: "Supports native BYOK adapters for Hunter.io, Apollo.io, Dropcontact, Anymail Finder, Clearbit, and custom HTTP webhooks."
+      }
+    ],
+    checkoutUrl: null
+  },
+  {
+    id: "seo-audit-os-01",
+    systemCode: "SEO-AUDIT-OS-01",
+    tier: 1,
+    subTier: "1",
+    wave: 1,
+    title: "SEO-AUDIT-OS-01 Programmatic Technical SEO & Broken Link Crawler",
+    subtitle: "Crawl websites locally, detect broken links (404), redirect chains, canonical errors, and missing metadata without recurring page limits.",
+    category: "SEO & Analytics",
+    price: 49,
+    badge: "SEO OS",
+    status: "RELEASED",
+    availability: "COMMERCIAL",
+    oneSentencePurpose: "Crawls websites locally and produces practical technical SEO audits without recurring page limits or cloud subscription fees.",
+    operationalFriction: "Recurring subscription-based SEO platforms with strict page-crawl limits and quotas for client website audits.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Sub-5 Minute 1,000-Page Full Technical Audit & 100% Elimination of SaaS Crawl Limits.",
+    description: "Local-first technical SEO crawler and audit engine. Ingests seed URLs, parses robots.txt and sitemaps, traverses internal links, and analyzes HTTP status codes, canonicals, headings, and metadata.",
+    executiveSummary: "SEO-AUDIT-OS-01 provides SEO consultants, web agencies, and developers with a local crawler that eliminates recurring page limits while generating client-ready technical audit reports.",
+    targetBuyer: "SEO Consultants, Web Agencies, Growth Marketers, Technical SEO Auditors.",
+    problemsSolved: [
+      "Expensive recurring monthly subscriptions with artificial page quotas.",
+      "Broken internal links and redirect chains causing silent search crawl budget waste.",
+      "Manual compilation of client technical audit deliverables."
+    ],
+    capabilities: [
+      "Local Website Crawler with Robots.txt & Sitemap Discovery.",
+      "HTTP Status & Broken Link Detection (404 errors, 5xx server errors).",
+      "Redirect Chain & Infinite Redirect Loop Analyzer.",
+      "Title & Meta Description Truncation / Missing Tags Audit.",
+      "Canonical Tag & Duplicate Content Consistency Checker.",
+      "Site Health Score Calculation Engine (0–100 Weighted Matrix).",
+      "Client-Ready Branded Technical SEO Audit Report Generator (HTML/Markdown)."
+    ],
+    deliverables: [
+      "SEO-AUDIT-OS-01 Crawler Engine & CLI Harness.",
+      "Technical SEO Rule Engine & Link Graph Analyzer.",
+      "Client Report Generator (Markdown/HTML).",
+      "Digital Package (.zip) with Quickstart Installation Runbook."
+    ],
+    whatYouReceive: [
+      "Digital product package (.zip) with inspectable local Python & TypeScript crawler.",
+      "Standardized AST JSON Blueprint Schema (blueprint.json).",
+      "Technical SEO Audit SOP Manual (SOP_MANUAL.md).",
+      "API & Crawler Specification (API_SPEC.md).",
+      "One-Time Perpetual Commercial License Grant (LICENSE_EULA.md).",
+      "48-Hour Rapid Installation Runbook (docs/)."
+    ],
+    outcomes: [
+      "Zero Page-Crawl Limits on Technical Client Audits.",
+      "Instant Identification of 404 Broken Links and Redirect Chains.",
+      "Automated Client Deliverable Generation with 0–100 Health Scoring."
+    ],
+    whoItIsFor: [
+      "SEO consultants auditing client sites.",
+      "Web development agencies running pre-launch QA checks.",
+      "SaaS marketers optimizing site health and crawl efficiency."
+    ],
+    faqs: [
+      {
+        question: "Does SEO-AUDIT-OS-01 guarantee Google ranking improvements?",
+        answer: "No. Under strict Evolvith claim governance, SEO-AUDIT-OS-01 is a diagnostic and inspection system. It identifies structural code defects but does not make ranking guarantees."
+      },
+      {
+        question: "Are there any limits on the number of crawled pages?",
+        answer: "No recurring quotas or page limits. Crawl capacity is limited only by your local machine hardware and network bandwidth."
+      }
+    ],
+    checkoutUrl: null
+  },
+  {
+    id: "onboard-os-01",
+    systemCode: "ONBOARD-OS-01",
+    tier: 1,
+    subTier: "1",
+    wave: 1,
+    title: "ONBOARD-OS-01 Client Intake & Digital Asset Handover Workstation",
+    subtitle: "White-label client intake briefs, asset delivery checklists, automated reminder generation, and zero-plaintext credential handoff.",
+    category: "Agency Workstation",
+    price: 49,
+    badge: "Agency OS",
+    status: "RELEASED",
+    availability: "COMMERCIAL",
+    oneSentencePurpose: "Automates client intake briefs, tracks asset delivery, detects missing items, and provides zero-plaintext credential handoff.",
+    operationalFriction: "2-to-3 week agency project kickoff delays caused by missing client assets, lost briefs, and risky plaintext password sharing over email/Slack.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 60% Reduction in Project Kickoff Latency & 100% Zero-Plaintext Security Compliance.",
+    description: "White-label client intake portal and asset handover workstation for agencies and freelancers. Streamlines asset collection, tracks missing deliverables, and enforces secure credential handoff.",
+    executiveSummary: "ONBOARD-OS-01 empowers digital agencies and freelancers to standardize client intake, track digital asset checklists (logos, copy, DNS, logins), generate polite reminder emails, and certify when projects are ready to begin.",
+    targetBuyer: "Digital Agencies, Web Freelancers, Creative Studios, Client Onboarding Specialists.",
+    upgradePath: "CX-OS-01 Autonomous Customer Success OS ($199)",
+    problemsSolved: [
+      "Projects stalling for weeks while chasing clients for missing logos, copy, and DNS logins.",
+      "Dangerous plaintext password sharing across email and chat threads.",
+      "Expensive recurring client portal software subscriptions."
+    ],
+    capabilities: [
+      "Structured Client Intake Brief Generator.",
+      "Digital Asset Handover Checklist & Readiness State Machine.",
+      "Automated Missing Asset Reminder Template Generator.",
+      "Zero-Plaintext Credential Safety Scanner & BYOK Secret Link Integration.",
+      "5-Gate Lifecycle Tracking & Inactivity Stall Detection.",
+      "'Project Ready to Begin' Readiness Certification."
+    ],
+    deliverables: [
+      "ONBOARD-OS-01 Workstation Engine & CLI Harness.",
+      "Client Intake Brief & Asset Checklist State Machine.",
+      "Reminder Generator & Zero-Plaintext Safety Scanner.",
+      "Digital Package (.zip) with Quickstart Installation Runbook."
+    ],
+    whatYouReceive: [
+      "Digital product package (.zip) with inspectable local Python & TypeScript engine.",
+      "Standardized AST JSON Blueprint Schema (blueprint.json).",
+      "Client Onboarding SOP Manual (SOP_MANUAL.md).",
+      "Intake API Specification (API_SPEC.md).",
+      "One-Time Perpetual Commercial License Grant (LICENSE_EULA.md).",
+      "48-Hour Rapid Installation Runbook (docs/)."
+    ],
+    outcomes: [
+      "60% Reduction in Project Kickoff Latency.",
+      "100% Elimination of Plaintext Password Liabilities.",
+      "Professional White-Label Client Onboarding Experience."
+    ],
+    whoItIsFor: [
+      "Web design and development agencies onboarding new clients.",
+      "Freelancers needing structured brief and asset intake.",
+      "Marketing consultants managing multi-stakeholder deliverables."
+    ],
+    faqs: [
+      {
+        question: "How are client passwords handled securely?",
+        answer: "ONBOARD-OS-01 enforces a strict Zero-Plaintext policy. Passwords are never stored in plaintext. The system integrates with BYOK secret managers (1Password/Bitwarden) for self-destructing links."
+      }
+    ],
+    checkoutUrl: null
+  },
+  {
+    id: "prompt-qa-os-01",
+    systemCode: "PROMPT-QA-OS-01",
+    tier: 1,
+    subTier: "1",
+    wave: 1,
+    title: "PROMPT-QA-OS-01 LLM Prompt Regression Testing & Cost Workbench",
+    subtitle: "Regression-test prompt changes side-by-side against test matrices, track latency, estimate token costs, and run CI/CD quality gates.",
+    category: "Developer Tools",
+    price: 49,
+    badge: "AI Developer OS",
+    status: "RELEASED",
+    availability: "COMMERCIAL",
+    oneSentencePurpose: "Regression-tests AI prompt updates before changes silently degrade output quality, break JSON structures, or inflate token costs.",
+    operationalFriction: "Editing system prompts breaking production AI applications; lack of automated regression testing in CI/CD; expensive monthly SaaS prompt eval tools.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 100% Elimination of Silent Prompt Regressions in Production & Sub-10s CI Quality Gates.",
+    description: "Local-first LLM prompt regression workbench. Compares prompt versions, evaluates assertions (exact match, contains, regex, JSON Schema, length), measures latency, and estimates token costs using BYOK API keys.",
+    executiveSummary: "PROMPT-QA-OS-01 gives AI engineers and developers a local quality gate to regression-test prompt templates across multiple models (OpenAI, Anthropic, Gemini, Ollama) before shipping updates to production.",
+    targetBuyer: "AI Engineers, Full-Stack Developers, LLM App Builders, QA Engineers.",
+    problemsSolved: [
+      "Unannounced prompt modifications breaking downstream JSON parsers and user experiences.",
+      "Unexpected token cost explosions after subtle prompt wording changes.",
+      "Sending proprietary test suites and prompts to third-party cloud evaluation SaaS platforms."
+    ],
+    capabilities: [
+      "Prompt Version Side-by-Side Regression Diffing (V1 vs V2).",
+      "Deterministic Test Matrix Runner with Variable Interpolation.",
+      "Multi-Assertion Engine (Exact match, Substring, Regex, JSON Schema, Length limits).",
+      "Multi-Model BYOK Provider Adapters (OpenAI, Anthropic, Google Gemini, Ollama).",
+      "Measured Token Counting & Estimated USD Cost Rate Card Engine.",
+      "Latency Tracking (P50, P90, P99) & Performance Regression Detection.",
+      "CI/CD Runner Mode with Deterministic Exit Codes (0 on pass, 1 on failure)."
+    ],
+    deliverables: [
+      "PROMPT-QA-OS-01 Workstation Engine & CLI Harness.",
+      "Multi-Assertion Evaluation Engine & Version Differ.",
+      "Token Counter & Published Model Cost Rate Card Calculator.",
+      "Digital Package (.zip) with Quickstart Installation Runbook."
+    ],
+    whatYouReceive: [
+      "Digital product package (.zip) with inspectable local Python & TypeScript engine.",
+      "Standardized AST JSON Blueprint Schema (blueprint.json).",
+      "Prompt Regression Testing SOP Manual (SOP_MANUAL.md).",
+      "Test Runner API Specification (API_SPEC.md).",
+      "One-Time Perpetual Commercial License Grant (LICENSE_EULA.md).",
+      "48-Hour Rapid Installation Runbook (docs/)."
+    ],
+    outcomes: [
+      "Zero Silent Prompt Regressions Reaching Production.",
+      "Clear Visibility into Latency and Token Cost Drift.",
+      "Automated GitHub Actions / GitLab CI Quality Gates."
+    ],
+    whoItIsFor: [
+      "AI engineers developing production LLM applications.",
+      "Product managers optimizing prompt quality and response formats.",
+      "Developers needing 100% private, offline prompt evaluation."
+    ],
+    faqs: [
+      {
+        question: "How are token costs calculated?",
+        answer: "Token counts are measured directly from prompt/response token heuristics. USD costs are estimated based on official published provider rate cards."
+      }
+    ],
+    checkoutUrl: null
+  },
+  {
+    id: "doc-portal-os-01",
+    systemCode: "DOC-PORTAL-OS-01",
+    tier: 1,
+    subTier: "1",
+    wave: 1,
+    title: "DOC-PORTAL-OS-01 OpenAPI -> Interactive Developer Portal Generator",
+    subtitle: "Turn OpenAPI specifications into searchable interactive developer portals with multi-language code snippets and static HTML export.",
+    category: "Developer Tools",
+    price: 49,
+    badge: "Developer OS",
+    status: "RELEASED",
+    availability: "COMMERCIAL",
+    oneSentencePurpose: "Turns OpenAPI/Swagger specifications into polished, searchable developer portals without paying recurring documentation SaaS fees.",
+    operationalFriction: "Recurring hosted documentation platforms with usage-based seats and page-view pricing scaling unpredictably.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Sub-60s Developer Portal Generation & 100% Elimination of Cloud Documentation Fees.",
+    description: "Local-first interactive developer portal generator. Ingests OpenAPI 3.0/3.1 and Swagger 2.0 specs, creates searchable endpoint explorers, generates multi-language code snippets, and compiles self-contained static HTML sites.",
+    executiveSummary: "DOC-PORTAL-OS-01 empowers API developers, SaaS founders, and technical teams to generate polished, searchable developer documentation with multi-language code snippets and offline static HTML export.",
+    targetBuyer: "SaaS Founders, API Engineers, Technical Writers, Developer Relations Leads.",
+    problemsSolved: [
+      "Expensive recurring SaaS documentation fees scaling with page views.",
+      "Outdated API documentation that falls out of sync with OpenAPI specifications.",
+      "Difficulty hosting self-contained documentation offline or on free static hosts."
+    ],
+    capabilities: [
+      "OpenAPI 3.0 / 3.1 & Swagger 2.0 JSON/YAML Ingestion & Validator.",
+      "Interactive Endpoint Explorer Grouped by Tags & Operations.",
+      "Multi-Language Code Snippet Generator (cURL, JS Fetch, Python Requests, Go).",
+      "Request Body & Response Payload Visualizer with Sample Schemas.",
+      "Full-Text Search Across Endpoints, Tags, and Parameters.",
+      "Self-Contained Offline Static HTML/CSS/JS Export Compiler.",
+      "Safe Interactive API Sandbox with Strict Preview Separation."
+    ],
+    deliverables: [
+      "DOC-PORTAL-OS-01 Workstation Engine & CLI Harness.",
+      "OpenAPI Parser & Multi-Language Code Snippet Generator.",
+      "Self-Contained Static HTML Portal Compiler.",
+      "Digital Package (.zip) with Quickstart Installation Runbook."
+    ],
+    whatYouReceive: [
+      "Digital product package (.zip) with inspectable local Python & TypeScript engine.",
+      "Standardized AST JSON Blueprint Schema (blueprint.json).",
+      "API Documentation SOP Manual (SOP_MANUAL.md).",
+      "Compiler Specification (API_SPEC.md).",
+      "One-Time Perpetual Commercial License Grant (LICENSE_EULA.md).",
+      "48-Hour Rapid Installation Runbook (docs/)."
+    ],
+    outcomes: [
+      "100% Elimination of Monthly Cloud Documentation SaaS Fees.",
+      "Instant Code Snippets in cURL, JavaScript, Python, and Go.",
+      "Self-Contained Static Export for GitHub Pages, Netlify, or S3."
+    ],
+    whoItIsFor: [
+      "SaaS founders launching public or partner APIs.",
+      "Backend developers needing instant interactive docs from OpenAPI specs.",
+      "Technical writers compiling self-hosted developer portals."
+    ],
+    faqs: [
+      {
+        question: "Can I host the generated portal anywhere?",
+        answer: "Yes! DOC-PORTAL-OS-01 exports a clean, standalone static HTML bundle with zero backend dependencies, ready to host on GitHub Pages, Cloudflare Pages, Netlify, Vercel, or S3."
+      }
+    ],
+    checkoutUrl: null
+  },
+  {
     id: "forecast-os-01",
     systemCode: "FORECAST-OS-01",
     tier: 1,
@@ -489,151 +823,11 @@ export const TIER_1_PRODUCTS: Product[] = [
       }
     ],
     checkoutUrl: null
-  },
-  {
-    id: "kpi-os-01",
-    systemCode: "KPI-OS-01",
-    tier: 1,
-    subTier: "1",
-    wave: 2,
-    title: "KPI-OS-01 Executive KPI & Metrics Layer OS",
-    subtitle: "Declarative Semantic Metric Dictionary, Scorecard Generator & Variance Detection",
-    category: "Data Systems",
-    price: 99,
-    badge: "Focused OS",
-    status: "PORTFOLIO_SPEC",
-    availability: "COMMERCIAL",
-    oneSentencePurpose: "Aligns enterprise metrics into a declarative semantic dictionary and generates automated weekly executive scorecards.",
-    operationalFriction: "Conflicting departmental metrics (e.g., Marketing vs. Sales defining \"Lead\" differently) and slow manual compilation of weekly executive KPI dashboards.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 100% Definition Alignment Across Core Enterprise KPIs.",
-    description: "Targeted operating system engineered to eliminate conflicting departmental metrics and automate executive KPI reporting.",
-    executiveSummary: "KPI-OS-01 codifies enterprise metrics into declarative schemas, audits incoming data feeds against standardized formulas, and generates automated weekly scorecards with variance alerting.",
-    targetBuyer: "BI Managers, Analytics Leads, Founders & Managing Partners.",
-    upgradePath: "DATA-OS-01 Enterprise Data & Analytics OS ($179)",
-    problemsSolved: [
-      "Disputed metric definitions causing boardroom friction between department heads.",
-      "Days spent each week manually compiling executive KPI spreadsheets.",
-      "Delayed detection of metric deviations from quarterly targets."
-    ],
-    capabilities: [
-      "Metric schema validator auditing incoming metrics against standard formulas.",
-      "Executive scorecard generator building weekly Markdown/JSON board summaries.",
-      "KPI variance detector triggering alerts when metrics deviate > 15% from targets."
-    ],
-    deliverables: [
-      "KPI-OS-01 Core Execution Engine & CLI Harness.",
-      "Declarative Semantic Metric Definition Dictionary (YAML/JSON).",
-      "Automated Weekly Executive Scorecard Generator.",
-      "Standard Distribution Package."
-    ],
-    whatYouReceive: [
-      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
-      "Standardized AST JSON Blueprint Schema (blueprint.json).",
-      "Enterprise Metrics Dictionary SOP Manual & RACI Matrix (SOP_MANUAL.md).",
-      "API & Webhook Integration Specification (API_SPEC.md).",
-      "One-Time Perpetual Commercial License Grant (LICENSE_EULA.md).",
-      "Executive Architecture & Implementation Playbook (docs/)."
-    ],
-    outcomes: [
-      "100% Definition Alignment Across Core Enterprise KPIs.",
-      "Sub-Minute Weekly Executive Scorecard Generation.",
-      "Real-Time Threshold Deviation Alerting."
-    ],
-    whoItIsFor: [
-      "BI Managers enforcing single-source-of-truth metric definitions.",
-      "Analytics Leads building standardized data layers.",
-      "Managing Partners and Founders needing trustworthy executive scorecards."
-    ],
-    faqs: [
-      {
-        question: "What format are metric definitions written in?",
-        answer: "Written in standard declarative YAML/JSON schemas that validate data feeds programmatically."
-      },
-      {
-        question: "How does it upgrade to DATA-OS-01?",
-        answer: "KPI-OS-01 handles executive metrics governance ($99); DATA-OS-01 ($179) provides full enterprise knowledge graphs, vector telemetry, and warehouse pipelines."
-      },
-      {
-        question: "What is the delivery model?",
-        answer: "Delivered as a complete digital software package (.zip) with installation documentation and commercial license."
-      }
-    ],
-    checkoutUrl: null
-  },
-  {
-    id: "policy-os-01",
-    systemCode: "POLICY-OS-01",
-    tier: 1,
-    subTier: "1",
-    wave: 2,
-    title: "POLICY-OS-01 Policy Enforcement & Compliance OS",
-    subtitle: "Declarative Policy Codification, Audit Checklist Validator & Exception Logging",
-    category: "Governance Systems",
-    price: 99,
-    badge: "Focused OS",
-    status: "PORTFOLIO_SPEC",
-    availability: "COMMERCIAL",
-    oneSentencePurpose: "Transforms static compliance documents into active code validation rules, automated audit checklists, and exception logs.",
-    operationalFriction: "Static PDF security and operational policies that are ignored during day-to-day execution, creating severe audit and compliance exposure.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 80% Faster Internal Audit Preparation Cycle Times.",
-    description: "Targeted operating system engineered to eliminate compliance exposure and automate internal audit readiness.",
-    executiveSummary: "POLICY-OS-01 converts static compliance documents into active validation rules, performs continuous audit readiness scans against baseline frameworks (SOC2/ISO), and maintains an immutable exception log.",
-    targetBuyer: "Compliance Officers, Information Security Leads, Risk Managers.",
-    upgradePath: "GOV-OS-01 Enterprise Governance & Risk OS ($149)",
-    problemsSolved: [
-      "Policies stored in unread PDF binders leaving companies vulnerable during audits.",
-      "Lack of documented exception logs when policy overrides occur.",
-      "Painful, multi-week scramble before SOC2 or ISO compliance audits."
-    ],
-    capabilities: [
-      "Policy rule engine evaluating operational configurations against compliance baselines.",
-      "Audit readiness scanner generating instant compliance summaries for leadership.",
-      "Immutable exception logger recording authorized overrides in a structured audit log."
-    ],
-    deliverables: [
-      "POLICY-OS-01 Core Execution Engine & CLI Harness.",
-      "Declarative Policy Rule Engine (SOC2/ISO Baselines).",
-      "Immutable Policy Exception Logging Subsystem.",
-      "Standard Distribution Package."
-    ],
-    whatYouReceive: [
-      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
-      "Standardized AST JSON Blueprint Schema (blueprint.json).",
-      "Master Policy Enforcement SOP Manual & RACI Matrix (SOP_MANUAL.md).",
-      "API & Webhook Integration Specification (API_SPEC.md).",
-      "One-Time Perpetual Commercial License Grant (LICENSE_EULA.md).",
-      "Executive Architecture & Implementation Playbook (docs/)."
-    ],
-    outcomes: [
-      "80% Faster Internal Audit Preparation Cycle Times.",
-      "100% Policy Exception Logging and Traceability.",
-      "Continuous Compliance Readiness."
-    ],
-    whoItIsFor: [
-      "Compliance Officers preparing for SOC2 or ISO27001 certifications.",
-      "Information Security Leads automating policy enforcement checks.",
-      "Risk Managers eliminating unmonitored operational deviations."
-    ],
-    faqs: [
-      {
-        question: "Which compliance baselines are supported?",
-        answer: "Includes pre-configured baseline rulesets aligned with SOC2, ISO27001, and operational governance standards."
-      },
-      {
-        question: "How does it upgrade to GOV-OS-01?",
-        answer: "POLICY-OS-01 focuses on policy codification and audit readiness ($99); GOV-OS-01 ($149) adds the full Executive Decision Registry (EDR) and Defect Elimination Protocol (DEP)."
-      },
-      {
-        question: "What is the delivery model?",
-        answer: "Delivered as a complete digital software package (.zip) with installation documentation and commercial license."
-      }
-    ],
-    checkoutUrl: null
   }
 ];
 
 /**
- * TIER 2A: Enterprise Systems (6 Systems — $149–$349)
+ * TIER 2A: Enterprise Systems (5 Systems — $149–$349)
  * Deeper systems designed around major business functions and organizational workflows.
  */
 export const TIER_2A_PRODUCTS: Product[] = [
@@ -942,141 +1136,14 @@ export const TIER_2A_PRODUCTS: Product[] = [
       }
     ],
     checkoutUrl: null
-  },
-  {
-    id: "gov-os-01",
-    systemCode: "GOV-OS-01",
-    tier: 2,
-    subTier: "2A",
-    wave: 1,
-    title: "GOV-OS-01 Enterprise Governance & Risk OS",
-    subtitle: "Institutional Policy Enforcement, Compliance & Defect Elimination",
-    category: "Governance Systems",
-    price: 149,
-    badge: "Enterprise OS",
-    status: "RELEASED",
-    availability: "COMMERCIAL",
-    oneSentencePurpose: "Codifies policies into active software rules, managing institutional decision logs and eliminating recurring defects.",
-    operationalFriction: "Paper compliance policies ignored by employees and lack of institutional records for executive decisions.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Zero Policy Non-Compliance Defects in Audits.",
-    description: "Codifies policies into automated software enforcement rules.",
-    executiveSummary: "GOV-OS-01 converts static paper policies into active software governance. It enforces compliance gates, manages institutional decision logs, and eliminates recurring defects across all business units.",
-    targetBuyer: "Chief Risk Officers, General Counsels & Executive Boards.",
-    problemsSolved: [
-      "Paper policies ignored by employees and contractors.",
-      "Lack of institutional record for executive decisions.",
-      "Recurring compliance and operational defects during audits."
-    ],
-    capabilities: [
-      "Executive Decision Registry (EDR) Master Logging Engine.",
-      "Quality Gate & Policy Enforcement Pipeline.",
-      "Defect Elimination Protocol (DEP) Workflow Engine."
-    ],
-    deliverables: [
-      "GOV-OS-01 Master Governance System.",
-      "Enterprise Policy Enforcement Code Modules.",
-      "Executive Decision & Risk Telemetry Dashboard.",
-      "Quality Gate QG4 Certified Deployment Package."
-    ],
-    whatYouReceive: [
-      "Digital product package (.zip) containing full inspectable local Python governance brain.",
-      "Enterprise Policy Enforcement Code Modules & EDR Schemas.",
-      "Executive Decision & Risk Telemetry Dashboard.",
-      "48-Hour Rapid Installation Runbook & Audit Harness.",
-      "One-Time Perpetual Commercial License Grant with unlimited internal seats."
-    ],
-    outcomes: [
-      "Zero Policy Non-Compliance Defects in Audits.",
-      "Complete Institutional Audit Log of Executive Decisions."
-    ],
-    whoItIsFor: [
-      "Chief Risk Officers, General Counsels & Executive Boards."
-    ],
-    faqs: [
-      {
-        question: "Does GOV-OS-01 support ISO and SOC2 compliance?",
-        answer: "Yes, it includes pre-mapped policy rulesets for SOC2, ISO27001, and GDPR compliance."
-      }
-    ],
-    checkoutUrl: null
   }
 ];
 
 /**
- * TIER 2B: Strategic Entry Systems (3 Systems — $99 Launch Edition)
+ * TIER 2B: Strategic Entry Systems ($99 Launch Edition)
  * High-leverage systems providing an accessible entry point into deeper Evolvith operating architecture.
  */
 export const TIER_2B_PRODUCTS: Product[] = [
-  {
-    id: "pipe-os-01",
-    systemCode: "PIPE-OS-01",
-    tier: 2,
-    subTier: "2B",
-    wave: 2,
-    title: "PIPE-OS-01 Lead & Pipeline Execution OS",
-    subtitle: "Standardized Lead Qualification, Stage-Gate Enforcement & Pipeline Velocity",
-    category: "Revenue Operations",
-    price: 99,
-    badge: "$99 Launch Edition",
-    status: "RELEASED",
-    availability: "COMMERCIAL",
-    oneSentencePurpose: "Eliminates lead leakage and deal slippage by enforcing deterministic qualification gates and automated stagnation escalation.",
-    operationalFriction: "High lead leakage, unstandardized sales stage progression, and manual deal qualification drop-off in early-stage pipelines.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 35% Reduction in Stalled Deal Aging Across Active Pipeline.",
-    description: "Strategic entry operating system engineered to eliminate early-stage pipeline friction and SDR/AE handoff leakage.",
-    executiveSummary: "PIPE-OS-01 is a strategic entry operating system engineered to eliminate early-stage sales friction. It replaces subjective pipeline stages with deterministic qualification criteria, automated lead scoring against ideal customer profiles, and programmatic stagnation alerts.",
-    targetBuyer: "Sales Directors, Revenue Operations Managers, Agency Founders ($500K–$10M ARR).",
-    upgradePath: "REV-OS-01 Autonomous Revenue Operations OS ($249)",
-    problemsSolved: [
-      "Unstandardized lead intake qualification causing sales rep pipeline congestion.",
-      "Early-stage deals stalling without automated alerts or executive visibility.",
-      "Inconsistent SDR to AE handoff documentation and missing qualification data."
-    ],
-    capabilities: [
-      "Automated ICP lead qualification scoring against 8 business parameters.",
-      "Deterministic pipeline stage-gate validator script.",
-      "Automated 14-day stalled deal webhook escalation dispatcher."
-    ],
-    deliverables: [
-      "PIPE-OS-01 Core Execution Engine & CLI Harness.",
-      "Lead Intake Validation Matrix & ICP Scoring Rules.",
-      "Master Pipeline Governance SOP Manual & RACI Matrix.",
-      "Quality Gate QG4 Certified Distribution Package."
-    ],
-    whatYouReceive: [
-      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
-      "Standardized AST JSON Blueprint Schema (blueprint.json).",
-      "Master Pipeline Governance SOP Manual & RACI Matrix (SOP_MANUAL.md).",
-      "API & Webhook Integration Specification (API_SPEC.md).",
-      "One-Time Perpetual Commercial License Grant (LICENSE_EULA.md).",
-      "Executive Architecture & Implementation Playbook (docs/)."
-    ],
-    outcomes: [
-      "35% Reduction in Stalled Deal Aging Across Active Pipeline.",
-      "100% SDR/AE Qualification Handoff Adherence.",
-      "Automated Real-Time Deal Stagnation Alerts."
-    ],
-    whoItIsFor: [
-      "Sales Directors scaling early-stage B2B sales pipelines.",
-      "Revenue Operations Managers standardizing CRM stage gates.",
-      "Agency and SaaS Founders seeking structured deal velocity."
-    ],
-    faqs: [
-      {
-        question: "What is included in the PIPE-OS-01 digital product package?",
-        answer: "The package includes the full inspectable local Python execution engine, command-line diagnostic tool, AST blueprint schema, master SOP manual, RACI matrix, API specification, and a perpetual commercial license."
-      },
-      {
-        question: "How does PIPE-OS-01 relate to REV-OS-01?",
-        answer: "PIPE-OS-01 provides high-leverage entry into pipeline qualification ($99 Launch Edition), expanding into REV-OS-01 ($249) for comprehensive enterprise revenue forecasting."
-      },
-      {
-        question: "What is the commercial licensing model?",
-        answer: "Includes a one-time perpetual commercial license with unlimited internal seats and zero recurring SaaS subscription fees."
-      }
-    ],
-    checkoutUrl: null
-  },
   {
     id: "cash-os-01",
     systemCode: "CASH-OS-01",
@@ -1139,76 +1206,6 @@ export const TIER_2B_PRODUCTS: Product[] = [
       {
         question: "How does it relate to FIN-OS-01?",
         answer: "CASH-OS-01 specializes in accounts receivable recovery ($99 Launch Edition), pairing with FIN-OS-01 ($349) for full enterprise cash flow and capital allocation."
-      },
-      {
-        question: "What is the delivery model?",
-        answer: "Delivered as a complete digital software package (.zip) with installation documentation and commercial license."
-      }
-    ],
-    checkoutUrl: null
-  },
-  {
-    id: "onboard-os-01",
-    systemCode: "ONBOARD-OS-01",
-    tier: 2,
-    subTier: "2B",
-    wave: 2,
-    title: "ONBOARD-OS-01 Customer Onboarding & Activation OS",
-    subtitle: "Milestone-Based Client Onboarding, TTFV Acceleration & Stall Detection",
-    category: "Customer Success",
-    price: 99,
-    badge: "$99 Launch Edition",
-    status: "RELEASED",
-    availability: "COMMERCIAL",
-    oneSentencePurpose: "Accelerates time-to-first-value and eliminates customer drop-off with 5-gate implementation tracking and stall detection.",
-    operationalFriction: "Customer drop-off during onboarding, extended time-to-first-value (TTFV), and inconsistent implementation milestone tracking.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 50% Faster Time-to-First-Value (TTFV) Across Standard Customer Onboardings.",
-    description: "Strategic entry operating system engineered to eliminate onboarding bottlenecks and accelerate time-to-first-value.",
-    executiveSummary: "ONBOARD-OS-01 structures post-sales implementation into five strict milestone gates. It includes automated stall detection for stagnant accounts and calculates activation health scores.",
-    targetBuyer: "Customer Success Managers, Onboarding Leads, Operations Directors.",
-    upgradePath: "CX-OS-01 Autonomous Customer Success OS ($199)",
-    problemsSolved: [
-      "Extended implementation timelines causing buyer remorse and delayed value.",
-      "Customer accounts stalling silently in onboarding without CS alert triggers.",
-      "Inconsistent milestone execution between different onboarding specialists."
-    ],
-    capabilities: [
-      "Milestone tracker monitoring progress across 5 implementation gates.",
-      "Stall detection engine flagging accounts inactive > 5 business days.",
-      "Activation health scorer evaluating core configuration completion."
-    ],
-    deliverables: [
-      "ONBOARD-OS-01 Core Execution Engine & CLI Harness.",
-      "5-Stage Implementation Gate Tracking Engine.",
-      "Automated Onboarding Stall Detection Dispatcher.",
-      "Quality Gate QG4 Certified Distribution Package."
-    ],
-    whatYouReceive: [
-      "Digital product package (.zip) with complete inspectable local Python engine & CLI.",
-      "Standardized AST JSON Blueprint Schema (blueprint.json).",
-      "Client Onboarding SOP Manual & RACI Matrix (SOP_MANUAL.md).",
-      "API & Webhook Integration Specification (API_SPEC.md).",
-      "One-Time Perpetual Commercial License Grant (LICENSE_EULA.md).",
-      "Executive Architecture & Implementation Playbook (docs/)."
-    ],
-    outcomes: [
-      "50% Faster Time-to-First-Value (TTFV) Across Standard Customer Onboardings.",
-      "Zero Undetected Onboarding Stalls Past 5 Days.",
-      "Standardized 5-Stage Implementation Delivery."
-    ],
-    whoItIsFor: [
-      "Customer Success Managers managing high-touch client implementations.",
-      "Onboarding Leads scaling customer activation workflows.",
-      "Operations Directors standardizing post-sales delivery."
-    ],
-    faqs: [
-      {
-        question: "How does ONBOARD-OS-01 track progress?",
-        answer: "Tracks accounts through 5 deterministic implementation milestone gates with automated stall alerts."
-      },
-      {
-        question: "How does it relate to CX-OS-01?",
-        answer: "ONBOARD-OS-01 focuses specifically on post-sale onboarding ($99 Launch Edition); CX-OS-01 ($199) covers full lifecycle health scoring, churn prediction, and retention."
       },
       {
         question: "What is the delivery model?",

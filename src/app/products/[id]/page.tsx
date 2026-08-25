@@ -323,12 +323,12 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                     </a>
                   )}
 
-                  {product.id === 'audit-os-01' && (
+                  {['audit-os-01', 'pipe-os-01', 'seo-audit-os-01', 'onboard-os-01', 'prompt-qa-os-01', 'doc-portal-os-01'].includes(product.id) && (
                     <Link
-                      href="/workstations/audit-os-01"
+                      href={`/workstations/${product.id}`}
                       className="w-full py-2.5 px-3 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-xs font-mono font-bold text-cyan-300 text-center flex items-center justify-center gap-2 transition-colors"
                     >
-                      <span>⚡ Launch Live Workstation</span>
+                      <span>⚡ Launch Live Workstation / Demo</span>
                     </Link>
                   )}
 
@@ -337,12 +337,19 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                       <span>Instant Package Delivery via Dodo Payments Checkout</span>
                     </p>
-                    <div className="bg-surface/60 p-2.5 rounded-xl border border-white/5 text-[10px] font-mono text-gray-400 text-center space-y-1">
-                      <span>Redeeming an AppSumo Deal Code?</span>
-                      <Link href="/redeem" className="block text-cyan-400 hover:underline font-bold">
-                        Redeem code at /redeem →
-                      </Link>
-                    </div>
+                    {product.id === 'audit-os-01' ? (
+                      <div className="bg-surface/60 p-2.5 rounded-xl border border-white/5 text-[10px] font-mono text-gray-400 text-center space-y-1">
+                        <span>Redeeming an AppSumo Deal Code?</span>
+                        <Link href="/redeem" className="block text-cyan-400 hover:underline font-bold">
+                          Redeem code at /redeem →
+                        </Link>
+                      </div>
+                    ) : (
+                      <div className="bg-surface/60 p-2.5 rounded-xl border border-white/5 text-[10px] font-mono text-gray-400 text-center space-y-1">
+                        <span>One-Time Perpetual Commercial License</span>
+                        <span className="block text-gray-500">Unlimited Internal Seats • Verified Runbook</span>
+                      </div>
+                    )}
                   </div>
                 </>
               ) : (

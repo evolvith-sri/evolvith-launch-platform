@@ -79,13 +79,13 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
               : 'text-gray-400 hover:text-white hover:bg-white/5'
           }`}
         >
-          <span>TIER 1 • Focused</span>
+          <span>TIER 1 • Focused & Wave 1</span>
           <span
             className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
               activeTier === 'tier1' ? 'bg-black/20 text-black' : 'bg-cyan-500/20 text-cyan-300'
             }`}
           >
-            8 Systems · From $49
+            {TIER_1_PRODUCTS.length} Systems · From $49
           </span>
         </button>
 
@@ -107,7 +107,7 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
               activeTier === 'tier2a' ? 'bg-black/20 text-black' : 'bg-indigo-500/20 text-indigo-300'
             }`}
           >
-            6 Systems · $149–$349
+            {TIER_2A_PRODUCTS.length} Systems · $149–$349
           </span>
         </button>
 
@@ -129,7 +129,7 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
               activeTier === 'tier2b' ? 'bg-black/20 text-black' : 'bg-emerald-500/20 text-emerald-300'
             }`}
           >
-            3 Systems · $99 Launch
+            {TIER_2B_PRODUCTS.length} System · $99 Launch
           </span>
         </button>
 
@@ -151,7 +151,7 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
               activeTier === 'tier3' ? 'bg-black/20 text-black' : 'bg-purple-500/20 text-purple-300'
             }`}
           >
-            4 in Dev · TBD
+            {TIER_3_PRODUCTS.length} in Dev · Architecture
           </span>
         </button>
       </div>
@@ -171,7 +171,7 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
             </p>
           </div>
           <div className="shrink-0 font-mono text-xs bg-cyan-500/10 border border-cyan-500/30 px-3.5 py-2 rounded-xl text-cyan-300">
-            8 Focused Systems ($49–$99)
+            {TIER_1_PRODUCTS.length} Systems ($49–$99)
           </div>
         </div>
       )}
@@ -190,7 +190,7 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
             </p>
           </div>
           <div className="shrink-0 font-mono text-xs bg-indigo-500/10 border border-indigo-500/30 px-3.5 py-2 rounded-xl text-indigo-300">
-            6 Enterprise Systems
+            {TIER_2A_PRODUCTS.length} Enterprise Systems
           </div>
         </div>
       )}
@@ -205,11 +205,30 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
               High-Leverage Entry Systems Into Deeper Evolvith Architecture
             </h3>
             <p className="text-xs text-gray-300 leading-relaxed">
-              Targeted high-leverage entry points for pipeline execution, receivables recovery, and customer activation at an accessible $99 Launch Edition pricing structure.
+              Targeted high-leverage entry points for cash collections and receivables governance at an accessible $99 Launch Edition pricing structure.
             </p>
           </div>
           <div className="shrink-0 font-mono text-xs bg-emerald-500/10 border border-emerald-500/30 px-3.5 py-2 rounded-xl text-emerald-300">
-            3 Systems ($99 Launch Edition)
+            {TIER_2B_PRODUCTS.length} System ($99 Launch Edition)
+          </div>
+        </div>
+      )}
+
+      {activeTier === 'tier3' && (
+        <div className="bg-surface/60 border border-purple-500/20 p-6 rounded-2xl max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <span className="text-[10px] font-mono uppercase text-purple-300 font-bold tracking-widest block">
+              Tier 3 • Synthesis Organisms (Architecture Preview)
+            </span>
+            <h3 className="text-base font-bold text-white font-heading">
+              Cross-System Operational Intelligence & Decision Support Organisms
+            </h3>
+            <p className="text-xs text-gray-300 leading-relaxed">
+              Synthesizes distributed signals across revenue, financial, and customer systems into real-time executive decision intelligence. In architectural development (Not commercially purchasable).
+            </p>
+          </div>
+          <div className="shrink-0 font-mono text-xs bg-purple-500/10 border border-purple-500/30 px-3.5 py-2 rounded-xl text-purple-300">
+            {TIER_3_PRODUCTS.length} Synthesis Organisms (In Dev)
           </div>
         </div>
       )}

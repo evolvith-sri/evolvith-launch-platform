@@ -65,11 +65,11 @@ export function StoreCatalogClient({
         {/* Tier Tabs */}
         <div className="flex flex-wrap items-center gap-2 border-b border-white/10 pb-4">
           {[
-            { id: 'ALL', label: `All Systems (${allProducts.length})`, badge: `${allProducts.filter(p => p.availability === 'COMMERCIAL').length} Active` },
-            { id: '1', label: 'Tier 1: Focused OS', badge: '8 Systems · $49–$99' },
-            { id: '2A', label: 'Tier 2A: Enterprise OS', badge: '6 Systems · $149–$349' },
-            { id: '2B', label: 'Tier 2B: Strategic Entry', badge: '3 Systems · $99' },
-            { id: '3', label: 'Tier 3: Synthesis', badge: 'Architecture Preview' },
+            { id: 'ALL', label: `All Systems (${allProducts.length})`, badge: `${commercialProducts.length} Commercial OS` },
+            { id: '1', label: 'Tier 1 / Wave 1: Focused OS', badge: `${allProducts.filter(p => p.subTier === '1').length} Systems · $49–$99` },
+            { id: '2A', label: 'Tier 2A: Enterprise OS', badge: `${allProducts.filter(p => p.subTier === '2A').length} Systems · $149–$349` },
+            { id: '2B', label: 'Tier 2B: Strategic Entry', badge: `${allProducts.filter(p => p.subTier === '2B').length} Systems · $99` },
+            { id: '3', label: 'Tier 3: Synthesis', badge: `${allProducts.filter(p => p.tier === 3 || p.subTier === '3').length} in Dev` },
           ].map((tab) => (
             <button
               key={tab.id}

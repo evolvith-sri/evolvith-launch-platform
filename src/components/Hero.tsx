@@ -15,17 +15,18 @@ interface SystemNode {
 }
 
 const SYSTEM_NODES: SystemNode[] = [
-  { id: 'audit-os-01', name: 'Visual API Contract & Webhook QA Workstation', code: 'AUDIT-OS-01', tier: 'Tier 1', category: 'Developer Tools', price: '$49', status: 'READY', outcome: 'Sub-90s Root Cause Diagnosis' },
-  { id: 'forecast-os-01', name: 'Revenue & Sales Forecasting OS', code: 'FORECAST-OS-01', tier: 'Tier 1', category: 'Revenue Ops', price: '$99', status: 'READY', outcome: '90% Forecast Variance Precision' },
-  { id: 'close-os-01', name: 'Month-End Financial Close OS', code: 'CLOSE-OS-01', tier: 'Tier 1', category: 'Financial Ops', price: '$99', status: 'READY', outcome: '24-Hour Accelerated Reconciliations' },
-  { id: 'pipe-os-01', name: 'Lead & Pipeline Execution OS', code: 'PIPE-OS-01', tier: 'Tier 2B', category: 'Revenue Ops', price: '$99', status: 'READY', outcome: '35% Less Deal Slippage' },
-  { id: 'cash-os-01', name: 'Cash Collection & Receivables OS', code: 'CASH-OS-01', tier: 'Tier 2B', category: 'Financial Ops', price: '$99', status: 'READY', outcome: '40% Faster Cash Recovery' },
+  { id: 'audit-os-01', name: 'Visual API Contract & Webhook QA Workstation', code: 'AUDIT-OS-01', tier: 'Wave 1', category: 'Developer Tools', price: '$49', status: 'READY', outcome: 'Sub-90s Root Cause Diagnosis' },
+  { id: 'pipe-os-01', name: 'Local B2B Lead Waterfall & Prospect Enrichment Engine', code: 'PIPE-OS-01', tier: 'Wave 1', category: 'Lead Generation', price: '$49', status: 'READY', outcome: '98%+ Validated Deliverability' },
+  { id: 'seo-audit-os-01', name: 'Programmatic Technical SEO & Broken Link Crawler', code: 'SEO-AUDIT-OS-01', tier: 'Wave 1', category: 'SEO & Analytics', price: '$49', status: 'READY', outcome: '0–100 Site Health Scoring' },
+  { id: 'onboard-os-01', name: 'Client Intake & Digital Asset Handover Workstation', code: 'ONBOARD-OS-01', tier: 'Wave 1', category: 'Agency Workstation', price: '$49', status: 'READY', outcome: '60% Faster Project Kickoffs' },
+  { id: 'prompt-qa-os-01', name: 'LLM Prompt Regression Testing & Cost Workbench', code: 'PROMPT-QA-OS-01', tier: 'Wave 1', category: 'Developer Tools', price: '$49', status: 'READY', outcome: 'Zero Silent Prompt Regressions' },
+  { id: 'doc-portal-os-01', name: 'OpenAPI -> Interactive Developer Portal Generator', code: 'DOC-PORTAL-OS-01', tier: 'Wave 1', category: 'Developer Tools', price: '$49', status: 'READY', outcome: 'Sub-60s Developer Portal Export' },
   { id: 'rev-os-01', name: 'Autonomous Revenue Operations OS', code: 'REV-OS-01', tier: 'Tier 2A', category: 'Revenue Systems', price: '$249', status: 'READY', outcome: '+38% Deal Velocity' },
   { id: 'fin-os-01', name: 'Financial Intelligence OS', code: 'FIN-OS-01', tier: 'Tier 2A', category: 'Financial Ops', price: '$349', status: 'READY', outcome: 'Strategic CFO Decision Modeling' },
 ];
 
 export function Hero() {
-  const [activeNode, setActiveNode] = useState<string>('forecast-os-01');
+  const [activeNode, setActiveNode] = useState<string>('audit-os-01');
   const selectedNode = SYSTEM_NODES.find((n) => n.id === activeNode) || SYSTEM_NODES[0];
 
   return (
@@ -63,12 +64,12 @@ export function Hero() {
           {/* Commercial Bridge & Featured Entry OS */}
           <div className="pt-1 flex flex-wrap items-center justify-center gap-3">
             <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 px-4 py-1.5 rounded-full text-xs font-mono text-cyan-300">
-              <span className="text-white font-bold">Featured Entry:</span>
-              <span><strong>AUDIT-OS-01</strong> ($49 Developer) & <strong>FORECAST-OS-01</strong> ($99)</span>
+              <span className="text-white font-bold">Featured / Recommended:</span>
+              <span><strong>AUDIT-OS-01</strong> ($49), <strong>PIPE-OS-01</strong> ($49), <strong>SEO-AUDIT-OS-01</strong> ($49)</span>
             </div>
             <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/30 px-4 py-1.5 rounded-full text-xs font-mono text-indigo-300">
-              <span className="text-white font-bold">Secondary Entry:</span>
-              <span><strong>CLOSE-OS-01</strong> ($99) & <strong>PIPE-OS-01</strong> ($99)</span>
+              <span className="text-white font-bold">Wave 1 Candidates:</span>
+              <span><strong>ONBOARD-OS-01</strong> ($49), <strong>PROMPT-QA-OS-01</strong> ($49), <strong>DOC-PORTAL-OS-01</strong> ($49)</span>
             </div>
           </div>
 
