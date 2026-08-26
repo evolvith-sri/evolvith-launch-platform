@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { classifyDemandSignal, recordCustomerSignal } from '@/lib/intelligence';
 
 export const dynamic = 'force-dynamic';
 
@@ -52,13 +53,33 @@ export async function POST(req: NextRequest) {
 
     CUSTOMER_FEEDBACK_LOG.push(entry);
 
-    return NextResponse.json(
-      {
-        success: true,
-        message: 'Feedback received. Thank you for helping shape the Evolvith product roadmap!',
-      },
-      { status: 200 }
-    );
+    // Feed signal into Customer Intelligence & Demand Engine
+    try {
+      const feedbackCombinedText = [
+        primaryProblemSolved,
+        missingCapability,
+        nextDesiredSystem,
+        highTicketNeed,
+        additionalNotes,
+      ]
+        .filter(Boolean)
+        .join(' ');
+
+      const classifiedTier = classifyDemandSignal(feedbackCombinedText, 'FEEDBACK');
+      const hasWtp = Boolean(highTicketNeed && highTicketNeed.length > 5);
+
+      recordCustomerSignal({
+        source: 'FEEDBACK',
+        productId,
+        signalTier: classifiedTier,
+        summary: primaryProblemSolved || missingCapability || nextDesiredSystem || 'Customer Feedback Submitted',
+        details: feedbackCombinedText,
+        urgency: onboardingClarityRating <= 2 ? 'HIGH' : 'MEDIUM',
+        willingnessToPayIndicator: hasWtp,
+      });
+    } catch {
+      // Non-blocking telemetry
+    }
   } catch (error) {
     return NextResponse.json(
       { error: `Failed to record feedback: ${error instanceof Error ? error.message : String(error)}` },
