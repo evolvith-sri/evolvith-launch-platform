@@ -102,7 +102,7 @@ export default function RedeemPage() {
           Redeem Your License
         </h1>
         <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-          Activate your perpetual commercial license for <strong className="text-white">FORECAST-OS-01</strong> or <strong className="text-white">AUDIT-OS-01</strong> and instantly receive your inspectable digital product package.
+          Activate your perpetual commercial license for <strong className="text-white">PIPE-OS-01</strong>, <strong className="text-white">AUDIT-OS-01</strong>, <strong className="text-white">FORECAST-OS-01</strong>, or any Evolvith Operating System and instantly receive your inspectable digital product package.
         </p>
       </div>
 
@@ -113,17 +113,17 @@ export default function RedeemPage() {
             <div className="space-y-3 pb-6 border-b border-white/10">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-mono uppercase text-cyan-400 font-bold tracking-wider">
-                  Tier 1 Codified Operating System
+                  AppSumo Verified Entitlement
                 </span>
                 <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-mono uppercase font-bold border border-emerald-500/30">
                   Perpetual Grant
                 </span>
               </div>
               <h2 className="text-xl font-bold text-white font-heading">
-                FORECAST-OS-01
+                Evolvith Operating System
               </h2>
               <p className="text-xs text-gray-400 leading-relaxed">
-                Deterministic revenue & sales forecasting engine. Replaces opaque SaaS black boxes with an inspectable local Python runtime.
+                Deterministic business operations & developer workstations. Replaces recurring SaaS subscriptions with local-first, inspectable runtimes.
               </p>
             </div>
 
@@ -134,11 +134,11 @@ export default function RedeemPage() {
               </div>
               <div className="flex items-center gap-3">
                 <Cpu className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Local & private cloud execution</span>
+                <span>100% Local & private cloud execution</span>
               </div>
               <div className="flex items-center gap-3">
                 <Layers className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Full inspectable Python runtime + AST</span>
+                <span>Full inspectable source runtime + AST schemas</span>
               </div>
               <div className="flex items-center gap-3">
                 <Clock className="w-4 h-4 text-cyan-400 shrink-0" />
@@ -148,10 +148,10 @@ export default function RedeemPage() {
 
             <div className="p-4 rounded-2xl bg-surface/60 border border-white/5 space-y-1.5">
               <span className="text-[10px] font-mono text-gray-400 uppercase tracking-wider block">
-                Official Package Identifier
+                Fulfillment Standard
               </span>
               <p className="text-xs font-mono text-cyan-300">
-                FORECAST-OS-01_v1.0.0.zip
+                Instant Signed Digital Runtime (.zip) + CLI Harness
               </p>
             </div>
           </div>
@@ -342,26 +342,34 @@ export default function RedeemPage() {
               <p className="text-cyan-300 pl-3">cd {successData.entitlement.product.toLowerCase()} &amp;&amp; python install.py</p>
               <p className="text-gray-400"># 3. Launch local command line interface or workstation:</p>
               <p className="text-cyan-300 pl-3">
-                {successData.entitlement.product.toLowerCase().includes('audit')
-                  ? 'python src/audit_cli.py --help'
-                  : 'python run_forecast.py --input sample_pipeline.csv'}
+                {(() => {
+                  const p = successData.entitlement.product.toLowerCase();
+                  if (p.includes('pipe')) return 'python pipe_cli.py --help';
+                  if (p.includes('audit-os')) return 'python src/audit_cli.py --help';
+                  if (p.includes('seo')) return 'python seo_cli.py --help';
+                  if (p.includes('onboard')) return 'python cli.py --help';
+                  if (p.includes('prompt')) return 'python prompt_cli.py --help';
+                  if (p.includes('doc')) return 'python doc_cli.py --help';
+                  if (p.includes('forecast')) return 'python run_forecast.py --input sample_pipeline.csv';
+                  return 'python main.py --help';
+                })()}
               </p>
             </div>
           </div>
 
           <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
             <Link
-              href={successData.entitlement.product.toLowerCase().includes('audit') ? '/products/audit-os-01' : '/products/forecast-os-01'}
+              href={`/products/${successData.entitlement.product.toLowerCase().replace(/_/g, '-')}`}
               className="text-xs font-mono text-cyan-400 hover:underline"
             >
               ← View {successData.entitlement.product} Master Blueprint
             </Link>
-            {successData.entitlement.product.toLowerCase().includes('audit') && (
+            {['audit-os-01', 'pipe-os-01', 'seo-audit-os-01', 'onboard-os-01', 'prompt-qa-os-01', 'doc-portal-os-01'].includes(successData.entitlement.product.toLowerCase().replace(/_/g, '-')) && (
               <Link
-                href="/workstations/audit-os-01"
+                href={`/workstations/${successData.entitlement.product.toLowerCase().replace(/_/g, '-')}`}
                 className="btn-primary px-4 py-2 text-xs font-mono font-bold"
               >
-                ⚡ Open AUDIT-OS-01 Workstation
+                ⚡ Open {successData.entitlement.product} Workstation
               </Link>
             )}
             <Link
