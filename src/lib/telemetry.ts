@@ -33,10 +33,21 @@ export function logCommercialIntent(event: TelemetryEvent): void {
   if (typeof window === 'undefined') return;
 
   try {
+    let detectedSource = event.source;
+    if (!detectedSource && typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('ref') === 'producthunt' || urlParams.get('utm_source') === 'producthunt') {
+        detectedSource = 'PRODUCTHUNT';
+      } else if (document.referrer && document.referrer.includes('producthunt.com')) {
+        detectedSource = 'PRODUCTHUNT';
+      }
+    }
+
     const payload = {
       ...event,
+      source: detectedSource || event.source,
       timestamp: event.timestamp || Date.now(),
-      referrer: document.referrer ? new URL(document.referrer, window.location.href).pathname : 'direct',
+      referrer: document.referrer ? new URL(document.referrer, window.location.href).hostname : 'direct',
       path: window.location.pathname,
     };
 

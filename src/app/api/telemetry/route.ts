@@ -5,6 +5,7 @@ export const dynamic = 'force-dynamic';
 interface AggregatedMetric {
   eventType: string;
   productId?: string;
+  source?: string;
   count: number;
   lastSeen: number;
 }
@@ -17,11 +18,13 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const eventType = String(body.eventType || 'UNKNOWN');
     const productId = body.productId ? String(body.productId) : 'general';
+    const source = body.source ? String(body.source) : 'DIRECT';
 
-    const key = `${eventType}:${productId}`;
+    const key = `${eventType}:${productId}:${source}`;
     const existing = INTENT_METRICS.get(key) || {
       eventType,
       productId,
+      source,
       count: 0,
       lastSeen: Date.now(),
     };
@@ -39,8 +42,13 @@ export async function POST(req: NextRequest) {
 export async function GET() {
   const metrics = Array.from(INTENT_METRICS.values());
   const eventCounts: Record<string, number> = {};
+  const sourceCounts: Record<string, number> = {};
+
   for (const m of metrics) {
     eventCounts[m.eventType] = (eventCounts[m.eventType] || 0) + m.count;
+    if (m.source) {
+      sourceCounts[m.source] = (sourceCounts[m.source] || 0) + m.count;
+    }
   }
 
   const funnel = {
@@ -59,6 +67,7 @@ export async function GET() {
     {
       success: true,
       totalEventsLogged: metrics.reduce((acc, m) => acc + m.count, 0),
+      channelAttribution: sourceCounts,
       funnel,
       metrics,
     },
