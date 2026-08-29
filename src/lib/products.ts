@@ -104,7 +104,7 @@ export const TIER_1_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Intercepts live third-party webhooks, detects silent schema drift via visual AST diffs, and replays test payloads to localhost without recurring cloud fees.",
     operationalFriction: "Third-party APIs mutating webhook schemas without warning, breaking production automations, and requiring hours of manual log digging.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Sub-90s Root Cause Diagnosis of Upstream Schema Mutations & 100% Type-Safe Contract Validation.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Deterministic AST Schema Drift Detection & Type-Safe Contract Validation.",
     description: "Local-first visual workstation engineered to capture live webhooks, detect schema drift with AST diffs, generate TypeScript/Zod/Pydantic models, and replay test events to localhost.",
     executiveSummary: "AUDIT-OS-01 provides full-stack developers and technical automation builders with a local-first QA laboratory. It eliminates silent webhook failures by mathematically comparing incoming payloads against baseline schemas, generating deterministic types, and replaying test events directly to localhost.",
     targetBuyer: "Full-Stack Developers, SaaS Founders, Technical Agency Owners, Zapier/Make Automation Engineers.",
@@ -137,7 +137,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "48-Hour Rapid Installation Runbook & Architecture Guide (docs/)."
     ],
     outcomes: [
-      "Sub-90s Root Cause Diagnosis of Upstream Webhook Schema Drift.",
+      "Deterministic AST Schema Drift Detection & Root Cause Isolation.",
       "Zero Silent Production Breakages from Vendor API Mutations.",
       "100% Type Safety with Instant TypeScript & Zod Code Generation."
     ],
@@ -177,7 +177,7 @@ export const TIER_1_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Cleans, deduplicates, validates, and waterfall-enriches prospect lists locally using customer BYOK keys without recurring credit markups.",
     operationalFriction: "Paying recurring monthly platform fees and inflated per-credit markups to cloud enrichment tools when SDRs already possess their own API keys; high email bounce rates.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 98%+ Validated Deliverability on Verified Output & 100% Elimination of SaaS Credit Markups.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Local DNS MX Verification & Direct BYOK API Enrichment with Zero SaaS Credit Markups.",
     description: "Local-first prospect waterfall and enrichment workstation. Cleans CSV files, detects duplicates, validates RFC 5322 email syntax, verifies DNS MX mailservers, and routes records through a multi-provider waterfall cascade.",
     executiveSummary: "PIPE-OS-01 empowers B2B founders, SDRs, cold email agencies, and freelancers to run multi-provider waterfall lead enrichment on their own machines using BYOK credentials, eliminating monthly SaaS credit markups.",
     targetBuyer: "B2B Founders, SDR Leads, Cold Email Agencies, Lead Gen Freelancers.",
@@ -212,7 +212,7 @@ export const TIER_1_PRODUCTS: Product[] = [
     ],
     outcomes: [
       "Zero SaaS Platform Credit Markups via BYOK API Routing.",
-      "98%+ Cold Email Inbox Placement on Verified Prospect Lists.",
+      "RFC 5322 Syntax & DNS MX Mailserver Verification.",
       "100% Local-First Data Privacy (Leads never touch Evolvith servers)."
     ],
     whoItIsFor: [
@@ -247,7 +247,7 @@ export const TIER_1_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Crawls websites locally and produces practical technical SEO audits without recurring page limits or cloud subscription fees.",
     operationalFriction: "Recurring subscription-based SEO platforms with strict page-crawl limits and quotas for client website audits.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Sub-5 Minute 1,000-Page Full Technical Audit & 100% Elimination of SaaS Crawl Limits.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Local Technical SEO Inspection & Broken Link Detection with Zero SaaS Crawl Quotas.",
     description: "Local-first technical SEO crawler and audit engine. Ingests seed URLs, parses robots.txt and sitemaps, traverses internal links, and analyzes HTTP status codes, canonicals, headings, and metadata.",
     executiveSummary: "SEO-AUDIT-OS-01 provides SEO consultants, web agencies, and developers with a local crawler that eliminates recurring page limits while generating client-ready technical audit reports.",
     targetBuyer: "SEO Consultants, Web Agencies, Growth Marketers, Technical SEO Auditors.",
@@ -316,7 +316,7 @@ export const TIER_1_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Automates client intake briefs, tracks asset delivery, detects missing items, and provides zero-plaintext credential handoff.",
     operationalFriction: "2-to-3 week agency project kickoff delays caused by missing client assets, lost briefs, and risky plaintext password sharing over email/Slack.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 60% Reduction in Project Kickoff Latency & 100% Zero-Plaintext Security Compliance.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Standardized Digital Asset Intake & Zero-Plaintext Credential Safety Compliance.",
     description: "White-label client intake portal and asset handover workstation for agencies and freelancers. Streamlines asset collection, tracks missing deliverables, and enforces secure credential handoff.",
     executiveSummary: "ONBOARD-OS-01 empowers digital agencies and freelancers to standardize client intake, track digital asset checklists (logos, copy, DNS, logins), generate polite reminder emails, and certify when projects are ready to begin.",
     targetBuyer: "Digital Agencies, Web Freelancers, Creative Studios, Client Onboarding Specialists.",
@@ -349,7 +349,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "48-Hour Rapid Installation Runbook (docs/)."
     ],
     outcomes: [
-      "60% Reduction in Project Kickoff Latency.",
+      "Standardized Client Intake & Asset Checklist Verification.",
       "100% Elimination of Plaintext Password Liabilities.",
       "Professional White-Label Client Onboarding Experience."
     ],
@@ -381,7 +381,7 @@ export const TIER_1_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Regression-tests AI prompt updates before changes silently degrade output quality, break JSON structures, or inflate token costs.",
     operationalFriction: "Editing system prompts breaking production AI applications; lack of automated regression testing in CI/CD; expensive monthly SaaS prompt eval tools.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 100% Elimination of Silent Prompt Regressions in Production & Sub-10s CI Quality Gates.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Deterministic Prompt Regression Verification & Automated CI/CD Quality Gate Passing.",
     description: "Local-first LLM prompt regression workbench. Compares prompt versions, evaluates assertions (exact match, contains, regex, JSON Schema, length), measures latency, and estimates token costs using BYOK API keys.",
     executiveSummary: "PROMPT-QA-OS-01 gives AI engineers and developers a local quality gate to regression-test prompt templates across multiple models (OpenAI, Anthropic, Gemini, Ollama) before shipping updates to production.",
     targetBuyer: "AI Engineers, Full-Stack Developers, LLM App Builders, QA Engineers.",
@@ -446,7 +446,7 @@ export const TIER_1_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Turns OpenAPI/Swagger specifications into polished, searchable developer portals without paying recurring documentation SaaS fees.",
     operationalFriction: "Recurring hosted documentation platforms with usage-based seats and page-view pricing scaling unpredictably.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Sub-60s Developer Portal Generation & 100% Elimination of Cloud Documentation Fees.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Searchable OpenAPI Developer Portal Compilation & Zero Cloud Hosting Dependencies.",
     description: "Local-first interactive developer portal generator. Ingests OpenAPI 3.0/3.1 and Swagger 2.0 specs, creates searchable endpoint explorers, generates multi-language code snippets, and compiles self-contained static HTML sites.",
     executiveSummary: "DOC-PORTAL-OS-01 empowers API developers, SaaS founders, and technical teams to generate polished, searchable developer documentation with multi-language code snippets and offline static HTML export.",
     targetBuyer: "SaaS Founders, API Engineers, Technical Writers, Developer Relations Leads.",
@@ -511,7 +511,7 @@ export const TIER_1_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Replaces spreadsheet guesswork with deterministic probability weighting and historical win-rate regression models.",
     operationalFriction: "Inaccurate quarter-end revenue projections caused by spreadsheet-based guesswork and subjective sales rep confidence ratings.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 90% Revenue Forecasting Variance Precision within 60-Day Horizons.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Deterministic Probability Weighting & Pipeline Variance Tracking.",
     description: "Targeted operating system engineered to eliminate forecasting variance and manual revenue spreadsheet compilation.",
     executiveSummary: "FORECAST-OS-01 provides deterministic revenue forecasting by applying AST-verified probability weights to open opportunities, tracking sudden deal variance, and compiling weekly executive briefing packs.",
     targetBuyer: "VPs of Sales, Head of RevOps, Scaling B2B Founders.",
@@ -541,7 +541,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Executive Architecture & Implementation Playbook (docs/)."
     ],
     outcomes: [
-      "90% Revenue Forecasting Variance Precision within 60-Day Horizons.",
+      "Deterministic Pipeline Probability Weighting.",
       "Elimination of 6+ Hours/Week of Manual Forecast Assembly.",
       "Real-Time Pipeline Variance Tracking."
     ],
@@ -581,7 +581,7 @@ export const TIER_1_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Compresses financial closing cycles by orchestrating sequential ledger tasks and enforcing balance sheet parity gates.",
     operationalFriction: "Protracted 2-to-3 week month-end financial closing cycles plagued by manual checklist handoffs and unverified journal entries.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 60% Reduction in Month-End Financial Close Duration.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Sequential Ledger Task Orchestration & Balance Sheet Parity Gate Enforcement.",
     description: "Targeted operating system engineered to compress financial close cycles and eliminate reconciliation errors.",
     executiveSummary: "CLOSE-OS-01 orchestrates the month-end closing process through sequential dependency gate enforcement, automated balance sheet parity checking, and executive closing pack generation.",
     targetBuyer: "Chief Accounting Officers, Corporate Controllers, Finance Team Leads.",
@@ -611,7 +611,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Executive Architecture & Implementation Playbook (docs/)."
     ],
     outcomes: [
-      "60% Reduction in Month-End Financial Close Duration.",
+      "Sequential Ledger Task Dependency Enforcement.",
       "100% Reconciliation Verification Gate Enforcement.",
       "Zero Unmapped Ledger Deltas at Close."
     ],
@@ -651,7 +651,7 @@ export const TIER_1_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Mitigates surprise cancellations with multi-signal telemetry risk scoring and automated escalation playbooks.",
     operationalFriction: "Surprise client cancellations caused by undetected sentiment decline and unmonitored usage drop-offs.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 30% Reduction in Unanticipated Customer Churn Events.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Multi-Signal Churn Risk Scoring & Early-Warning Escalation Dispatch.",
     description: "Targeted operating system engineered to eliminate surprise churn events and automate account rescue playbooks.",
     executiveSummary: "RETENTION-OS-01 continuously monitors account health signals, evaluates churn probability across engagement parameters, and triggers automated rescue playbooks before renewal risk escalates.",
     targetBuyer: "Head of Retention, CS Operations Leads, SaaS Growth Leads.",
@@ -681,7 +681,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Executive Architecture & Implementation Playbook (docs/)."
     ],
     outcomes: [
-      "30% Reduction in Unanticipated Customer Churn Events.",
+      "Multi-Signal Account Health Risk Scoring.",
       "Sub-24h Intervention Dispatch for At-Risk Accounts.",
       "Objective Account Health Visibility."
     ],
@@ -721,7 +721,7 @@ export const TIER_1_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Defends against stockouts and dead inventory carrying costs with dynamic reorder point formulas and velocity audits.",
     operationalFriction: "Frequent stockouts on high-velocity SKUs and bloated carrying costs on dead inventory due to lack of automated reorder point calculation.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 45% Decrease in Critical SKU Stockout Incidents.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Dynamic Reorder Point Calculation & Safety Stock Buffer Optimization.",
     description: "Targeted operating system engineered to eliminate SKU stockouts and optimize inventory carrying costs.",
     executiveSummary: "INVENTORY-OS-01 automates reorder point calculation using historical velocity and supplier lead times, enforces safety stock buffers, and audits dead stock to free up trapped working capital.",
     targetBuyer: "Inventory Managers, Supply Chain Coordinators, E-commerce Operations Leads.",
@@ -751,8 +751,8 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Executive Architecture & Implementation Playbook (docs/)."
     ],
     outcomes: [
-      "45% Decrease in Critical SKU Stockout Incidents.",
-      "25% Reduction in Working Capital Tied in Dead Inventory.",
+      "Automated Dynamic Reorder Point Calculation.",
+      "Dead-Stock & SKU Velocity Auditing.",
       "Automated Lead-Time Reorder Calculations."
     ],
     whoItIsFor: [
@@ -791,7 +791,7 @@ export const TIER_1_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Compresses project handoff latency by enforcing sequential handoff verification and milestone SLA monitoring.",
     operationalFriction: "Inter-departmental project delays caused by ambiguous task ownership, manual status chasing, and missing handoff checkpoints.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 40% Compression in Cross-Functional Project Handoff Latency.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Deterministic Handoff State Machine & Milestone SLA Tracking.",
     description: "Targeted operating system engineered to eliminate cross-functional project bottlenecks and handoff delays.",
     executiveSummary: "WORKFLOW-OS-01 enforces deterministic task transitions between business units. It measures SLA durations between milestones and automatically routes escalations when handoffs stall.",
     targetBuyer: "Chief of Staff, Operations Leads, Project Management Office Directors.",
@@ -821,7 +821,7 @@ export const TIER_1_PRODUCTS: Product[] = [
       "Executive Architecture & Implementation Playbook (docs/)."
     ],
     outcomes: [
-      "40% Compression in Cross-Functional Project Handoff Latency.",
+      "Deterministic Cross-Functional Task Transitions.",
       "100% Deliverable Checkpoint Verification.",
       "Automated Milestone SLA Escalations."
     ],
@@ -868,7 +868,7 @@ export const TIER_2A_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Transforms pipeline tracking into an autonomous, self-optimizing revenue engine with integrated forecasting and renewal propensity.",
     operationalFriction: "Unreliable quarter-end revenue forecasts, manual spreadsheet stitching, and high rep administrative overhead.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 38% Increase in Sales Velocity across Enterprise Accounts.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Autonomous Deal Velocity Tracking & Pipeline Slippage Detection.",
     description: "Transforms pipeline tracking into an autonomous, self-optimizing revenue engine.",
     executiveSummary: "REV-OS-01 is a pre-built commercial operating system that replaces manual CRM entry, fragmented sales tools, and static spreadsheets with an autonomous revenue engine. Built on Evolvith's Master Genome Architecture, REV-OS-01 coordinates pipeline hygiene, deal scoring, churn prediction, and automated executive reporting.",
     targetBuyer: "Chief Revenue Officers & VPs of Sales managing $5M–$100M ARR.",
@@ -898,8 +898,8 @@ export const TIER_2A_PRODUCTS: Product[] = [
       "One-Time Perpetual Commercial License Grant with unlimited internal seats."
     ],
     outcomes: [
-      "38% Increase in Sales Velocity across Enterprise Accounts.",
-      "94% Accuracy in 90-Day Revenue Forecasting Accuracy.",
+      "Autonomous Deal Velocity Tracking & Pipeline Slippage Alerts.",
+      "Automated Weekly Executive Revenue Board Briefing Packs.",
       "Elimination of 12 Hours/Week per Rep of Administrative Overhead."
     ],
     whoItIsFor: [
@@ -1001,7 +1001,7 @@ export const TIER_2A_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Elevates customer retention into a scalable science with predictive health scoring, onboarding workflows, and churn mitigation.",
     operationalFriction: "Surprise churn events, inconsistent customer onboarding timelines, and lack of visibility into adoption depth.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 45% Reduction in Net Revenue Churn within 90 Days.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Multi-Signal Telemetry Churn Risk Scoring & Early Alerting.",
     description: "Predictive churn mitigation and automated customer onboarding journeys.",
     executiveSummary: "CX-OS-01 elevates customer retention into a scalable science. By monitoring product telemetry, support ticket velocity, and executive engagement, CX-OS-01 identifies churn signals weeks before renewal dates.",
     targetBuyer: "VPs of Customer Success & Chief Customer Officers.",
@@ -1029,7 +1029,7 @@ export const TIER_2A_PRODUCTS: Product[] = [
       "One-Time Perpetual Commercial License Grant with unlimited internal seats."
     ],
     outcomes: [
-      "45% Reduction in Net Revenue Churn within 90 Days.",
+      "Predictive Account Churn Matrix with Early Alert Triggers.",
       "2.5x Increase in Customer Onboarding Completion Speed."
     ],
     whoItIsFor: [
@@ -1059,7 +1059,7 @@ export const TIER_2A_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Governs complex enterprise operations and supply chains, eliminating bottlenecks and enforcing standardized SOP compliance.",
     operationalFriction: "Supply chain bottlenecks causing delivery delays, vendor SLA non-compliance, and unstandardized SOP execution.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 52% Faster Resolution of Supply Chain Bottlenecks.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Real-Time Operational Bottleneck Detection & Vendor SLA Governance.",
     description: "Eliminates operational bottlenecks and enforces standardized SOP workflows.",
     executiveSummary: "OPS-OS-02 governs complex enterprise operations and supply chains. It identifies operational friction, tracks vendor SLA compliance, and enforces standardized SOP execution across global teams.",
     targetBuyer: "Chief Operating Officers & Operations Directors.",
@@ -1087,7 +1087,7 @@ export const TIER_2A_PRODUCTS: Product[] = [
       "One-Time Perpetual Commercial License Grant with unlimited internal seats."
     ],
     outcomes: [
-      "52% Faster Resolution of Supply Chain Bottlenecks.",
+      "Real-Time Operational Bottleneck Detection.",
       "100% SOP Compliance across Regional Operating Teams."
     ],
     whoItIsFor: [
@@ -1181,7 +1181,7 @@ export const TIER_2B_PRODUCTS: Product[] = [
     availability: "COMMERCIAL",
     oneSentencePurpose: "Accelerates overdue invoice recovery through automated aging bucket categorization, structured escalation triggers, and DSO telemetry.",
     operationalFriction: "Aging accounts receivable (A/R), overdue client invoices, and lack of structured collections escalation protocols.",
-    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: 40% Acceleration in Outstanding Invoice Recovery Speed.",
+    modeledTarget: "MODELED TARGET — NOT HISTORICAL PERFORMANCE: Automated Invoice Aging Categorization & Tiered Dunning Cadence.",
     description: "Strategic entry operating system engineered to eliminate aging accounts receivable and optimize cash collection velocity.",
     executiveSummary: "CASH-OS-01 establishes automated accounts receivable governance. It analyzes invoice aging across 30, 60, and 90+ day buckets, triggers tiered dunning notifications, and computes rolling Days Sales Outstanding (DSO).",
     targetBuyer: "Financial Controllers, Accounting Managers, Bootstrap Founders.",
@@ -1211,8 +1211,8 @@ export const TIER_2B_PRODUCTS: Product[] = [
       "Executive Architecture & Implementation Playbook (docs/)."
     ],
     outcomes: [
-      "40% Acceleration in Outstanding Invoice Recovery Speed.",
-      "50% Reduction in Overdue 60+ Day Receivables.",
+      "Automated Invoice Aging Categorization (30/60/90+ Days).",
+      "Tiered Escalating Dunning Cadence Notification Delivery.",
       "Automated Multi-Stage Collections Escalation."
     ],
     whoItIsFor: [
