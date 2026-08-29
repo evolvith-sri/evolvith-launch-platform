@@ -1572,8 +1572,8 @@ export const COMMERCIAL_PRODUCTS_COUNT: number = COMMERCIAL_PRODUCTS.length; // 
 export const TOTAL_PORTFOLIO_COUNT: number = ALL_PRODUCTS.length; // 21
 
 // Backwards compatibility aliases
-export const WAVE_1_PRODUCTS: Product[] = processProducts(TIER_2A_PRODUCTS);
-export const WAVE_2_PRODUCTS: Product[] = processProducts([...TIER_1_PRODUCTS, ...TIER_2B_PRODUCTS]);
+export const WAVE_1_PRODUCTS: Product[] = attachCommerceUrls(TIER_2A_PRODUCTS);
+export const WAVE_2_PRODUCTS: Product[] = attachCommerceUrls([...TIER_1_PRODUCTS, ...TIER_2B_PRODUCTS]);
 
 /**
  * Find product by ID or system code
