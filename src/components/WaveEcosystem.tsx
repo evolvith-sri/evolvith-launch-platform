@@ -233,25 +233,6 @@ export function WaveEcosystem({ products }: WaveEcosystemProps) {
         </div>
       )}
 
-      {activeTier === 'tier3' && (
-        <div className="bg-surface/60 border border-purple-500/20 p-6 rounded-2xl max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <span className="text-[10px] font-mono uppercase text-purple-300 font-bold tracking-widest block">
-              Tier 3 • Synthesis Organisms
-            </span>
-            <h3 className="text-base font-bold text-white font-heading">
-              Cross-System Synthesis & Organizational Command Infrastructure
-            </h3>
-            <p className="text-xs text-gray-300 leading-relaxed">
-              Designed as future cross-system architectures synthesizing multiple operating systems into higher-level organizational intelligence. In development; strictly non-purchasable.
-            </p>
-          </div>
-          <div className="shrink-0 font-mono text-xs bg-purple-500/10 border border-purple-500/30 px-3.5 py-2 rounded-xl text-purple-300">
-            4 in Development (Portfolio Capped at 6)
-          </div>
-        </div>
-      )}
-
       {/* Category Filter Bar */}
       <div className="flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto">
         <button

@@ -56,14 +56,14 @@ export default function SupportPage() {
             🎟️
           </div>
           <h3 className="text-lg font-bold text-white font-heading">
-            AppSumo Code Redemption
+            Existing AppSumo Redemption
           </h3>
           <p className="text-xs text-gray-300 leading-relaxed">
-            Redeem lifetime deal codes, validate entitlement records, and download inspectable distribution zip packages.
+            Redeem existing deal voucher codes, validate entitlement records, and download inspectable distribution zip packages.
           </p>
           <div className="pt-2">
             <Link href="/redeem" className="text-xs font-mono text-emerald-400 hover:text-emerald-300 font-bold">
-              Go to Code Redemption Portal →
+              Go to Redemption Portal →
             </Link>
           </div>
         </div>

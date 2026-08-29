@@ -31,9 +31,26 @@ export type ProductStatus =
 
 export type ProductAvailability = 'COMMERCIAL' | 'NOT_PURCHASABLE';
 
+export interface CanonicalProductEntry {
+  product_code: string;
+  display_name: string;
+  tier: 1 | 2 | 3;
+  sub_tier: '1' | '2A' | '2B' | '3';
+  category: string;
+  status: ProductStatus;
+  availability: ProductAvailability;
+  public_price: number | null;
+  product_route: string;
+  workstation_route: string | null;
+  purchase_route: string | null;
+  development_flag: boolean;
+}
+
 export interface Product {
   id: string;
   systemCode: string;
+  product_code?: string;
+  display_name?: string;
   tier: 1 | 2 | 3;
   subTier: '1' | '2A' | '2B' | '3';
   wave: 1 | 2 | 3;
@@ -41,6 +58,7 @@ export interface Product {
   subtitle: string;
   category: string;
   price: number | null;
+  public_price?: number | null;
   badge: string;
   status: ProductStatus;
   availability: ProductAvailability;
@@ -60,6 +78,10 @@ export interface Product {
   architectureInputs?: string[];
   faqs: { question: string; answer: string }[];
   checkoutUrl?: string | null;
+  product_route?: string;
+  workstation_route?: string | null;
+  purchase_route?: string | null;
+  development_flag?: boolean;
 }
 
 /**
@@ -1486,17 +1508,38 @@ export const TIER_3_PRODUCTS: Product[] = [
   }
 ];
 
+const WORKSTATION_SLUGS = new Set([
+  'audit-os-01',
+  'pipe-os-01',
+  'seo-audit-os-01',
+  'onboard-os-01',
+  'doc-portal-os-01',
+  'prompt-qa-os-01',
+]);
+
+function enrichProductWithCanonicalFields(product: Product): Product {
+  const mapping = getProductCommerceMapping(product.id);
+  const checkoutUrl = mapping && mapping.directCheckoutUrl && mapping.commerceAvailability !== 'NOT_PURCHASABLE'
+    ? mapping.directCheckoutUrl
+    : null;
+
+  const isDev = product.status === 'TIER_3_DEVELOPMENT' || product.availability === 'NOT_PURCHASABLE';
+
+  return {
+    ...product,
+    product_code: product.systemCode,
+    display_name: product.title,
+    public_price: product.price,
+    product_route: `/products/${product.id}`,
+    workstation_route: WORKSTATION_SLUGS.has(product.id) ? `/workstations/${product.id}` : null,
+    purchase_route: checkoutUrl,
+    development_flag: isDev,
+    checkoutUrl: checkoutUrl,
+  };
+}
+
 function attachCommerceUrls(products: Product[]): Product[] {
-  return products.map((p) => {
-    const mapping = getProductCommerceMapping(p.id);
-    if (mapping && mapping.directCheckoutUrl && mapping.commerceAvailability !== 'NOT_PURCHASABLE') {
-      return {
-        ...p,
-        checkoutUrl: mapping.directCheckoutUrl,
-      };
-    }
-    return p;
-  });
+  return products.map(enrichProductWithCanonicalFields);
 }
 
 // Combined Tier 2 Collection (6 Tier 2A + 3 Tier 2B = 9 Systems)
@@ -1506,15 +1549,31 @@ export const TIER_2_PRODUCTS: Product[] = attachCommerceUrls([...TIER_2A_PRODUCT
 export const COMMERCIAL_PRODUCTS: Product[] = attachCommerceUrls([...TIER_1_PRODUCTS, ...TIER_2_PRODUCTS]);
 
 // Total Defined Systems: 17 Commercial + 4 Tier-3 Development Organisms = 21 Systems
-export const ALL_PRODUCTS: Product[] = [...COMMERCIAL_PRODUCTS, ...TIER_3_PRODUCTS];
+export const ALL_PRODUCTS: Product[] = [...COMMERCIAL_PRODUCTS, ...attachCommerceUrls(TIER_3_PRODUCTS)];
+
+// Canonical Product Registry: The Single Authoritative Metadata Registry for Homepage, Store, Catalog, Product Pages, Footer
+export const CANONICAL_PRODUCT_REGISTRY: CanonicalProductEntry[] = ALL_PRODUCTS.map((p) => ({
+  product_code: p.systemCode,
+  display_name: p.title,
+  tier: p.tier,
+  sub_tier: p.subTier,
+  category: p.category,
+  status: p.status,
+  availability: p.availability,
+  public_price: p.price,
+  product_route: p.product_route || `/products/${p.id}`,
+  workstation_route: p.workstation_route || null,
+  purchase_route: p.purchase_route || null,
+  development_flag: p.development_flag ?? false,
+}));
 
 // Single Source of Truth Product Counts
 export const COMMERCIAL_PRODUCTS_COUNT: number = COMMERCIAL_PRODUCTS.length; // 17
 export const TOTAL_PORTFOLIO_COUNT: number = ALL_PRODUCTS.length; // 21
 
 // Backwards compatibility aliases
-export const WAVE_1_PRODUCTS: Product[] = attachCommerceUrls(TIER_2A_PRODUCTS);
-export const WAVE_2_PRODUCTS: Product[] = attachCommerceUrls([...TIER_1_PRODUCTS, ...TIER_2B_PRODUCTS]);
+export const WAVE_1_PRODUCTS: Product[] = processProducts(TIER_2A_PRODUCTS);
+export const WAVE_2_PRODUCTS: Product[] = processProducts([...TIER_1_PRODUCTS, ...TIER_2B_PRODUCTS]);
 
 /**
  * Find product by ID or system code

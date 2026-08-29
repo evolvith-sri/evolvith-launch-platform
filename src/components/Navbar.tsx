@@ -65,10 +65,10 @@ export function Navbar() {
             </span>
           </Link>
           <Link
-            href="/workstations/audit-os-01"
+            href="/workstations"
             className="hover:text-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded px-2 py-1 transition-colors flex items-center gap-1"
           >
-            <span>Workstation</span>
+            <span>Workstations</span>
             <span className="text-[9px] font-mono px-1 py-0.2 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold">
               LIVE
             </span>
@@ -99,34 +99,48 @@ export function Navbar() {
           </Link>
         </nav>
 
-        {/* Action Button & Mobile Toggle */}
+        {/* Action Button & Mobile Menu Toggle */}
         <div className="flex items-center gap-3">
           <Link
             href="/store"
-            className="btn-primary hidden sm:inline-flex items-center gap-2 px-4 py-2.5 text-xs font-bold uppercase tracking-wider font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400 shadow-lg shadow-cyan-500/10"
+            className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-mono text-xs font-bold uppercase tracking-wider shadow-lg shadow-cyan-500/20 transition-all hover:scale-105"
           >
-            <span>Browse Store</span>
-            <span className="text-[10px] text-cyan-200">→</span>
+            <span>Store ($49+)</span>
+            <span>→</span>
           </Link>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg p-2"
-            aria-label="Toggle Mobile Menu"
-            aria-expanded={mobileMenuOpen}
+            className="md:hidden p-2 rounded-lg bg-surface border border-white/10 text-gray-300 hover:text-white"
+            aria-label="Toggle Navigation Menu"
           >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu Dropdown */}
+      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#0B0F19]/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 space-y-3">
           <Link
@@ -153,11 +167,11 @@ export function Navbar() {
             <span className="text-xs font-mono text-emerald-400 font-bold">From $49</span>
           </Link>
           <Link
-            href="/workstations/audit-os-01"
+            href="/workstations"
             onClick={() => setMobileMenuOpen(false)}
             className="block text-gray-300 hover:text-cyan-400 font-medium text-base py-1.5 flex items-center justify-between"
           >
-            <span>Workstation</span>
+            <span>Workstations</span>
             <span className="text-xs font-mono text-emerald-400 font-bold">LIVE</span>
           </Link>
           <Link

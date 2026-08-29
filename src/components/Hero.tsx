@@ -15,14 +15,14 @@ interface SystemNode {
 }
 
 const SYSTEM_NODES: SystemNode[] = [
-  { id: 'audit-os-01', name: 'Visual API Contract & Webhook QA Workstation', code: 'AUDIT-OS-01', tier: 'Wave 1', category: 'Developer Tools', price: '$49', status: 'READY', outcome: 'Sub-90s Root Cause Diagnosis' },
-  { id: 'pipe-os-01', name: 'Local B2B Lead Waterfall & Prospect Enrichment Engine', code: 'PIPE-OS-01', tier: 'Wave 1', category: 'Lead Generation', price: '$49', status: 'READY', outcome: '98%+ Validated Deliverability' },
-  { id: 'seo-audit-os-01', name: 'Programmatic Technical SEO & Broken Link Crawler', code: 'SEO-AUDIT-OS-01', tier: 'Wave 1', category: 'SEO & Analytics', price: '$49', status: 'READY', outcome: '0–100 Site Health Scoring' },
-  { id: 'onboard-os-01', name: 'Client Intake & Digital Asset Handover Workstation', code: 'ONBOARD-OS-01', tier: 'Wave 1', category: 'Agency Workstation', price: '$49', status: 'READY', outcome: '60% Faster Project Kickoffs' },
-  { id: 'prompt-qa-os-01', name: 'LLM Prompt Regression Testing & Cost Workbench', code: 'PROMPT-QA-OS-01', tier: 'Wave 1', category: 'Developer Tools', price: '$49', status: 'READY', outcome: 'Zero Silent Prompt Regressions' },
-  { id: 'doc-portal-os-01', name: 'OpenAPI -> Interactive Developer Portal Generator', code: 'DOC-PORTAL-OS-01', tier: 'Wave 1', category: 'Developer Tools', price: '$49', status: 'READY', outcome: 'Sub-60s Developer Portal Export' },
-  { id: 'rev-os-01', name: 'Autonomous Revenue Operations OS', code: 'REV-OS-01', tier: 'Tier 2A', category: 'Revenue Systems', price: '$249', status: 'READY', outcome: '+38% Deal Velocity' },
-  { id: 'fin-os-01', name: 'Financial Intelligence OS', code: 'FIN-OS-01', tier: 'Tier 2A', category: 'Financial Ops', price: '$349', status: 'READY', outcome: 'Strategic CFO Decision Modeling' },
+  { id: 'audit-os-01', name: 'Visual API Contract & Webhook QA Workstation', code: 'AUDIT-OS-01', tier: 'Wave 1', category: 'Developer Tools', price: '$49', status: 'READY', outcome: 'Deterministic AST Schema Diffing' },
+  { id: 'pipe-os-01', name: 'Local B2B Lead Waterfall & Prospect Enrichment Engine', code: 'PIPE-OS-01', tier: 'Wave 1', category: 'Lead Generation', price: '$49', status: 'READY', outcome: 'Local MX & BYOK Lead Enrichment' },
+  { id: 'seo-audit-os-01', name: 'Programmatic Technical SEO & Broken Link Crawler', code: 'SEO-AUDIT-OS-01', tier: 'Wave 1', category: 'SEO & Analytics', price: '$49', status: 'READY', outcome: 'Local Broken Link & SEO Crawler' },
+  { id: 'onboard-os-01', name: 'Client Intake & Digital Asset Handover Workstation', code: 'ONBOARD-OS-01', tier: 'Wave 1', category: 'Agency Workstation', price: '$49', status: 'READY', outcome: 'Zero-Plaintext Asset Handover' },
+  { id: 'prompt-qa-os-01', name: 'LLM Prompt Regression Testing & Cost Workbench', code: 'PROMPT-QA-OS-01', tier: 'Wave 1', category: 'Developer Tools', price: '$49', status: 'READY', outcome: 'Automated Prompt CI Quality Gate' },
+  { id: 'doc-portal-os-01', name: 'OpenAPI -> Interactive Developer Portal Generator', code: 'DOC-PORTAL-OS-01', tier: 'Wave 1', category: 'Developer Tools', price: '$49', status: 'READY', outcome: 'Interactive OpenAPI Portal Generator' },
+  { id: 'rev-os-01', name: 'Autonomous Revenue Operations OS', code: 'REV-OS-01', tier: 'Tier 2A', category: 'Revenue Systems', price: '$249', status: 'READY', outcome: 'Enterprise Pipeline Operations' },
+  { id: 'fin-os-01', name: 'Financial Intelligence OS', code: 'FIN-OS-01', tier: 'Tier 2A', category: 'Financial Ops', price: '$349', status: 'READY', outcome: 'Deterministic Financial Intelligence' },
 ];
 
 export function Hero() {

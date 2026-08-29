@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Product, COMMERCE_CONFIG } from '@/lib/products';
 import { CheckoutModal } from './CheckoutModal';
+import { Play, ArrowRight, ShieldCheck, Cpu } from 'lucide-react';
 
 export function ProductCard({ product }: { product: Product }) {
   const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
@@ -41,6 +42,7 @@ export function ProductCard({ product }: { product: Product }) {
   const statusInfo = getStatusBadge(product.status);
   const tierInfo = getTierBadge();
   const isPurchasable = product.availability !== 'NOT_PURCHASABLE' && product.price !== null;
+  const hasWorkstation = !!product.workstation_route;
 
   return (
     <>
@@ -100,7 +102,7 @@ export function ProductCard({ product }: { product: Product }) {
             </div>
           </div>
 
-          {/* Product Identity */}
+          {/* 1. What is it? */}
           <div>
             <span className="text-[11px] font-mono text-cyan-400 uppercase tracking-widest block font-bold">
               {product.systemCode || product.id.toUpperCase()}
@@ -108,79 +110,22 @@ export function ProductCard({ product }: { product: Product }) {
             <h3 className="text-lg sm:text-xl font-bold text-white font-heading leading-snug group-hover:text-cyan-300 transition-colors mt-0.5">
               {product.title}
             </h3>
+            <p className="text-xs text-gray-300 font-normal leading-relaxed mt-2">
+              {product.oneSentencePurpose || product.subtitle}
+            </p>
           </div>
 
-          <p className="text-xs text-gray-300 font-normal leading-relaxed">
-            {product.oneSentencePurpose || product.subtitle}
-          </p>
+          {/* 2. What problem does it solve? */}
+          <div className="border-t border-white/10 pt-4 space-y-1.5">
+            <span className="text-[10px] uppercase font-mono tracking-wider text-gray-400 block font-bold">
+              Problem Solved
+            </span>
+            <p className="text-xs text-gray-300 leading-relaxed font-normal">
+              {product.operationalFriction || (product.problemsSolved && product.problemsSolved[0])}
+            </p>
+          </div>
 
-          {/* Architecture Inputs (for Tier 3) or Primary Operational Friction */}
-          {product.architectureInputs && product.architectureInputs.length > 0 ? (
-            <div className="border-t border-white/10 pt-4 space-y-1.5">
-              <span className="text-[10px] uppercase font-mono tracking-wider text-purple-300 block font-bold">
-                Ecosystem Architecture Inputs
-              </span>
-              <div className="flex flex-wrap gap-1 pt-1">
-                {product.architectureInputs.slice(0, 5).map((input, idx) => (
-                  <span
-                    key={idx}
-                    className="px-2 py-0.5 rounded bg-surface border border-white/10 text-[10px] font-mono text-gray-300"
-                  >
-                    {input}
-                  </span>
-                ))}
-                {product.architectureInputs.length > 5 && (
-                  <span className="px-2 py-0.5 text-[10px] font-mono text-gray-500">
-                    +{product.architectureInputs.length - 5} more
-                  </span>
-                )}
-              </div>
-            </div>
-          ) : (
-            <div className="border-t border-white/10 pt-4 space-y-1.5">
-              <span className="text-[10px] uppercase font-mono tracking-wider text-gray-400 block font-bold">
-                Primary Operational Friction Solved
-              </span>
-              <p className="text-xs text-gray-300 leading-relaxed font-normal">
-                {product.operationalFriction || product.problemsSolved[0]}
-              </p>
-            </div>
-          )}
-
-          {/* Core Capability Module */}
-          {product.capabilities && product.capabilities[0] && (
-            <div className="bg-surface/60 p-3 rounded-xl border border-white/5 space-y-1">
-              <span className="text-[10px] uppercase font-mono tracking-wider text-gray-400 block font-bold">
-                Core Capability Engine
-              </span>
-              <p className="text-xs text-gray-200 leading-relaxed">
-                {product.capabilities[0]}
-              </p>
-            </div>
-          )}
-
-          {/* Modeled Target Governed Qualification */}
-          {product.modeledTarget ? (
-            <div className="bg-cyan-500/10 p-3.5 rounded-xl border border-cyan-500/20 text-xs font-mono">
-              <span className="text-[10px] uppercase text-cyan-400 font-bold block tracking-wider">
-                MODELED TARGET — NOT HISTORICAL PERFORMANCE
-              </span>
-              <span className="text-cyan-200 font-semibold block mt-0.5">
-                {product.modeledTarget.replace('MODELED TARGET — NOT HISTORICAL PERFORMANCE:', '').trim()}
-              </span>
-            </div>
-          ) : product.outcomes && product.outcomes[0] ? (
-            <div className="bg-cyan-500/10 p-3.5 rounded-xl border border-cyan-500/20 text-xs font-mono">
-              <span className="text-[10px] uppercase text-cyan-400 font-bold block tracking-wider">
-                MODELED TARGET — NOT HISTORICAL PERFORMANCE
-              </span>
-              <span className="text-cyan-200 font-semibold block mt-0.5">
-                {product.outcomes[0]}
-              </span>
-            </div>
-          ) : null}
-
-          {/* Designed For */}
+          {/* 3. Who is it for? */}
           <div className="space-y-1 bg-surface/40 p-3 rounded-xl border border-white/5 text-xs text-gray-400">
             <span className="text-[10px] uppercase font-mono tracking-wider text-gray-400 block font-bold">
               Designed For
@@ -189,33 +134,57 @@ export function ProductCard({ product }: { product: Product }) {
               {product.targetBuyer || (product.whoItIsFor && product.whoItIsFor[0])}
             </p>
           </div>
+
+          {/* Core Capability Summary */}
+          {product.capabilities && product.capabilities[0] && (
+            <div className="bg-surface/60 p-3 rounded-xl border border-white/5 space-y-1">
+              <span className="text-[10px] uppercase font-mono tracking-wider text-gray-400 block font-bold">
+                Core Capability
+              </span>
+              <p className="text-xs text-gray-200 leading-relaxed">
+                {product.capabilities[0]}
+              </p>
+            </div>
+          )}
         </div>
 
-        {/* Actions: Inspect & Commerce State */}
-        <div className="pt-6 space-y-2">
+        {/* 4. What do I do next? (Actions & Navigation) */}
+        <div className="pt-6 space-y-2 border-t border-white/5 mt-4">
           {isPurchasable ? (
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={() => setCheckoutModalOpen(true)}
-                className="btn-primary w-full py-2.5 text-center text-xs font-bold tracking-wider uppercase font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400"
-              >
-                Instant Buy
-              </button>
-              <Link
-                href={`/products/${product.id}`}
-                className="w-full py-2.5 px-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-gray-300 hover:text-white text-center transition-colors flex items-center justify-center gap-1"
-              >
-                <span>Blueprint</span>
-                <span>→</span>
-              </Link>
+            <div className="space-y-2">
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={() => setCheckoutModalOpen(true)}
+                  className="btn-primary w-full py-2.5 text-center text-xs font-bold tracking-wider uppercase font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                >
+                  Buy License
+                </button>
+                <Link
+                  href={product.product_route || `/products/${product.id}`}
+                  className="w-full py-2.5 px-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-gray-300 hover:text-white text-center transition-colors flex items-center justify-center gap-1"
+                >
+                  <span>Blueprint</span>
+                  <span>→</span>
+                </Link>
+              </div>
+
+              {hasWorkstation && (
+                <Link
+                  href={product.workstation_route!}
+                  className="w-full py-2 px-3 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-xs font-mono text-emerald-400 hover:text-emerald-300 text-center font-bold transition-colors flex items-center justify-center gap-1.5"
+                >
+                  <Play className="w-3 h-3" />
+                  <span>Launch Live Workstation</span>
+                </Link>
+              )}
             </div>
           ) : (
             <Link
-              href={`/products/${product.id}`}
+              href={product.product_route || `/products/${product.id}`}
               className="block w-full py-2.5 px-3 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-xs font-mono text-purple-300 text-center font-bold tracking-wider transition-colors"
             >
-              Inspect Synthesis Architecture →
+              Inspect Architecture Preview →
             </Link>
           )}
 

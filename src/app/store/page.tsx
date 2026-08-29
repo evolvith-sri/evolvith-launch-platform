@@ -91,14 +91,14 @@ export default function StorePage() {
           </div>
         </div>
 
-        {/* AppSumo Channel Notice */}
+        {/* Existing AppSumo Customer Redemption Notice */}
         <div className="bg-gradient-to-r from-cyan-950/40 via-surface/60 to-surface/40 p-4 sm:p-5 rounded-2xl border border-cyan-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <span className="text-[11px] font-mono font-bold text-cyan-400 uppercase tracking-wider block">
-              Marketplace Partner Redemption
+              Existing AppSumo Customer Redemption
             </span>
             <p className="text-xs text-gray-300">
-              Purchased via AppSumo? Codes are redeemed independently through the secure entitlement portal.
+              Already purchased an Evolvith AppSumo deal? Redeem your existing code to activate your license.
             </p>
           </div>
           <Link

@@ -96,13 +96,13 @@ export default function RedeemPage() {
       <div className="text-center space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-wider uppercase">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>AppSumo Marketplace Partner Portal</span>
+          <span>Existing AppSumo Customer Redemption</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold font-heading text-white tracking-tight">
           Redeem Your License
         </h1>
         <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-          Activate your perpetual commercial license for <strong className="text-white">PIPE-OS-01</strong>, <strong className="text-white">AUDIT-OS-01</strong>, <strong className="text-white">FORECAST-OS-01</strong>, or any Evolvith Operating System and instantly receive your inspectable digital product package.
+          Already purchased an Evolvith AppSumo deal? Redeem your existing code below to activate your perpetual commercial license and download your inspectable digital product package.
         </p>
       </div>
 

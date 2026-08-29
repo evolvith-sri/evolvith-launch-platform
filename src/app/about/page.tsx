@@ -80,9 +80,14 @@ export default function AboutPage() {
         <h3 className="text-2xl font-bold text-white font-heading">
           Explore Our Commercial Operating Systems
         </h3>
-        <Link href="/products" className="btn-primary inline-block px-8 py-4 text-sm">
-          View Wave 1 Products Catalog
-        </Link>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <Link href="/products" className="btn-primary inline-block px-8 py-4 text-sm font-mono uppercase font-bold tracking-wider">
+            View Products Catalog
+          </Link>
+          <Link href="/store" className="glass-panel inline-block px-8 py-4 text-sm font-mono text-gray-200 hover:text-white rounded-lg">
+            Commercial Store ($49+) →
+          </Link>
+        </div>
       </div>
     </div>
   );
