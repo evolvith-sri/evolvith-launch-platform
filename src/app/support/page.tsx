@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { DODO_STOREFRONT_URL } from '@/lib/products';
 import { SupportClientForm } from './SupportClientForm';
+import { TelemetryPageView } from '@/components/TelemetryPageView';
 
 export const metadata: Metadata = {
   title: 'Enterprise Support & License Assistance — Evolvith',
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 export default function SupportPage() {
   return (
     <div className="pt-28 pb-24 max-w-7xl mx-auto px-6 space-y-14">
+      <TelemetryPageView eventType="VIEW_SUPPORT" />
       {/* Top Banner */}
       <section className="space-y-4 max-w-3xl">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-wider uppercase">

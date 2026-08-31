@@ -32,6 +32,8 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         eventType: 'VIEW_PRODUCT_PAGE',
         productId: product.id,
         systemCode: product.systemCode,
+        price: product.price ?? undefined,
+        tier: String(product.tier),
       });
     }
   }, [product]);
@@ -305,7 +307,16 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 <>
                   <button
                     type="button"
-                    onClick={() => setCheckoutModalOpen(true)}
+                    onClick={() => {
+                      logCommercialIntent({
+                        eventType: 'CLICK_CHECKOUT_CTA',
+                        productId: product.id,
+                        systemCode: product.systemCode,
+                        price: product.price ?? undefined,
+                        tier: String(product.tier),
+                      });
+                      setCheckoutModalOpen(true);
+                    }}
                     className="btn-primary block w-full py-4 text-center text-xs font-bold tracking-wider uppercase font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400 shadow-lg shadow-cyan-500/20"
                   >
                     Instant Checkout — ${product.price} USD
@@ -314,6 +325,14 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                   {product.checkoutUrl && (
                     <a
                       href={product.checkoutUrl}
+                      onClick={() =>
+                        logCommercialIntent({
+                          eventType: 'CLICK_DODO_DIRECT',
+                          productId: product.id,
+                          systemCode: product.systemCode,
+                          price: product.price ?? undefined,
+                        })
+                      }
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block w-full py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] font-mono font-bold text-gray-300 hover:text-white text-center transition-colors flex items-center justify-center gap-1.5"
@@ -326,6 +345,13 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                   {product.workstation_route && (
                     <Link
                       href={product.workstation_route}
+                      onClick={() =>
+                        logCommercialIntent({
+                          eventType: 'LAUNCH_WORKSTATION',
+                          productId: product.id,
+                          systemCode: product.systemCode,
+                        })
+                      }
                       className="w-full py-2.5 px-3 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-xs font-mono font-bold text-emerald-400 hover:text-emerald-300 text-center flex items-center justify-center gap-2 transition-colors"
                     >
                       <span>⚡ Launch Live Workstation / Demo</span>

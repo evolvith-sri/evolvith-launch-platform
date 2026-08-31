@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { logCommercialIntent } from '@/lib/telemetry';
 
 export function SupportClientForm() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,11 @@ export function SupportClientForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    logCommercialIntent({
+      eventType: 'SUBMIT_SUPPORT_REQUEST',
+    });
+
     // Simulate support ticket registration
     setTimeout(() => {
       setLoading(false);

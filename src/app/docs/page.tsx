@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { TelemetryPageView } from '@/components/TelemetryPageView';
 
 export const metadata: Metadata = {
   title: 'Documentation & Deployment Runbooks — Evolvith',
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 export default function DocsPage() {
   return (
     <div className="pt-28 pb-24 max-w-7xl mx-auto px-6 space-y-16">
+      <TelemetryPageView eventType="VIEW_DOCS" />
       {/* Header */}
       <section className="space-y-4 max-w-3xl">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-wider uppercase">

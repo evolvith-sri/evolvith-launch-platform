@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { Product } from '@/lib/products';
 import { CheckoutModal } from '@/components/CheckoutModal';
+import { logCommercialIntent } from '@/lib/telemetry';
 
 interface StoreCatalogClientProps {
   allProducts: Product[];
@@ -20,6 +21,10 @@ export function StoreCatalogClient({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [selectedProductForModal, setSelectedProductForModal] = useState<Product | null>(null);
+
+  useEffect(() => {
+    logCommercialIntent({ eventType: 'VIEW_STORE' });
+  }, []);
 
   const categories = useMemo(() => {
     const set = new Set<string>();
@@ -239,13 +244,31 @@ export function StoreCatalogClient({
                 {isPurchasable ? (
                   <div className="grid grid-cols-2 gap-2">
                     <button
-                      onClick={() => setSelectedProductForModal(product)}
+                      onClick={() => {
+                        logCommercialIntent({
+                          eventType: 'CLICK_INSTANT_BUY',
+                          productId: product.id,
+                          systemCode: product.systemCode,
+                          price: product.price ?? undefined,
+                          tier: String(product.tier),
+                        });
+                        setSelectedProductForModal(product);
+                      }}
                       className="btn-primary w-full py-2.5 text-center text-xs font-bold font-mono uppercase tracking-wider"
                     >
                       Instant Buy
                     </button>
                     <Link
                       href={`/products/${product.id}`}
+                      onClick={() =>
+                        logCommercialIntent({
+                          eventType: 'VIEW_PRODUCT_BLUEPRINT',
+                          productId: product.id,
+                          systemCode: product.systemCode,
+                          price: product.price ?? undefined,
+                          tier: String(product.tier),
+                        })
+                      }
                       className="px-3 py-2.5 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white rounded-xl border border-white/10 text-xs font-mono text-center transition-colors flex items-center justify-center gap-1"
                     >
                       <span>Specs</span>
@@ -255,6 +278,13 @@ export function StoreCatalogClient({
                 ) : (
                   <Link
                     href={`/products/${product.id}`}
+                    onClick={() =>
+                      logCommercialIntent({
+                        eventType: 'VIEW_PRODUCT_BLUEPRINT',
+                        productId: product.id,
+                        systemCode: product.systemCode,
+                      })
+                    }
                     className="block w-full py-2.5 bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 rounded-xl text-center text-xs font-mono font-bold tracking-wider transition-colors"
                   >
                     View Blueprint Architecture →
@@ -264,6 +294,14 @@ export function StoreCatalogClient({
                 {isPurchasable && product.checkoutUrl && (
                   <a
                     href={product.checkoutUrl}
+                    onClick={() =>
+                      logCommercialIntent({
+                        eventType: 'CLICK_DODO_DIRECT',
+                        productId: product.id,
+                        systemCode: product.systemCode,
+                        price: product.price ?? undefined,
+                      })
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-center text-[10px] font-mono text-gray-500 hover:text-cyan-400 transition-colors"

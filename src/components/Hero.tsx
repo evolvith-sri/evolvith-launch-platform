@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { logCommercialIntent } from '@/lib/telemetry';
 
 interface SystemNode {
   id: string;
@@ -28,6 +29,10 @@ const SYSTEM_NODES: SystemNode[] = [
 export function Hero() {
   const [activeNode, setActiveNode] = useState<string>('audit-os-01');
   const selectedNode = SYSTEM_NODES.find((n) => n.id === activeNode) || SYSTEM_NODES[0];
+
+  useEffect(() => {
+    logCommercialIntent({ eventType: 'VISIT_HOMEPAGE' });
+  }, []);
 
   return (
     <section className="relative pt-32 pb-20 overflow-hidden" aria-labelledby="hero-heading">
@@ -77,6 +82,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Link
               href="/store"
+              onClick={() => logCommercialIntent({ eventType: 'CLICK_STORE_CTA' })}
               className="btn-primary px-8 py-4 text-base w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-cyan-400 flex items-center justify-center gap-2 font-mono uppercase text-xs tracking-wider"
             >
               <span>Commercial Store ($49+)</span>
@@ -84,6 +90,7 @@ export function Hero() {
             </Link>
             <a
               href="#wave-catalog"
+              onClick={() => logCommercialIntent({ eventType: 'VIEW_CATALOG' })}
               className="px-8 py-4 text-base font-semibold text-gray-200 hover:text-white glass-panel rounded-lg w-full sm:w-auto transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500 flex items-center justify-center gap-2"
             >
               <span>Explore Architecture Catalog</span>
@@ -150,6 +157,13 @@ export function Hero() {
             <div className="flex items-center gap-3 w-full md:w-auto">
               <Link
                 href={`/products/${selectedNode.id}`}
+                onClick={() =>
+                  logCommercialIntent({
+                    eventType: 'VIEW_PRODUCT_BLUEPRINT',
+                    productId: selectedNode.id,
+                    systemCode: selectedNode.code,
+                  })
+                }
                 className="btn-primary px-5 py-2.5 text-xs text-center w-full md:w-auto font-mono uppercase tracking-wider"
               >
                 Inspect {selectedNode.code} ({selectedNode.price})

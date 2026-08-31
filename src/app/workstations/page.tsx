@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { Terminal, Shield, ArrowRight, Play, Cpu, CheckCircle2, Sparkles } from 'lucide-react';
+import { logCommercialIntent } from '@/lib/telemetry';
 
 interface WorkstationItem {
   id: string;
@@ -123,6 +124,9 @@ const LIVE_WORKSTATIONS: WorkstationItem[] = [
 ];
 
 export default function WorkstationsIndexPage() {
+  useEffect(() => {
+    logCommercialIntent({ eventType: 'VIEW_WORKSTATIONS_DIRECTORY' });
+  }, []);
   return (
     <div className="min-h-screen pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
       {/* Header Section */}
@@ -184,6 +188,13 @@ export default function WorkstationsIndexPage() {
             <div className="pt-6 mt-6 border-t border-white/10 flex items-center gap-3">
               <Link
                 href={ws.route}
+                onClick={() =>
+                  logCommercialIntent({
+                    eventType: 'LAUNCH_WORKSTATION',
+                    productId: ws.id,
+                    systemCode: ws.code,
+                  })
+                }
                 className="btn-primary flex-1 py-2.5 text-xs font-mono uppercase font-bold flex items-center justify-center gap-1.5"
               >
                 <Play className="w-3.5 h-3.5" />
@@ -191,6 +202,13 @@ export default function WorkstationsIndexPage() {
               </Link>
               <Link
                 href={ws.specRoute}
+                onClick={() =>
+                  logCommercialIntent({
+                    eventType: 'VIEW_PRODUCT_BLUEPRINT',
+                    productId: ws.id,
+                    systemCode: ws.code,
+                  })
+                }
                 className="glass-panel px-3 py-2.5 text-xs font-mono text-gray-300 hover:text-white rounded-lg transition-colors"
                 title="View Architectural Specifications"
               >

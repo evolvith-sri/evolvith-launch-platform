@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { CustomerFeedbackForm } from '@/components/CustomerFeedbackForm';
+import { logCommercialIntent } from '@/lib/telemetry';
 import {
   KeyRound,
   Mail,
@@ -41,6 +42,10 @@ export default function RedeemPage() {
     downloadUrl: string;
   } | null>(null);
 
+  useEffect(() => {
+    logCommercialIntent({ eventType: 'REDEEM_INITIATED' });
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -78,6 +83,11 @@ export default function RedeemPage() {
         setIsLoading(false);
         return;
       }
+
+      logCommercialIntent({
+        eventType: 'REDEEM_SUCCESS',
+        productId: data.entitlement?.product,
+      });
 
       setSuccessData({
         entitlement: data.entitlement,

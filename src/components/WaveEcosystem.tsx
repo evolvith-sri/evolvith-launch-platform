@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ProductCard } from './ProductCard';
 import {
   Product,
@@ -9,6 +9,7 @@ import {
   TIER_2B_PRODUCTS,
   TIER_3_PRODUCTS,
 } from '@/lib/products';
+import { logCommercialIntent } from '@/lib/telemetry';
 
 interface WaveEcosystemProps {
   products?: Product[];
@@ -19,6 +20,10 @@ type ActiveTierType = 'tier1' | 'tier2a' | 'tier2b' | 'tier3';
 export function WaveEcosystem({ products }: WaveEcosystemProps) {
   const [activeTier, setActiveTier] = useState<ActiveTierType>('tier1');
   const [activeCategory, setActiveCategory] = useState<string>('all');
+
+  useEffect(() => {
+    logCommercialIntent({ eventType: 'VIEW_CATALOG' });
+  }, []);
 
   const currentProducts: Product[] =
     activeTier === 'tier1'

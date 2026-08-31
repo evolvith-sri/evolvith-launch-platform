@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getProductCommerceMapping } from '@/lib/commerce';
 import { generateSignedDownloadToken } from '@/lib/delivery';
 import { CustomerFeedbackForm } from '@/components/CustomerFeedbackForm';
+import { TelemetryPageView } from '@/components/TelemetryPageView';
 
 export const dynamic = 'force-dynamic';
 
@@ -44,6 +45,13 @@ export default function CheckoutSuccessPage({ searchParams }: SuccessPageProps) 
 
   return (
     <div className="max-w-4xl mx-auto px-6 pt-32 pb-24 space-y-10">
+      <TelemetryPageView
+        eventType="PAYMENT_COMPLETED"
+        productId={mapping.productId}
+        systemCode={mapping.systemCode}
+        price={mapping.governedPrice ?? undefined}
+        tier={String(mapping.tier)}
+      />
       {/* Top Status Header */}
       <div className="text-center space-y-4">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-3xl mx-auto font-mono">

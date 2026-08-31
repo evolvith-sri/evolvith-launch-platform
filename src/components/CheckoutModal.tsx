@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Product, COMMERCE_CONFIG } from '@/lib/products';
+import { logCommercialIntent } from '@/lib/telemetry';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -28,6 +29,15 @@ export function CheckoutModal({ isOpen, onClose, product }: CheckoutModalProps) 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg(null);
+
+    // Log Initiate Checkout Event (with zero PII, zero payment secrets)
+    logCommercialIntent({
+      eventType: 'INITIATE_CHECKOUT',
+      productId: product.id,
+      systemCode: product.systemCode,
+      price: product.price ?? undefined,
+      tier: String(product.tier),
+    });
 
     // If in Live / Controlled Verification mode, initiate server-side checkout session
     if (isLiveOrVerification) {

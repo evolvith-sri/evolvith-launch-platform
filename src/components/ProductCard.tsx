@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Product, COMMERCE_CONFIG } from '@/lib/products';
 import { CheckoutModal } from './CheckoutModal';
 import { Play, ArrowRight, ShieldCheck, Cpu } from 'lucide-react';
+import { logCommercialIntent } from '@/lib/telemetry';
 
 export function ProductCard({ product }: { product: Product }) {
   const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
@@ -155,13 +156,31 @@ export function ProductCard({ product }: { product: Product }) {
               <div className="grid grid-cols-2 gap-2">
                 <button
                   type="button"
-                  onClick={() => setCheckoutModalOpen(true)}
+                  onClick={() => {
+                    logCommercialIntent({
+                      eventType: 'CLICK_INSTANT_BUY',
+                      productId: product.id,
+                      systemCode: product.systemCode,
+                      price: product.price ?? undefined,
+                      tier: String(product.tier),
+                    });
+                    setCheckoutModalOpen(true);
+                  }}
                   className="btn-primary w-full py-2.5 text-center text-xs font-bold tracking-wider uppercase font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 >
                   Buy License
                 </button>
                 <Link
                   href={product.product_route || `/products/${product.id}`}
+                  onClick={() =>
+                    logCommercialIntent({
+                      eventType: 'VIEW_PRODUCT_BLUEPRINT',
+                      productId: product.id,
+                      systemCode: product.systemCode,
+                      price: product.price ?? undefined,
+                      tier: String(product.tier),
+                    })
+                  }
                   className="w-full py-2.5 px-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-gray-300 hover:text-white text-center transition-colors flex items-center justify-center gap-1"
                 >
                   <span>Blueprint</span>
@@ -172,6 +191,13 @@ export function ProductCard({ product }: { product: Product }) {
               {hasWorkstation && (
                 <Link
                   href={product.workstation_route!}
+                  onClick={() =>
+                    logCommercialIntent({
+                      eventType: 'LAUNCH_WORKSTATION',
+                      productId: product.id,
+                      systemCode: product.systemCode,
+                    })
+                  }
                   className="w-full py-2 px-3 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-xs font-mono text-emerald-400 hover:text-emerald-300 text-center font-bold transition-colors flex items-center justify-center gap-1.5"
                 >
                   <Play className="w-3 h-3" />
@@ -182,6 +208,13 @@ export function ProductCard({ product }: { product: Product }) {
           ) : (
             <Link
               href={product.product_route || `/products/${product.id}`}
+              onClick={() =>
+                logCommercialIntent({
+                  eventType: 'VIEW_PRODUCT_BLUEPRINT',
+                  productId: product.id,
+                  systemCode: product.systemCode,
+                })
+              }
               className="block w-full py-2.5 px-3 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-xs font-mono text-purple-300 text-center font-bold tracking-wider transition-colors"
             >
               Inspect Architecture Preview →
@@ -191,6 +224,14 @@ export function ProductCard({ product }: { product: Product }) {
           {isPurchasable && product.checkoutUrl && (
             <a
               href={product.checkoutUrl}
+              onClick={() =>
+                logCommercialIntent({
+                  eventType: 'CLICK_DODO_DIRECT',
+                  productId: product.id,
+                  systemCode: product.systemCode,
+                  price: product.price ?? undefined,
+                })
+              }
               target="_blank"
               rel="noopener noreferrer"
               className="block text-center text-[10px] font-mono text-gray-500 hover:text-cyan-400 transition-colors pt-0.5"
