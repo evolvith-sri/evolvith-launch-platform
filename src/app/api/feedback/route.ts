@@ -80,6 +80,14 @@ export async function POST(req: NextRequest) {
     } catch {
       // Non-blocking telemetry
     }
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: 'Feedback received. Thank you for helping shape the Evolvith product roadmap!',
+      },
+      { status: 200 }
+    );
   } catch (error) {
     return NextResponse.json(
       { error: `Failed to record feedback: ${error instanceof Error ? error.message : String(error)}` },
